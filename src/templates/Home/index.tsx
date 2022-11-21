@@ -1,16 +1,33 @@
-import { Contact } from '../../components/Contact'
-import { HowWorks } from '../../components/HowWorks/index'
-import { Partnerships } from '../../components/Partnerships'
-import { Pricing } from '../../components/Pricing'
-import { SliderComponent } from '../../components/Slider'
-import { Base } from '../Base/index'
-export function HomeTemplate() {
+import { Contact, ContactProps } from '../../components/Contact'
+import { HowWorks, HowWorksProps } from '../../components/HowWorks/index'
+import { Partnerships, PartnershipsProps } from '../../components/Partnerships'
+import { Pricing, PricingProps } from '../../components/Pricing'
+import { SliderComponent, SliderComponentProps } from '../../components/Slider'
+import { Base, BaseProps } from '../Base/index'
+
+export interface HomeTemplateProps {
+  base: BaseProps
+  slider: SliderComponentProps
+  pricing: PricingProps
+  partnership: PartnershipsProps
+  howWorks: HowWorksProps
+  contact: ContactProps
+}
+
+export function HomeTemplate({
+  base,
+  slider,
+  pricing,
+  partnership,
+  howWorks,
+  contact
+}: HomeTemplateProps) {
   return (
-    <Base>
-      <SliderComponent />
-      <Pricing />
-      <Partnerships />
-      <HowWorks />
+    <Base {...base}>
+      <SliderComponent {...slider} />
+      <Pricing {...pricing} />
+      <Partnerships {...partnership} />
+      <HowWorks {...howWorks} />
 
       <div className="container mx-auto my-16">
         <hr className="max-w-2xl py-4 mx-auto" />
@@ -50,7 +67,7 @@ export function HomeTemplate() {
         </div>
         <hr className="max-w-2xl py-4 mx-auto my-16" />
       </div>
-      <Contact />
+      <Contact {...contact} />
     </Base>
   )
 }

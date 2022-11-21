@@ -4,7 +4,7 @@ import React, { Fragment, useState } from 'react'
 import { Button } from '../../components/Button'
 import { Input } from '../../components/Input/index'
 import { convertToCurrency } from '../../utils/valueConvert'
-import { Base } from '../Base/index'
+import { Base, BaseProps } from '../Base/index'
 
 const plans = [
   {
@@ -51,12 +51,18 @@ const values = [
   }
 ]
 
-export function AssistenciaFuneralTemplate() {
+export interface AssistenciaFuneralTemplateProps {
+  base: BaseProps
+}
+
+export function AssistenciaFuneralTemplate({
+  base
+}: AssistenciaFuneralTemplateProps) {
   const [selected, setSelected] = useState(values[0])
   const [quantity, setQuantity] = useState(1)
   const [planSelected, setPlanSelected] = useState(0)
   return (
-    <Base>
+    <Base {...base}>
       <div className="container mx-auto my-4">
         <div className="rounded-2xl border border-black w-full md:w-11/12 md:mx-auto">
           <h3 className="text-4xl font-bold text-center border-b py-8">

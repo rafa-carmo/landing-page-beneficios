@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import {
   Book,
   FacebookLogo,
@@ -8,6 +9,23 @@ import {
   X
 } from 'phosphor-react'
 import { useState } from 'react'
+
+const icons = {
+  home: (
+    <House
+      size={22}
+      weight="regular"
+      className="group-hover:text-primary-500 transition-colors duration-300"
+    />
+  ),
+  aid: (
+    <FirstAidKit
+      size={22}
+      weight="regular"
+      className="group-hover:text-primary-500 transition-colors duration-300"
+    />
+  )
+}
 
 const menuItems = [
   {
@@ -45,7 +63,19 @@ const menuItems = [
   }
 ]
 
-export default function Menu() {
+type Icons = keyof typeof icons
+
+type MenuItem = {
+  name: string
+  link: string
+  icon: Icons
+}
+
+export interface MenuProps {
+  items: MenuItem[]
+}
+
+export default function Menu({ items }: MenuProps) {
   const [showMenu, setShowMenu] = useState(false)
   return (
     <div className="border-b-2 border-b-black/75">
@@ -133,18 +163,18 @@ export default function Menu() {
           </div>
           <nav className="py-5">
             <ul className="flex flex-col space-y-6">
-              {menuItems.map((item) => (
+              {items.map((item) => (
                 <li
                   key={`mobile-${item.name}`}
                   className="group transition duration-300 py-2"
                 >
-                  <a
+                  <Link
                     href={item.link}
                     className="text-zinc-700 flex items-center gap-2 pl-2 pr-10"
                   >
-                    {item.icon}
+                    {icons[item.icon]}
                     {item.name}
-                  </a>
+                  </Link>
                   <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-primary-500"></span>
                 </li>
               ))}

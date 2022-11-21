@@ -5,29 +5,22 @@ import Slider, { Settings } from 'react-slick'
 
 import { Button } from '../Button'
 
-const Sliders = [
-  {
-    title: 'Médico Especialista Online 24hs',
-    subtitle: 'Mais de 25 especialidades (Adulto e Infantil) em todo o Brasil',
-    image: '/images/medico.jpg',
-    button: {
-      title: 'Contratar',
-      url: '#'
-    }
-  },
-  {
-    title: 'Plano Funeral Familiar',
-    subtitle:
-      'is simply dummy text of the printing and typesetting industry. Lorem Ipsum',
-    image: '/images/plano.jpg',
-    button: {
-      title: 'Contratar',
-      url: '#'
-    }
-  }
-]
+// const Sliders = []
 
-export function SliderComponent() {
+type SliderProps = {
+  title: string
+  subtitle?: string
+  image: string
+  button: {
+    title?: string
+    url: string
+  }
+}
+export interface SliderComponentProps {
+  sliders: SliderProps[]
+}
+
+export function SliderComponent({ sliders }: SliderComponentProps) {
   const settings: Settings = {
     dots: false,
     infinite: true,
@@ -43,7 +36,7 @@ export function SliderComponent() {
   return (
     <div className="w-full bg-zinc-300 my-4">
       <Slider {...settings}>
-        {Sliders.map((item) => (
+        {sliders.map((item) => (
           <div key={item.title} className="md:h-[652px] h-96 relative">
             <div className="w-full h-full flex -mt-6 flex-col items-center justify-center relative z-10 gap-14 ">
               <div className="text-center md:w-2/4 w-3/4 flex flex-col gap-4">

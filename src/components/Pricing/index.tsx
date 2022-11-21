@@ -1,63 +1,24 @@
 // import { CheckIcon } from '@heroicons/react/solid'
 
+import Link from 'next/link'
 import { Check } from 'phosphor-react'
 
-const tiers = [
-  {
-    name: 'Assistência Funeral',
-    href: '#',
-    priceMonthly: '23.90',
-    from: true,
-    description: 'All the basics for starting a new business',
-    includedFeatures: [
-      'Urna',
-      'Higienização e ornamentação do corpo',
-      'Coroa de flores',
-      'Véu',
-      'Cavaletes, castiçais e cristo',
-      'Carro fúnebre',
-      'Registro em cartório',
-      'Livro de presença',
-      'Locação de sala para velório',
-      'Taxas de sepultamento',
-      'Locação de jazigo',
-      'Cremação',
-      'Sepultamento',
-      'Traslado'
-    ]
-  },
-  {
-    name: 'Médico na tela 24hrs',
-    href: '#',
-    priceMonthly: '39,90',
-    from: false,
-    description: 'All the basics for starting a new business',
-    includedFeatures: [
-      'Clínico Geral',
-      'Pediatra',
-      'Alergia e Imunologia',
-      'Infectologia',
-      'Cardiologista',
-      'Neurologia',
-      'Nutrologia e Medicina Esportiva',
-      'Cirurgia Geral',
-      'Oftalmologia',
-      'Ortopedia e Traumatologia',
-      'Otorrinolaringologista',
-      'Dermatologista',
-      'Endocrinologia',
-      'Pneumologista',
-      'Gastroenterologia',
-      'Psiquiatria',
-      'Geriatria',
-      'Ginecologia',
-      'Urologista',
-      'Reumatologia'
-    ]
-  }
-]
+import { convertToCurrency } from '../../utils/valueConvert'
 
-export function Pricing() {
+type tier = {
+  name: string
+  href: string
+  priceMonthly: number
+  from?: boolean
+  description: string
+  includedFeatures: string[]
+}
+
+export interface PricingProps {
+  tiers: tier[]
+}
+
+export function Pricing({ tiers }: PricingProps) {
   return (
     <div className="bg-white container mx-auto">
       <div className="max-w-7xl mx-auto py-24 px-4 sm:px-6 lg:px-8">
@@ -80,16 +41,16 @@ export function Pricing() {
                 <p className="mt-8 flex flex-col items-center">
                   {tier.from ? 'A partir de' : 'Por apenas'}
                   <span className="text-4xl font-extrabold text-gray-900">
-                    R${tier.priceMonthly}
+                    {convertToCurrency(tier.priceMonthly)}
                   </span>
                   <span className="text-xs">Por Mês</span>
                 </p>
-                <a
+                <Link
                   href={tier.href}
                   className="mt-8 block w-full bg-primary-500 border border-gray-800 rounded-md py-2 text-sm font-semibold text-zinc-100 text-center hover:bg-primary-300 transition-colors"
                 >
                   Contratar
-                </a>
+                </Link>
               </div>
               <div className="pt-6 pb-8 px-6">
                 <h3 className="text-xs font-medium text-gray-900 tracking-wide uppercase text-center">

@@ -2,48 +2,47 @@ import {
   Buildings,
   DeviceMobile,
   EnvelopeSimple,
-  MapPinLine
+  MapPinLine,
+  PaperPlaneTilt
 } from 'phosphor-react'
 
-const contacts = [
-  {
-    value: '(21) 1234-5678',
-    icon: <DeviceMobile size={24} />
-  },
-  {
-    value: 'email@dominio.com.br',
-    icon: <EnvelopeSimple size={24} />
-  },
-  {
-    value: '99.999.999/0001-99',
-    icon: <Buildings size={24} />
-  },
-  {
-    value: 'Endereço, N° 123, Nova iguaçu',
-    icon: <MapPinLine size={24} />
-  }
-]
+const icons = {
+  celular: <DeviceMobile size={24} />,
+  email: <EnvelopeSimple size={24} />,
+  empresa: <Buildings size={24} />,
+  map: <MapPinLine size={24} />
+}
+type Icons = keyof typeof icons
+interface Contact {
+  value: string
+  icon: Icons
+}
+export interface ContactProps {
+  description?: string
+  contacts: Contact[]
+}
 
-export function Contact() {
+export function Contact({ description, contacts }: ContactProps) {
   return (
-    <div className="container mx-auto relative mb-14">
-      <h3 className="font-bold text-4xl">Entre em contato:</h3>
-      <div className="pl-5 mt-10">
-        <p className="max-w-sm py-10 text-sm">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vitae arcu
-          lorem cras lacus amet. In cras odio enim rhoncus consectetur.{' '}
+    <div className="container mx-auto relative mb-14 ">
+      <h3 className="font-bold text-4xl text-center md:text-left">
+        Entre em contato:
+      </h3>
+      <div className="px-5 xl:pl-5 mt-10 pt-10">
+        <p className="xl:max-w-sm mb-10 text-sm line-clamp-3 overflow-hidden text-center xl:text-left">
+          {description}
         </p>
-        <div className="flex flex-col gap-5">
+        <div className="flex xl:flex-col gap-5 flex-wrap justify-center">
           {contacts.map((contact) => (
             <div key={contact.value} className="flex items-center gap-5">
-              <div className="text-primary-500">{contact.icon}</div>
+              <div className="text-primary-500">{icons[contact.icon]}</div>
               {contact.value}
             </div>
           ))}
         </div>
       </div>
-      <div className="absolute right-0 top-14 shadow-2xl p-14 bg-white">
-        <form action="" className="flex flex-col w-[668px]">
+      <div className="relative xl:absolute right-0 top-14 xl:shadow-2xl mb-8 xl:mb-0 p-4 xl:p-14 bg-white">
+        <form action="" className="flex flex-col w-full xl:w-[668px]">
           <span className="font-semibold text-lg tracking-wide mb-10">
             Envie uma mensagem.
           </span>
@@ -78,8 +77,8 @@ export function Contact() {
               rows={5}
             ></textarea>
           </div>
-          <button className="w-full bg-primary-500 rounded mt-2 text-zinc-100 p-2 text-lg">
-            Enviar
+          <button className="w-full bg-primary-500 rounded mt-2 text-zinc-100 p-2 text-lg flex gap-2 items-center justify-center">
+            <PaperPlaneTilt size={22} weight="light" /> Enviar
           </button>
         </form>
       </div>
