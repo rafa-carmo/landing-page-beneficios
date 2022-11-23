@@ -142,7 +142,7 @@ export const getStaticProps: GetStaticProps = async () => {
           icon: 'email'
         },
         {
-          value: '99.999.999/0001-99',
+          value: '48.225.290/0001-06',
           icon: 'empresa'
         },
         {

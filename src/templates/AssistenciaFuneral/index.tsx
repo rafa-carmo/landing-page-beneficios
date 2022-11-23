@@ -1,7 +1,9 @@
 import { Listbox, Transition } from '@headlessui/react'
-import React, { Fragment, useState } from 'react'
+import { CaretDown, Trash, TrashSimple } from 'phosphor-react'
+import React, { Fragment, useEffect, useState } from 'react'
 
 import { Button } from '../../components/Button'
+import { Dependent } from '../../components/Dependent'
 import { Input } from '../../components/Input/index'
 import { convertToCurrency } from '../../utils/valueConvert'
 import { Base, BaseProps } from '../Base/index'
@@ -51,6 +53,19 @@ const values = [
   }
 ]
 
+export type DependentProps = {
+  quantity: number
+  age: string
+  value: number
+}
+
+type DependentStateProps = {
+  id: number
+  quantity: number
+  age: string
+  value: number
+}
+
 export interface AssistenciaFuneralTemplateProps {
   base: BaseProps
 }
@@ -58,9 +73,78 @@ export interface AssistenciaFuneralTemplateProps {
 export function AssistenciaFuneralTemplate({
   base
 }: AssistenciaFuneralTemplateProps) {
-  const [selected, setSelected] = useState(values[0])
+  const [selected, setSelected] = useState<typeof values[0] | null>(null)
+
   const [quantity, setQuantity] = useState(1)
   const [planSelected, setPlanSelected] = useState(0)
+
+  const [dependentsValue, setDependentsValue] = useState(0)
+  const [total, setTotal] = useState(0)
+
+  const [date, setDate] = useState<string | null>(null)
+  const [cpf, setCpf] = useState<string | null>(null)
+  const [name, setName] = useState<string | null>(null)
+  const [email, setEmail] = useState<string | null>(null)
+  const [telephone, setTelephone] = useState<string | null>(null)
+
+  const [dependents, setDependents] = useState<DependentStateProps[]>([])
+
+  useEffect(() => {
+    if (dependents.length > 0) {
+      let sum = dependents.reduce((value, actual) => {
+        console.log(actual)
+        return value + actual.value
+      }, 0)
+      setDependentsValue(sum)
+
+      setTotal(planSelected + sum)
+      return
+    }
+    setTotal(planSelected)
+    return
+  }, [dependents, planSelected, dependentsValue])
+
+  function getDependentsValue() {
+    if (dependents.length > 0) {
+      let sum = dependents.reduce((value, actual) => {
+        console.log(actual)
+        return value + actual.value
+      }, 0)
+      setDependentsValue(sum)
+    }
+  }
+
+  function changeDependent(id: number, change: DependentProps) {
+    const dependentId = dependents.findIndex((item) => item.id === id)
+    const newArray = dependents
+    const valueUnit = values.filter((value) => value.age === change.age)[0]
+      .value
+
+    newArray[dependentId] = {
+      age: change.age,
+      quantity: change.quantity,
+      value: valueUnit * change.quantity,
+      id
+    }
+    setDependents(newArray)
+    getDependentsValue()
+  }
+
+  function handleRemoveDependentsItem(id: number) {
+    setDependents(dependents.filter((element) => element.id !== id))
+    getDependentsValue()
+  }
+
+  function getLastIdMoreOne() {
+    const indexes = dependents
+      .map((element) => element.id)
+      .sort((a, b) => a - b)
+    if (indexes.length > 0) {
+      return indexes[indexes.length - 1] + 1
+    }
+    return 1
+  }
+
   return (
     <Base {...base}>
       <div className="container mx-auto my-4">
@@ -113,11 +197,54 @@ export function AssistenciaFuneralTemplate({
 
         <div className="mt-14">
           <h2 className="font-semibold text-2xl text-center">Formulario</h2>
-          <div className="w-full md:w-5/6 md:mx-auto flex flex-col gap-7">
-            <Input label="Teste" id="Teste" placeholder="Nome" />
-            <div className="grid grid-cols-2 gap-7">
-              <Input label="Email" id="Email" placeholder="Email" />
-              <Input label="Telefone" id="Telefone" placeholder="Telefone" />
+          <div className="w-full md:w-5/6 md:mx-auto flex flex-col gap-7 px-2 md:p-0">
+            <Input
+              label="Nome"
+              id="Nome"
+              mask="name"
+              valueInput={name}
+              setValue={setName}
+              placeholder="Nome"
+              required
+            />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
+              <Input
+                label="CPF"
+                id="CPF"
+                type="text"
+                mask="cpf"
+                valueInput={cpf}
+                setValue={setCpf}
+                placeholder="Digite seu cpf"
+              />
+              <Input
+                label="Data de nascimento"
+                id="DataDeNascimento"
+                type="date"
+                valueInput={date}
+                setValue={setDate}
+                placeholder="Data de Nascimento"
+              />
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
+              <Input
+                label="Email"
+                id="Email"
+                type="email"
+                valueInput={email}
+                setValue={setEmail}
+                placeholder="Email"
+                required
+              />
+              <Input
+                label="Telefone"
+                id="Telefone"
+                mask="telephone"
+                valueInput={telephone}
+                setValue={setTelephone}
+                placeholder="(21) 9 1234-5678"
+                required
+              />
             </div>
 
             <div className="w-full">
@@ -180,86 +307,50 @@ export function AssistenciaFuneralTemplate({
             </div>
 
             <div>
-              <h3 className="text-center font-bold text-xl mt-2 mb-4">
+              <h3 className="text-center font-bold text-xl mt-2 mb-4 ">
                 Deseja adicionar algum dependente ou agregado?
               </h3>
+              <div className="grid grid-cols-3 text-center gap-5 font-bold text-zinc-400">
+                <div>Quantidade</div>
+                <div>Selecione a Faixa etária</div>
+                <div>Valor</div>
+              </div>
+              {dependents?.map((dependent, key) => (
+                <Dependent
+                  index={dependent.id}
+                  quantity="1"
+                  changeValues={changeDependent}
+                  key={`dependent-${dependent.id}`}
+                  deleteField={() => handleRemoveDependentsItem(dependent.id)}
+                />
+              ))}
 
-              <div className="flex items-center justify-between gap-5">
-                <div className="w-28">
-                  <Input
-                    type="number"
-                    label="Quantidade"
-                    value={quantity}
-                    onChange={(e) => setQuantity(parseFloat(e.target.value))}
-                  />
-                </div>
-                <div className="flex-1 max-w-xl">
-                  Selecione a Faixa etária
-                  <Listbox value={selected} onChange={setSelected}>
-                    <div className="relative mt-1">
-                      <Listbox.Button className="relative w-full cursor-default rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm">
-                        <span className="block truncate">{selected.age}</span>
-                      </Listbox.Button>
-                      <Transition
-                        as={Fragment}
-                        leave="transition ease-in duration-100"
-                        leaveFrom="opacity-100"
-                        leaveTo="opacity-0"
-                      >
-                        <Listbox.Options className="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
-                          {values.map((value) => (
-                            <Listbox.Option
-                              key={value.age}
-                              className={({ active }) =>
-                                `relative cursor-default select-none py-2 pl-10 pr-4 ${
-                                  active
-                                    ? 'bg-amber-100 text-amber-900'
-                                    : 'text-gray-900'
-                                }`
-                              }
-                              value={value}
-                            >
-                              {({ selected }) => (
-                                <>
-                                  <span
-                                    className={`block truncate ${
-                                      selected ? 'font-medium' : 'font-normal'
-                                    }`}
-                                  >
-                                    {value.age} - (
-                                    {convertToCurrency(value.value)} Por Pessoa)
-                                  </span>
-                                  {selected ? (
-                                    <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-amber-600"></span>
-                                  ) : null}
-                                </>
-                              )}
-                            </Listbox.Option>
-                          ))}
-                        </Listbox.Options>
-                      </Transition>
-                    </div>
-                  </Listbox>
-                </div>
-                <div>
-                  <span>Valor</span>
-                  <p>{convertToCurrency(selected.value * quantity)}</p>
-                </div>
+              <div className="flex items-center justify-center my-5">
+                <button
+                  className="bg-primary-300 px-5 py-2 rounded-lg text-zinc-100"
+                  onClick={() => {
+                    setDependents([
+                      ...dependents,
+                      { ...values[0], quantity: 0, id: getLastIdMoreOne() }
+                    ])
+                  }}
+                >
+                  Adicionar Outro
+                </button>
               </div>
             </div>
           </div>
 
           <div className="flex items-center justify-center flex-col my-7">
             <span className="text-center">
-              Plano: {convertToCurrency(planSelected)}
+              Plano Selecionado: {convertToCurrency(planSelected)}
             </span>
             <p className="text-center">
-              Agregados/dependentes:{' '}
-              {convertToCurrency(selected.value * quantity)}
+              Agregados/dependentes: {convertToCurrency(dependentsValue)}
             </p>
             <p className="text-2xl text-center flex py-4">
               <span className="font-bold pr-2">Total:</span>
-              {convertToCurrency(planSelected + selected.value * quantity)}
+              {convertToCurrency(total)}
             </p>
           </div>
           <div className="flex items-center justify-center gap-2">
