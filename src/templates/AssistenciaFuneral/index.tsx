@@ -92,7 +92,6 @@ export function AssistenciaFuneralTemplate({
   useEffect(() => {
     if (dependents.length > 0) {
       let sum = dependents.reduce((value, actual) => {
-        console.log(actual)
         return value + actual.value
       }, 0)
       setDependentsValue(sum)
@@ -100,6 +99,7 @@ export function AssistenciaFuneralTemplate({
       setTotal(planSelected + sum)
       return
     }
+    setDependentsValue(0)
     setTotal(planSelected)
     return
   }, [dependents, planSelected, dependentsValue])
@@ -107,7 +107,6 @@ export function AssistenciaFuneralTemplate({
   function getDependentsValue() {
     if (dependents.length > 0) {
       let sum = dependents.reduce((value, actual) => {
-        console.log(actual)
         return value + actual.value
       }, 0)
       setDependentsValue(sum)
@@ -310,11 +309,16 @@ export function AssistenciaFuneralTemplate({
               <h3 className="text-center font-bold text-xl mt-2 mb-4 ">
                 Deseja adicionar algum dependente ou agregado?
               </h3>
-              <div className="grid grid-cols-3 text-center gap-5 font-bold text-zinc-400">
-                <div>Quantidade</div>
-                <div>Selecione a Faixa etária</div>
-                <div>Valor</div>
-              </div>
+              {dependents.length > 0 && (
+                <div className="grid grid-cols-3 text-center gap-5 font-bold text-zinc-400">
+                  <div>Quantidade</div>
+                  <div>Selecione a Faixa etária</div>
+                  <div className="flex items-center justify-around gap-8">
+                    <p>Valor</p>
+                    <div className="w-4 h-4"> </div>
+                  </div>
+                </div>
+              )}
               {dependents?.map((dependent, key) => (
                 <Dependent
                   index={dependent.id}
@@ -335,7 +339,7 @@ export function AssistenciaFuneralTemplate({
                     ])
                   }}
                 >
-                  Adicionar Outro
+                  Adicionar {dependents.length > 0 && 'Outro'}
                 </button>
               </div>
             </div>
@@ -348,7 +352,7 @@ export function AssistenciaFuneralTemplate({
             <p className="text-center">
               Agregados/dependentes: {convertToCurrency(dependentsValue)}
             </p>
-            <p className="text-2xl text-center flex py-4">
+            <p className="text-2xl text-center flex py-4 items-center justify-around">
               <span className="font-bold pr-2">Total:</span>
               {convertToCurrency(total)}
             </p>

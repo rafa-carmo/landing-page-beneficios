@@ -30,7 +30,7 @@ const icons = {
 const menuItems = [
   {
     name: 'Pagina Inicial',
-    link: '#',
+    link: '/',
     icon: (
       <House
         size={22}
@@ -41,7 +41,7 @@ const menuItems = [
   },
   {
     name: 'Medicina Online',
-    link: '#',
+    link: '/medicina_online',
     icon: (
       <FirstAidKit
         size={22}
@@ -52,7 +52,7 @@ const menuItems = [
   },
   {
     name: 'Assistencia funeral',
-    link: '#',
+    link: '/assistencia_funeral',
     icon: (
       <FirstAidKit
         size={22}
@@ -76,34 +76,34 @@ export interface MenuProps {
 }
 
 export default function Menu({ items }: MenuProps) {
-  const [showMenu, setShowMenu] = useState(false)
+  const [showMenu, setShowMenu] = useState(true)
   return (
-    <div className="border-b-2 border-b-black/75">
+    <div className="border-b-2 border-b-black/75 bg-white">
       <div className=" flex container mx-auto pt-2 pb-5">
         <div className="flex-1">
-          <div className="flex items-center">
+          <Link href="/" className="flex items-center">
             <Book size={50} weight="bold" />
             {/* Logo */}
             <h2 className="font-bold text-5xl">Logo</h2>
-          </div>
+          </Link>
         </div>
 
         <div className="hidden flex-1 justify-between items-end pb-2 lg:flex">
           <nav className="hidden md:flex gap-10 font-medium text-zinc-700 text-lg">
-            <ul className="group transition duration-300">
-              <a href="#" className="hover:text-zinc-900">
-                Medicina Online
-              </a>
-              <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-sky-600"></span>
-            </ul>
-
-            <ul className="group transition duration-300">
-              <a href="#" className="hover:text-zinc-900">
-                Assistencia funeral
-              </a>
-              <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-sky-600"></span>
-            </ul>
-
+            {items.map(
+              (item) =>
+                item.name !== 'Pagina Inicial' && (
+                  <ul
+                    className="group transition duration-300"
+                    key={`menu-${item.name}`}
+                  >
+                    <Link href={item.link} className="hover:text-zinc-900">
+                      {item.name}
+                    </Link>
+                    <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-sky-600"></span>
+                  </ul>
+                )
+            )}
             <ul className="group transition duration-300">
               <a href="#" className="hover:text-zinc-900">
                 Contato
@@ -143,13 +143,13 @@ export default function Menu({ items }: MenuProps) {
       </div>
 
       <div
-        className={`fixed left-0 top-0 bottom-0 right-0 z-30 opacity-0 pointer-events-none ${
+        className={`fixed left-0 top-0 bottom-0 right-0 z-[99] opacity-0 pointer-events-none ${
           showMenu && 'opacity-100 pointer-events-auto'
         } transition-all`}
       >
         <button
           onClick={() => setShowMenu(false)}
-          className="absolute bg-white/70 left-0 top-0 bottom-0 right-0 z-40 cursor-default"
+          className="absolute bg-white/70 left-0 top-0 bottom-0 right-0 z-50 cursor-default"
         ></button>
         <button
           onClick={() => setShowMenu(false)}
@@ -157,7 +157,7 @@ export default function Menu({ items }: MenuProps) {
         >
           <X size={32} weight="bold" />
         </button>
-        <div className="relative bg-white w-fit h-screen flex flex-col z-50">
+        <div className="fixed bg-white w-fit h-screen flex flex-col z-50">
           <div className="border-b py-5 flex items-center justify-center">
             Logo - <b className="font-bold">Beneficios</b>
           </div>

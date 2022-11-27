@@ -59,25 +59,33 @@ export function Dependent({
     age = selected.age,
     value = selected.value
   }: valuesTypes) {
+    let valueCalculated = 0
+    if (!isNaN(parseInt(quantity))) {
+      valueCalculated = value * parseInt(quantity)
+    }
+
     const change = {
       quantity: parseInt(quantity || '0'),
       age: age,
-      value: value * parseInt(quantity)
+      value: valueCalculated
     }
 
     changeValues(index, change)
   }
   return (
-    <div className="grid grid-cols-3 gap-5">
+    <div className="relative grid grid-cols-3 gap-5">
       <div className="flex items-center justify-center">
         <input
           type="number"
           value={quantityState || ''}
+          min="0"
           onChange={(e) => {
-            setQuantity(e.target.value)
-            handleChange({ quantity: e.target.value })
+            setQuantity(e.target.value.replace(/[^0-9]/g, ''))
+            handleChange({
+              quantity: e.target.value.replace(/[^0-9]/g, '')
+            })
           }}
-          className="w-full max-w-[100px] border py-2 px-4 mt-1 rounded-lg form-input"
+          className="w-full max-w-[100px] border py-2 px-4 mt-1 rounded-lg form-input text-center"
         />
       </div>
 
@@ -90,7 +98,7 @@ export function Dependent({
           }}
         >
           <div className="relative mt-1">
-            <Listbox.Button className="relative z-10 w-full cursor-default rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm border">
+            <Listbox.Button className="md:relative z-10 w-full cursor-default rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm border">
               <span className="block truncate text-center">
                 {selected.age} ({convertToCurrency(selected.value)} Por Pessoa)
               </span>
@@ -105,7 +113,7 @@ export function Dependent({
               leaveFrom="opacity-100"
               leaveTo="opacity-0"
             >
-              <Listbox.Options className="absolute z-20 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+              <Listbox.Options className="absolute z-20 mt-1 max-h-60 min-w-[200px] w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
                 {values.map((value) => (
                   <Listbox.Option
                     key={value.age}
@@ -139,16 +147,16 @@ export function Dependent({
         </Listbox>
       </div>
 
-      <div className="flex gap-8 items-center justify-center">
+      <div className="flex gap-8 items-center justify-around">
         <div className="flex items-center justify-center flex-col">
           <p>{convertToCurrency(selected.value * parseInt(quantityState))}</p>
         </div>
+
         <div className="flex items-center">
           <button
             onClick={deleteField}
             className="p-1 flex items-center justify-center bg-zinc-200 text-red-400 rounded-lg h-fit"
           >
-            {index}
             <Trash size={22} />
           </button>
         </div>

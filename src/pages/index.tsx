@@ -17,17 +17,17 @@ export const getStaticProps: GetStaticProps = async () => {
         items: [
           {
             name: 'Pagina Inicial',
-            link: '#',
+            link: '/',
             icon: 'home'
           },
           {
             name: 'Medicina Online',
-            link: '#',
+            link: '/medicina_online',
             icon: 'aid'
           },
           {
             name: 'Assistencia funeral',
-            link: '#',
+            link: '/assistencia_funeral',
             icon: 'aid'
           }
         ]

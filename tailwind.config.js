@@ -8,8 +8,15 @@ module.exports = {
           500: '#2F80ED',
           300: '#5498F0'
         }
+      },
+      fontFamily: {
+        roboto: ['Inter', 'sans-serif']
       }
     }
   },
-  plugins: [require('@tailwindcss/forms'), require('@tailwindcss/line-clamp')]
+  plugins: [
+    require('@tailwindcss/forms'),
+    require('@tailwindcss/line-clamp'),
+    require('tailwindcss-textshadow')
+  ]
 }
