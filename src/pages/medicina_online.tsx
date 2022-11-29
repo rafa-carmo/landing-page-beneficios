@@ -18,9 +18,9 @@ export default function MedicinaOnlinePage({
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const request = await (
-    await getAPIClient()
-  ).get(`/plans?galaxPayIds=438&startAt=0&limit=1`)
+  // const request = await (
+  //   await getAPIClient()
+  // ).get(`/plans?galaxPayIds=438&startAt=0&limit=1`)
 
   // console.log(
   //   data.data.Plans[0].PlanPrices.filter(
@@ -28,15 +28,15 @@ export const getStaticProps: GetStaticProps = async () => {
   //   )
   // )
 
-  const data: GetPlans = request.data
-  const valueNotFormated = String(
-    data.Plans[0].PlanPrices.filter((plan) => plan.payment === 'creditcard')[0]
-      .value
-  )
+  // const data: GetPlans = request.data
+  // const valueNotFormated = String(
+  //   data.Plans[0].PlanPrices.filter((plan) => plan.payment === 'creditcard')[0]
+  //     .value
+  // )
 
-  const value = parseFloat(
-    `${valueNotFormated.slice(0, -2)}.${valueNotFormated.slice(-2)}`
-  )
+  // const value = parseFloat(
+  //   `${valueNotFormated.slice(0, -2)}.${valueNotFormated.slice(-2)}`
+  // )
 
   const medicinaOnlineData: MedicinaOnlineTemplateProps = {
     base: {
@@ -60,7 +60,7 @@ export const getStaticProps: GetStaticProps = async () => {
         ]
       }
     },
-    value
+    value: 39.9
   }
 
   return {

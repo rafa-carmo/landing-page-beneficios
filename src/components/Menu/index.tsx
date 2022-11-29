@@ -76,7 +76,7 @@ export interface MenuProps {
 }
 
 export default function Menu({ items }: MenuProps) {
-  const [showMenu, setShowMenu] = useState(true)
+  const [showMenu, setShowMenu] = useState(false)
   return (
     <div className="border-b-2 border-b-black/75 bg-white">
       <div className=" flex container mx-auto pt-2 pb-5">

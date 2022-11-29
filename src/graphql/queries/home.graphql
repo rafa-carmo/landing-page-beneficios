@@ -1,0 +1,45 @@
+query Homepage {
+  menus {
+    links(orderBy: order_ASC) {
+      name
+      url
+    }
+  }
+  banners {
+    title
+    subtitle
+    image {
+      url
+    }
+    button {
+      name
+      url
+    }
+  }
+  pricings {
+    name
+    link
+    priceMonthly
+    from
+    description
+    includedFeatures
+  }
+  partnerships {
+    name
+    image {
+      url
+    }
+  }
+  contacts {
+    value
+    icon
+  }
+  abouts {
+    about
+    howWorks
+    objetivo
+    visao
+    valores
+    name
+  }
+}
