@@ -56,8 +56,8 @@ export function SliderComponent({ sliders }: SliderComponentProps) {
                 alt={item.title}
                 layout="fill"
                 objectFit="cover"
-                placeholder="blur"
-                blurDataURL={item.image}
+                // placeholder="blur"
+                // blurDataURL={item.image}
               />
             </div>
           </div>

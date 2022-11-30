@@ -4,7 +4,7 @@ const hour = minute * 60
 const day = hour * 24
 
 export function countDown(year: number, month: number) {
-  let count_down = new Date(year, month + 1, 0)
+  let count_down = new Date(year, month + 1, 1)
 
   let now = new Date(Date.now()).getTime()
   let diff = count_down.getTime() - now

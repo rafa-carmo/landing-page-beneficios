@@ -10,7 +10,9 @@ module.exports = {
         }
       },
       fontFamily: {
-        roboto: ['Inter', 'sans-serif']
+        inter: ['Inter', 'sans-serif'],
+        roboto: ['Roboto', 'sans-serif'],
+        poppins: ['Poppins', 'sans-serif']
       }
     }
   },
