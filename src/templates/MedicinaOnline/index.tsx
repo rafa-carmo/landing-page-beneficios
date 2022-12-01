@@ -203,7 +203,7 @@ export function MedicinaOnlineTemplate({
           alt="peaple heart"
         />
       </div>
-      <div className="bg-gradient-to-r  from-sky-500 to-indigo-500/50  mt-32 py-20">
+      <div className="bg-gradient-to-r  from-primary-500 to-secondary/25  mt-32 py-20">
         <h3 className="font-bold text-xl md:text-3xl text-white text-shadow-lg font-poppins text-center">
           Atendemos diversas demandas e tratamentos
         </h3>
@@ -211,7 +211,7 @@ export function MedicinaOnlineTemplate({
           {cards.map((card) => (
             <div
               key={card.title}
-              className="w-64 h-80 bg-white  shadow-lg rounded-lg flex flex-col items-center justify-around py-6 px-5 shadow-violet-500"
+              className="w-64 h-80 bg-white  shadow-lg rounded-lg flex flex-col items-center justify-around py-6 px-5 shadow-secondary"
             >
               <div className="w-24 h-24 relative">
                 <Image src={card.image} fill alt={card.alt} className="" />

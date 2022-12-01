@@ -100,7 +100,7 @@ export default function Menu({ items }: MenuProps) {
                     <Link href={item.link} className="hover:text-zinc-900">
                       {item.name}
                     </Link>
-                    <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-sky-600"></span>
+                    <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-primary-500"></span>
                   </ul>
                 )
             )}
@@ -108,7 +108,7 @@ export default function Menu({ items }: MenuProps) {
               <a href="#" className="hover:text-zinc-900">
                 Contato
               </a>
-              <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-sky-600"></span>
+              <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-primary-500"></span>
             </ul>
           </nav>
 
