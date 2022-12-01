@@ -242,7 +242,7 @@ export function MedicinaOnlineTemplate({
                 <Image src="/images/articles.svg" alt="person" fill />
               </div>
             </div>
-            <div className="flex gap-5">
+            <div className="flex gap-10 md:gap-5 flex-col md:flex-row">
               {cardsPrice.map((cardPrice) => (
                 <CardPrice
                   key={cardPrice.title}
