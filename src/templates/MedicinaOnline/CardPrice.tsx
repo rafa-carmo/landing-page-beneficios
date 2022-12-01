@@ -5,15 +5,19 @@ import { SelectedPlan } from '.'
 import { convertToCurrency } from '../../utils/valueConvert'
 
 export interface CardPrice {
+  id: string
   title: string
   value: number
   inclidesItems: string[]
+  selected?: boolean
   handleClickPlan: (value: SelectedPlan) => void
 }
 
 export function CardPrice({
+  id,
   inclidesItems,
   title,
+  selected,
   value,
   handleClickPlan
 }: CardPrice) {
@@ -33,7 +37,9 @@ export function CardPrice({
   return (
     <div
       key={title}
-      className="w-80 shadow-lg flex flex-col justify-between font-roboto gap-5 px-4 py-8 gap-y-10 rounded-lg border relative z-10 bg-white"
+      className={`w-80 shadow-lg flex flex-col justify-between font-roboto gap-5 px-4 py-8 gap-y-10 rounded-lg border-0 relative z-10 bg-white border-primary-500 ${
+        selected && 'border-2'
+      }`}
     >
       <div className="flex flex-col gap-5">
         <span className="text-center font-bold text-lg">{title}</span>
@@ -63,6 +69,7 @@ export function CardPrice({
       <button
         onClick={() =>
           handleClickPlan({
+            id,
             title,
             value
           })

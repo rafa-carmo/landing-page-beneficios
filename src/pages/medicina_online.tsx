@@ -100,6 +100,7 @@ export const getStaticProps: GetStaticProps = async () => {
     priceArea: 'Médico na Tela sem burocracia!',
     cardsPrice: [
       {
+        id: '001',
         title: 'Plano 1',
         value: 39.9,
         inclidesItems: [
@@ -111,6 +112,7 @@ export const getStaticProps: GetStaticProps = async () => {
         ]
       },
       {
+        id: '002',
         title: 'Plano 2',
         value: 29.9,
         inclidesItems: ['Clinico Geral na Tela', 'Pediatra na Tela']

@@ -25,6 +25,7 @@ type CardProps = {
 }
 
 export type SelectedPlan = {
+  id: string
   title: string
   value: number
 }
@@ -245,6 +246,7 @@ export function MedicinaOnlineTemplate({
               {cardsPrice.map((cardPrice) => (
                 <CardPrice
                   key={cardPrice.title}
+                  selected={selectedPlan?.id === cardPrice.id}
                   {...cardPrice}
                   handleClickPlan={handleClickPlan}
                 />
