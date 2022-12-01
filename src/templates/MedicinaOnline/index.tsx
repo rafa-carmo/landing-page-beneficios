@@ -8,11 +8,7 @@ import { TimerCard } from '../../components/TimerCard'
 import { countDown } from '../../utils/monthsToSeconds'
 import { convertToCurrency } from '../../utils/valueConvert'
 import { Base, BaseProps } from '../Base'
-
-export interface MedicinaOnlineTemplateProps {
-  base: BaseProps
-  value: number
-}
+import { CardPrice } from './CardPrice'
 
 type ExpiresProps = {
   days: string
@@ -21,45 +17,31 @@ type ExpiresProps = {
   seconds: string
 }
 
-const planItems = [
-  'Psicólogos credenciados pela SulAmérica',
-  'Atendimento por vídeo chamadas',
-  'Não pague por consulta',
-  'Atendimentos ilimitados',
-  'Utilize em 72 horas após contratação',
-  'Seja acompanhado pelo mesmo Psicólogo'
-]
+type CardProps = {
+  title: string
+  text: string
+  image: string
+  alt: string
+}
 
-const cards = [
-  {
-    title: 'Depressão',
-    text: 'Distúrbio caracterizado por depressão persistente ou perda de interesse em atividades.',
-    image: '/images/medico/sadWomam.png',
-    alt: 'sad womam'
-  },
-  {
-    title: 'Ansiedade',
-    text: 'A ansiedade é um conjunto de doenças marcadas pela preocupação excessiva ou constante.',
-    image: '/images/medico/anxiety.svg',
-    alt: 'anxiety person'
-  },
-  {
-    title: 'Transtornos de personalidade',
-    text: 'Os transtornos de personalidade são padrões persistentes e generalizados no modo de pensar e agir.',
-    image: '/images/medico/Personality-disorder.svg',
-    alt: 'People illustrations by Storyset'
-  },
-  {
-    title: 'Transtorno de estresse pós-traumático',
-    text: 'É um tipo de transtorno de ansiedade gerado por algum trauma vivenciado.',
-    image: '/images/medico/Post-traumatic stress disorder.svg',
-    alt: 'People illustrations by Storyset'
-  }
-]
+export interface MedicinaOnlineTemplateProps {
+  base: BaseProps
+  title: string
+  subtitle: string
+  planItems: string[]
+  cards: CardProps[]
+  priceArea: string
+  cardsPrice: CardPrice[]
+}
 
 export function MedicinaOnlineTemplate({
   base,
-  value
+  cards,
+  priceArea,
+  cardsPrice,
+  planItems,
+  subtitle,
+  title
 }: MedicinaOnlineTemplateProps) {
   const [loop, setLoop] = useState(0)
   const [expires, setExpires] = useState<ExpiresProps | null>(null)
@@ -84,10 +66,17 @@ export function MedicinaOnlineTemplate({
   }
 
   const handleClickScroll = () => {
+    const element = document.getElementById('plans')
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+  const handleClickPlan = (text: string) => {
     const element = document.getElementById('formRegister')
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' })
     }
+    return
   }
 
   useEffect(() => {
@@ -129,11 +118,14 @@ export function MedicinaOnlineTemplate({
 
   useEffect(() => {
     setTimeout(() => {
+      if (expires?.minutes === '00' && expires.seconds === '00') {
+        return
+      }
       setExpires(countDown(new Date().getFullYear(), new Date().getMonth()))
       setLoop(loop + 1)
     }, 1000)
     return
-  }, [loop])
+  }, [loop, expires])
   return (
     <Base {...base} className="bg-primary-300/5">
       <Script
@@ -146,9 +138,9 @@ export function MedicinaOnlineTemplate({
           Oferta por tempo limitado
         </h4>
         {expires && (
-          <div className="container mx-auto grid grid-cols-4 gap-1 md:gap-5">
-            <TimerCard type="Dia" value={expires.days} />
-            <TimerCard type="Hora" value={expires.hours} />
+          <div className="container mx-auto flex justify-center items-center gap-1 md:gap-5">
+            {/* <TimerCard type="Dia" value={expires.days} />
+            <TimerCard type="Hora" value={expires.hours} /> */}
             <TimerCard type="Minuto" value={expires.minutes} />
             <TimerCard type="Segundo" value={expires.seconds} />
           </div>
@@ -160,12 +152,9 @@ export function MedicinaOnlineTemplate({
       <div className="flex container mx-auto gap-1 items-center justify-center relative">
         <div className="max-w-4xl text-center space-y-5  relative z-10 p-10">
           <h3 className="font-bold font-poppins text-xl md:text-4xl md:tracking-wide md:leading-10">
-            Terapia On-line com Psicólogos licenciados SulAmérica
+            {title}
           </h3>
-          <h2 className="text-lg md:text-2xl font-inter">
-            Sessões de aconselhamento no conforto da sua casa. Consultas
-            ilimitadas, pague apenas a mensalidade.
-          </h2>
+          <h2 className="text-lg md:text-2xl font-inter">{subtitle}</h2>
 
           <div className="pl-5 font-inter py-10 flex items-center flex-col md:grid md:grid-cols-2 gap-y-3 ">
             {planItems.map((item) => (
@@ -231,12 +220,10 @@ export function MedicinaOnlineTemplate({
         </div>
       </div>
 
-      <div className="">
+      <div className=" overflow-hidden" id="plans">
         <div className="container mx-auto flex flex-col items-center justify-center my-12 gap-24 ">
           <div className="text-center">
-            <h3 className="font-poppins font-bold text-xl">
-              Médico na Tela sem burocracia!
-            </h3>
+            <h3 className="font-poppins font-bold text-xl">{priceArea}</h3>
             <h4 className="font-poppins font-bold text-lg text-black/75">
               Simples e rápido
             </h4>
@@ -247,54 +234,14 @@ export function MedicinaOnlineTemplate({
                 <Image src="/images/articles.svg" alt="person" fill />
               </div>
             </div>
-            <div className="w-80 shadow-lg flex flex-col font-roboto gap-5 px-4 py-8 gap-y-10 rounded-lg border relative z-10 bg-white">
-              <span className="text-center font-bold text-lg">
-                Médico na tela
-              </span>
-              <div>
-                <span className="pl-5 font-bold">por apenas:</span>
-                <p className="text-center flex items-end justify-center text-2xl">
-                  <span className="flex gap-2 items-end">
-                    R$: <strong className="text-7xl">29</strong>
-                  </span>
-                  <em className="flex flex-col">
-                    ,90 <strong>/mês</strong>
-                  </em>
-                </p>
-              </div>
-              <div className="flex flex-col items-center gap-y-5">
-                <span className="flex items-center justify-start sm:gap-5">
-                  <Check
-                    className="flex-shrink-0 h-5 w-5 text-green-500"
-                    aria-hidden="true"
-                    weight="bold"
-                  />
-                  <p className="text-sm">Medico na tela</p>
-                </span>
-                <span className="flex items-center justify-start sm:gap-5">
-                  <Check
-                    className="flex-shrink-0 h-5 w-5 text-green-500"
-                    aria-hidden="true"
-                    weight="bold"
-                  />
-                  <p className="text-sm">Psicólogo na Tela</p>
-                </span>
-                <span className="flex items-center justify-start sm:gap-5">
-                  <Check
-                    className="flex-shrink-0 h-5 w-5 text-green-500"
-                    aria-hidden="true"
-                    weight="bold"
-                  />
-                  <p className="text-sm">Desconto Farmácia</p>
-                </span>
-              </div>
-
-              <button
-                onClick={handleClickScroll}
-                className="mx-auto py-2 px-3 bg-primary-500 rounded-lg w-3/4 font-bold text-sm md:text-lg text-zinc-100"
-              >
-                Assinar agora!
-              </button>
+            <div className="flex gap-5">
+              {cardsPrice.map((cardPrice) => (
+                <CardPrice
+                  key={cardPrice.title}
+                  {...cardPrice}
+                  handleClickPlan={handleClickPlan}
+                />
+              ))}
             </div>
           </div>
         </div>

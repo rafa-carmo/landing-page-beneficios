@@ -1,6 +1,6 @@
 const second = 1000
 const minute = second * 60
-const hour = minute * 60
+const hour = minute * 30
 const day = hour * 24
 
 export function countDown(year: number, month: number) {

@@ -4,8 +4,10 @@ export function convertToCurrency(value: number) {
     valueToConvert = value
   }
 
-  return new Intl.NumberFormat('pt-Br', {
+  const formated = new Intl.NumberFormat('pt-Br', {
     style: 'currency',
     currency: 'BRL'
   }).format(valueToConvert)
+
+  return formated
 }
