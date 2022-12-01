@@ -1,13 +1,14 @@
 import { Check } from 'phosphor-react'
 import { useState, useEffect } from 'react'
 
+import { SelectedPlan } from '.'
 import { convertToCurrency } from '../../utils/valueConvert'
 
 export interface CardPrice {
   title: string
   value: number
   inclidesItems: string[]
-  handleClickPlan: (value: string) => void
+  handleClickPlan: (value: SelectedPlan) => void
 }
 
 export function CardPrice({
@@ -27,7 +28,7 @@ export function CardPrice({
       prefix: values[0].trim() || '00',
       sufix: values[1].trim() || '00'
     })
-  }, [price])
+  }, [value])
 
   return (
     <div
@@ -60,7 +61,12 @@ export function CardPrice({
       </div>
 
       <button
-        onClick={() => handleClickPlan('title')}
+        onClick={() =>
+          handleClickPlan({
+            title,
+            value
+          })
+        }
         className="mx-auto py-2 px-3 bg-primary-500 rounded-lg w-3/4 font-bold text-sm md:text-lg text-zinc-100"
       >
         Assinar agora!

@@ -24,6 +24,11 @@ type CardProps = {
   alt: string
 }
 
+export type SelectedPlan = {
+  title: string
+  value: number
+}
+
 export interface MedicinaOnlineTemplateProps {
   base: BaseProps
   title: string
@@ -45,6 +50,7 @@ export function MedicinaOnlineTemplate({
 }: MedicinaOnlineTemplateProps) {
   const [loop, setLoop] = useState(0)
   const [expires, setExpires] = useState<ExpiresProps | null>(null)
+  const [selectedPlan, setSelectedPlan] = useState<null | SelectedPlan>()
   const [inputsData, setInputsData] = useState({
     name: '',
     cpf: '',
@@ -71,10 +77,11 @@ export function MedicinaOnlineTemplate({
       element.scrollIntoView({ behavior: 'smooth' })
     }
   }
-  const handleClickPlan = (text: string) => {
+  const handleClickPlan = (plan: SelectedPlan) => {
     const element = document.getElementById('formRegister')
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' })
+      setSelectedPlan(plan)
     }
     return
   }
@@ -398,6 +405,22 @@ export function MedicinaOnlineTemplate({
             </div>
           </form>
         </div>
+        {selectedPlan && (
+          <div className="flex flex-col items-center justify-center">
+            <p className="font-bold text-lg">
+              Plano selecionado:
+              <span> {selectedPlan.title}</span>
+            </p>
+            <p className="font-bold">
+              Valor: <span> {convertToCurrency(selectedPlan.value)}</span>
+            </p>
+
+            <div className="flex items-center gap-3 mt-5">
+              <input type="checkbox" name="confirm" id="confirm" />
+              <label htmlFor="confirm">Confirmo as informações acima.</label>
+            </div>
+          </div>
+        )}
 
         <div className="flex items-center justify-center">
           <button
