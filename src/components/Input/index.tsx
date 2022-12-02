@@ -5,6 +5,7 @@ import { testCpf } from '../../utils/testCpf'
 type InputProps = {
   label?: string
   mask?: 'telephone' | 'name' | 'cpf' | 'card' | 'number'
+  error?: string
   valueInput: string | null
   setValue: (value: null | string) => void
 } & InputHTMLAttributes<HTMLInputElement>
@@ -12,12 +13,13 @@ type InputProps = {
 export function Input({
   label,
   mask,
+  error,
   valueInput,
   setValue,
 
   ...props
 }: InputProps) {
-  const [error, setError] = useState<string | null>(null)
+  const [errorState, setError] = useState<string | null | undefined>(error)
   const [cardFlag, setCardFlag] = useState<string | null>(null)
   function maskValue(valueChanged?: string) {
     if (!valueChanged) {
@@ -113,7 +115,11 @@ export function Input({
         {...props}
       />
 
-      {error && <p className="text-red-500 text-xs pl-2">{error}</p>}
+      {errorState ? (
+        <p className="text-red-500 text-xs pl-2">{errorState}</p>
+      ) : (
+        error && <p className="text-red-500 text-xs pl-2">{error}</p>
+      )}
     </div>
   )
 }
