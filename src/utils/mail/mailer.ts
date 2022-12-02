@@ -1,7 +1,8 @@
 import { readFileSync } from 'fs'
 import handlebars from 'handlebars'
-import nodemailer from 'nodemailer'
-import path, { join } from 'path'
+import path from 'path'
+
+import { mailTemplateDirectory, transporter } from '.'
 
 interface MailHomeProps {
   name: string
@@ -20,16 +21,6 @@ export async function sendMailHome({
   message,
   host
 }: MailHomeProps) {
-  // create reusable transporter object using the default SMTP transport
-  let transporter = nodemailer.createTransport({
-    host: 'smtp.mailtrap.io',
-    port: 2525,
-    auth: {
-      user: '27ab94f52ef428',
-      pass: '0db4129367a81e'
-    }
-  })
-  const mailTemplateDirectory = path.join(process.cwd(), 'templates_mail')
   const source = readFileSync(
     mailTemplateDirectory + '/message.html',
     'utf-8'
@@ -45,9 +36,7 @@ export async function sendMailHome({
   }
   const htmlToSend = template(replacements)
 
-  // send mail with defined transport object
   let info = await transporter.sendMail({
-    from: '"Sistema autmoatico" <foo@example.com>',
     to: 'email@email.com',
     subject: `Mensagem do cliente - ${name}`,
     html: htmlToSend

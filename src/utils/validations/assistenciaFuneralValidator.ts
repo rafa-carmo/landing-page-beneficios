@@ -6,9 +6,8 @@ type SendMessageValues = {
   name: string
   email: string
   telephone: string
-  subject: string
-  message: string
 }
+// plan: number
 
 const errorsMessages = {
   'string.empty': 'Este campo não pode estar vazio',
@@ -21,12 +20,11 @@ const fieldValidations = {
     .email({ tlds: { allow: false } })
     .required()
     .messages(errorsMessages),
-  telephone: Joi.string().allow('').optional(),
-  subject: Joi.string().allow('').optional(),
-  message: Joi.string().required().messages(errorsMessages)
+  telephone: Joi.string().allow('').optional()
 }
+//   plan: Joi.string().required()
 
-export function sendMessageValidate(values: SendMessageValues) {
+export function assistenciaFuneralValidator(values: SendMessageValues) {
   const schema = Joi.object(fieldValidations)
 
   return getFieldErrors(schema.validate(values, { abortEarly: false }))
