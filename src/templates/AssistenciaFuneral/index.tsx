@@ -1,10 +1,14 @@
 import { Listbox, Transition } from '@headlessui/react'
+import axios from 'axios'
+import { useRouter } from 'next/router'
 import { CaretDown, Trash, TrashSimple } from 'phosphor-react'
 import React, { Fragment, useEffect, useState } from 'react'
 
 import { Button } from '../../components/Button'
 import { Dependent } from '../../components/Dependent'
 import { Input } from '../../components/Input/index'
+import { FieldErrors } from '../../utils/validations'
+import { assistenciaFuneralValidator } from '../../utils/validations/assistenciaFuneralValidator'
 import { convertToCurrency } from '../../utils/valueConvert'
 import { Base, BaseProps } from '../Base/index'
 
@@ -53,6 +57,11 @@ const values = [
   }
 ]
 
+type PlanSelected = {
+  type: 'individual' | 'familiar'
+  age: string
+  value: number
+}
 export type DependentProps = {
   quantity: number
   age: string
@@ -70,22 +79,62 @@ export interface AssistenciaFuneralTemplateProps {
   base: BaseProps
 }
 
+const contract = `<p>
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry. Lorem Ipsum has been the industrys standard dummy text
+              ever since the 1500s, when an unknown printer took a galley of
+              type and scrambled it to make a type specimen book. It has
+              survived not only five centuries, but also the leap into
+              electronic typesetting, remaining essentially unchanged. It was
+              popularised in the 1960s with the release of Letraset sheets
+              containing Lorem Ipsum passages, and more recently with desktop
+              publishing software like Aldus PageMaker including versions of
+              Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and
+              typesetting industry.
+            </p>
+            <p>
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry. Lorem Ipsum has been the industrys standard dummy text
+              ever since the 1500s, when an unknown printer took a galley of
+              type and scrambled it to make a type specimen book. It has
+              survived not only five centuries, but also the leap into
+              electronic typesetting, remaining essentially unchanged. It was
+              popularised in the 1960s with the release of Letraset sheets
+              containing Lorem Ipsum passages, and more recently with desktop
+              publishing software like Aldus PageMaker including versions of
+              Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and
+              typesetting industry.
+            </p>
+            <p>
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry. Lorem Ipsum has been the industrys standard dummy text
+              ever since the 1500s, when an unknown printer took a galley of
+              type and scrambled it to make a type specimen book. It has
+              survived not only five centuries, but also the leap into
+              electronic typesetting, remaining essentially unchanged. It was
+              popularised in the 1960s with the release of Letraset sheets
+              containing Lorem Ipsum passages, and more recently with desktop
+              publishing software like Aldus PageMaker including versions of
+              Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and
+              typesetting industry.
+            </p>`
+
 export function AssistenciaFuneralTemplate({
   base
 }: AssistenciaFuneralTemplateProps) {
-  const [selected, setSelected] = useState<typeof values[0] | null>(null)
-
-  const [quantity, setQuantity] = useState(1)
-  const [planSelected, setPlanSelected] = useState(0)
+  const router = useRouter()
+  const [planSelected, setPlanSelected] = useState<PlanSelected | null>(null)
+  const [acceptedContract, setAcceptedContract] = useState(false)
 
   const [dependentsValue, setDependentsValue] = useState(0)
   const [total, setTotal] = useState(0)
 
-  const [date, setDate] = useState<string | null>(null)
-  const [cpf, setCpf] = useState<string | null>(null)
-  const [name, setName] = useState<string | null>(null)
-  const [email, setEmail] = useState<string | null>(null)
-  const [telephone, setTelephone] = useState<string | null>(null)
+  const [date, setDate] = useState<string>('')
+  const [cpf, setCpf] = useState<string>('')
+  const [name, setName] = useState<string>('')
+  const [email, setEmail] = useState<string>('')
+  const [telephone, setTelephone] = useState<string>('')
+  const [fieldErrors, setFieldErrors] = useState<FieldErrors>()
 
   const [dependents, setDependents] = useState<DependentStateProps[]>([])
 
@@ -95,13 +144,18 @@ export function AssistenciaFuneralTemplate({
         return value + actual.value
       }, 0)
       setDependentsValue(sum)
-
-      setTotal(planSelected + sum)
-      return
+      if (planSelected) {
+        setTotal(planSelected.value + sum)
+        return
+      }
+      return setTotal(sum)
     }
     setDependentsValue(0)
-    setTotal(planSelected)
-    return
+    if (planSelected) {
+      setTotal(planSelected.value)
+      return
+    }
+    return setTotal(0)
   }, [dependents, planSelected, dependentsValue])
 
   function getDependentsValue() {
@@ -144,6 +198,45 @@ export function AssistenciaFuneralTemplate({
     return 1
   }
 
+  async function handleSendContact() {
+    const errors = assistenciaFuneralValidator({
+      name,
+      email,
+      telephone
+    })
+    if (!acceptedContract) {
+      return setFieldErrors({
+        terms: 'Aceite os termos antes de prosseguir'
+      })
+    }
+
+    if (Object.keys(errors).length) {
+      setFieldErrors(errors)
+      return
+    }
+    if (!planSelected) {
+      setFieldErrors({
+        plan: 'Selecione um plano'
+      })
+    }
+
+    const response = await axios
+      .post('/api/mailPlanoFuneral', {
+        name,
+        cpf,
+        dateBirth: date,
+        email,
+        telephone,
+        planSelected,
+        dependents,
+        contract
+      })
+      .then((data) => data.data)
+    if (response.token) {
+      return router.push(`/pdf?token=${response.token}`)
+    }
+  }
+
   return (
     <Base {...base}>
       <div className="container mx-auto my-4">
@@ -152,45 +245,7 @@ export function AssistenciaFuneralTemplate({
             Contrato
           </h3>
           <div className="px-8 py-10 text-justify flex flex-col gap-5">
-            <p>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industrys standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book. It has
-              survived not only five centuries, but also the leap into
-              electronic typesetting, remaining essentially unchanged. It was
-              popularised in the 1960s with the release of Letraset sheets
-              containing Lorem Ipsum passages, and more recently with desktop
-              publishing software like Aldus PageMaker including versions of
-              Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and
-              typesetting industry.
-            </p>
-            <p>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industrys standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book. It has
-              survived not only five centuries, but also the leap into
-              electronic typesetting, remaining essentially unchanged. It was
-              popularised in the 1960s with the release of Letraset sheets
-              containing Lorem Ipsum passages, and more recently with desktop
-              publishing software like Aldus PageMaker including versions of
-              Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and
-              typesetting industry.
-            </p>
-            <p>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industrys standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book. It has
-              survived not only five centuries, but also the leap into
-              electronic typesetting, remaining essentially unchanged. It was
-              popularised in the 1960s with the release of Letraset sheets
-              containing Lorem Ipsum passages, and more recently with desktop
-              publishing software like Aldus PageMaker including versions of
-              Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and
-              typesetting industry.
-            </p>
+            {contract}
           </div>
         </div>
 
@@ -204,6 +259,7 @@ export function AssistenciaFuneralTemplate({
               valueInput={name}
               setValue={setName}
               placeholder="Nome"
+              error={fieldErrors?.name}
               required
             />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
@@ -233,6 +289,7 @@ export function AssistenciaFuneralTemplate({
                 valueInput={email}
                 setValue={setEmail}
                 placeholder="Email"
+                error={fieldErrors?.email}
                 required
               />
               <Input
@@ -242,6 +299,7 @@ export function AssistenciaFuneralTemplate({
                 valueInput={telephone}
                 setValue={setTelephone}
                 placeholder="(21) 9 1234-5678"
+                error={fieldErrors?.telefone}
                 required
               />
             </div>
@@ -251,7 +309,11 @@ export function AssistenciaFuneralTemplate({
                 Selecione o plano
               </h3>
 
-              <table className="w-full ">
+              {fieldErrors?.plan && (
+                <p className="text-red-500 text-center"> Selecione um plano </p>
+              )}
+
+              <table className={`w-full`}>
                 <thead>
                   <tr>
                     <th className="border p-3 w-1/3">Faixa etária</th>
@@ -271,8 +333,12 @@ export function AssistenciaFuneralTemplate({
                             type="radio"
                             name="plan"
                             value={plan.individualValue}
-                            onChange={(e) => {
-                              setPlanSelected(parseFloat(e.target.value))
+                            onChange={() => {
+                              setPlanSelected({
+                                age: plan.age,
+                                type: 'individual',
+                                value: plan.individualValue
+                              })
                             }}
                             id={`${plan.individualValue}-${plan.age}`}
                           />
@@ -290,8 +356,12 @@ export function AssistenciaFuneralTemplate({
                             name="plan"
                             value={plan.familiarValue}
                             id={`${plan.familiarValue}-${plan.age}`}
-                            onChange={(e) => {
-                              setPlanSelected(parseFloat(e.target.value))
+                            onChange={() => {
+                              setPlanSelected({
+                                age: plan.age,
+                                type: 'familiar',
+                                value: plan.familiarValue
+                              })
                             }}
                           />
                           <label htmlFor={`${plan.familiarValue}-${plan.age}`}>
@@ -331,11 +401,11 @@ export function AssistenciaFuneralTemplate({
 
               <div className="flex items-center justify-center my-5">
                 <button
-                  className="bg-primary-300 px-5 py-2 rounded-lg text-zinc-100"
+                  className="bg-primary-500 px-5 py-2 rounded-lg text-zinc-100 hover:bg-primary-700 transition-colors"
                   onClick={() => {
                     setDependents([
                       ...dependents,
-                      { ...values[0], quantity: 0, id: getLastIdMoreOne() }
+                      { ...values[0], quantity: 1, id: getLastIdMoreOne() }
                     ])
                   }}
                 >
@@ -347,7 +417,7 @@ export function AssistenciaFuneralTemplate({
 
           <div className="flex items-center justify-center flex-col my-7">
             <span className="text-center">
-              Plano Selecionado: {convertToCurrency(planSelected)}
+              Plano Selecionado: {convertToCurrency(planSelected?.value || 0)}
             </span>
             <p className="text-center">
               Agregados/dependentes: {convertToCurrency(dependentsValue)}
@@ -357,12 +427,25 @@ export function AssistenciaFuneralTemplate({
               {convertToCurrency(total)}
             </p>
           </div>
-          <div className="flex items-center justify-center gap-2">
-            <input type="checkbox" name="accept_terms" id="accept_terms" />
+          <div
+            className={`flex items-center justify-center gap-2 ${
+              fieldErrors?.terms && 'text-red-500'
+            }`}
+          >
+            <input
+              type="checkbox"
+              name="accept_terms"
+              id="accept_terms"
+              onChange={(e) => setAcceptedContract(e.target.checked)}
+              required
+            />
             <label htmlFor="accept_terms">Aceito os termos do contrato</label>
           </div>
+          {fieldErrors?.terms && (
+            <p className="text-center">{fieldErrors?.terms}</p>
+          )}
           <div className="flex items-center justify-center my-8">
-            <Button>Enviar</Button>
+            <Button onClick={handleSendContact}>Enviar</Button>
           </div>
         </div>
       </div>
