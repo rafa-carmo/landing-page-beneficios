@@ -1,7 +1,7 @@
 import { readFileSync } from 'fs'
 import handlebars from 'handlebars'
 import nodemailer from 'nodemailer'
-import { join } from 'path'
+import path, { join } from 'path'
 
 interface MailHomeProps {
   name: string
@@ -29,9 +29,9 @@ export async function sendMailHome({
       pass: '0db4129367a81e'
     }
   })
-
+  const mailTemplateDirectory = path.join(process.cwd(), 'templates_mail')
   const source = readFileSync(
-    join('src', 'utils', 'mail', 'templates', 'message.html'),
+    mailTemplateDirectory + '/message.html',
     'utf-8'
   ).toString()
   const template = handlebars.compile(source)
