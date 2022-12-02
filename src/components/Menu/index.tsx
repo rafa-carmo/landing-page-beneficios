@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import {
   Book,
@@ -27,42 +28,6 @@ const icons = {
   )
 }
 
-const menuItems = [
-  {
-    name: 'Pagina Inicial',
-    link: '/',
-    icon: (
-      <House
-        size={22}
-        weight="regular"
-        className="group-hover:text-primary-500 transition-colors duration-300"
-      />
-    )
-  },
-  {
-    name: 'Medicina Online',
-    link: '/medicina_online',
-    icon: (
-      <FirstAidKit
-        size={22}
-        weight="regular"
-        className="group-hover:text-primary-500 transition-colors duration-300"
-      />
-    )
-  },
-  {
-    name: 'Assistencia funeral',
-    link: '/assistencia_funeral',
-    icon: (
-      <FirstAidKit
-        size={22}
-        weight="regular"
-        className="group-hover:text-primary-500 transition-colors duration-300"
-      />
-    )
-  }
-]
-
 type Icons = keyof typeof icons
 
 type MenuItem = {
@@ -79,12 +44,16 @@ export default function Menu({ items }: MenuProps) {
   const [showMenu, setShowMenu] = useState(false)
   return (
     <div className="border-b-2 border-b-black/75 bg-white">
-      <div className=" flex container mx-auto pt-2 pb-5">
-        <div className="flex-1">
+      <div className="flex container mx-auto pt-2 pb-5 relative">
+        <div className="flex-1"></div>
+        <div className="absolute">
           <Link href="/" className="flex items-center">
-            <Book size={50} weight="bold" />
-            {/* Logo */}
-            <h2 className="font-bold text-5xl">Logo</h2>
+            <Image
+              src="/images/logo.png"
+              width={200}
+              height={150}
+              alt="logo Viver Mais"
+            />
           </Link>
         </div>
 

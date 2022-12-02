@@ -1,17 +1,20 @@
-import { Book, FacebookLogo, InstagramLogo } from 'phosphor-react'
+import Image from 'next/image'
 
 export function Footer() {
   return (
-    <footer className="bg-primary-500 pt-24">
+    <footer className=" pt-14 bg-gradient-to-b  from-primary-500/40 to-primary-500">
       <div className="container mx-auto">
-        <div className="flex items-center text-zinc-100 pb-10">
-          <Book size={50} weight="bold" />
-          {/* Logo */}
-          <h2 className="font-bold text-5xl">Logo</h2>
+        <div className="flex items-center text-zinc-100 pb-24">
+          <Image
+            src="/images/logo.png"
+            width={200}
+            height={150}
+            alt="logo Viver Mais"
+          />
         </div>
-        <div className="pt-10 grid grid-cols-3 gap-24 text-zinc-100">
+        <div className="pt-10 grid grid-cols-3 gap-24 text-zinc-100 text-shadow-lg">
           <div className="flex flex-col gap-5">
-            <h4 className="font-bold ">Nome</h4>
+            <h4 className="font-bold ">Viver Mais</h4>
             <p className="font-thin">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vitae
               arcu lorem cras lacus amet. In cras odio enim rhoncus consectetur.
@@ -79,7 +82,7 @@ export function Footer() {
         </div>
 
         <div className="w-full text-center pt-10 pb-2 text-zinc-100 font-semibold">
-          <span>© 2022 -- Benefícios.</span>
+          <span>© 2022 -- Viver Mais.</span>
         </div>
       </div>
     </footer>
