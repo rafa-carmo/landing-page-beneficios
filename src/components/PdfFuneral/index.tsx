@@ -10,6 +10,8 @@ import ReactPDF, {
 } from '@react-pdf/renderer'
 import { useState, useEffect } from 'react'
 
+import { convertToCurrency } from '../../utils/valueConvert'
+
 /* eslint-disable jsx-a11y/alt-text */
 
 const styles = StyleSheet.create({
@@ -73,71 +75,93 @@ Font.register({
   src: 'https://fonts.gstatic.com/s/oswald/v13/Y_TKV6o8WovbUd3m_X9aAA.ttf'
 })
 
-export function PdfFuneral() {
+export interface PDFFuneral {
+  name: string
+  cpf?: string
+  dateBirth?: string
+  telephone: string
+  email: string
+  plan: {
+    age: string
+    type: string
+    value: number
+  }
+  dependents: {
+    quantity: number
+    age: string
+    value: number
+  }[]
+  contract: string
+}
+
+export function PdfFuneral({
+  name,
+  cpf,
+  dateBirth,
+  telephone,
+  email,
+  plan,
+  dependents,
+  contract
+}: PDFFuneral) {
   return (
     <Document>
       <Page style={styles.body}>
-        <Image style={styles.image} src="/images/safessl.png" />
+        <Image style={styles.image} src="/images/logo.png" />
         <Text style={styles.header} fixed>
-          ~ Nome da empresa ~
+          ~ Viver Mais ~
         </Text>
         <Text style={styles.title}>
           Informações para assinatura de assistencia funeral
         </Text>
         <Text style={styles.subtitle}>Informações pessoais</Text>
         <Text style={styles.labelInput}>Nome</Text>
-        <Text style={styles.formInput}>Rafael do carmo da silva</Text>
+        <Text style={styles.formInput}>{name}</Text>
         <Text style={styles.labelInput}>CPF</Text>
-        <Text style={styles.formInput}>138.487.627-81</Text>
+        <Text style={styles.formInput}>{cpf || 'Não informado'}</Text>
         <Text style={styles.labelInput}>Data de Nascimento</Text>
-        <Text style={styles.formInput}>13/05/1992</Text>
+        <Text style={styles.formInput}>{dateBirth || 'Não informada'}</Text>
         <Text style={styles.labelInput}>Telefone</Text>
-        <Text style={styles.formInput}>(21) 9 9554-0043</Text>
+        <Text style={styles.formInput}>{telephone}</Text>
         <Text style={styles.labelInput}>E-mail</Text>
-        <Text style={styles.formInput}>rafaelcarmo143@gmail.com</Text>
+        <Text style={styles.formInput}>{email}</Text>
         <Text style={styles.labelInput}>Plano selecionado</Text>
         <Text style={styles.formInput}>
-          18 a 39 anos - Plano Familiar - Valor - R$ 33,90
+          {plan.age} anos - {plan.type} - Valor -{' '}
+          {convertToCurrency(plan.value)}
         </Text>
         <Text style={styles.labelInput}>Agregados / Dependentes</Text>
         <View style={styles.formInput}>
-          <Text style={styles.agregado}>01 - 14 a 19 anos - R$ 5,90</Text>
-          <Text>03 - 14 a 19 anos - R$ 17,90</Text>
+          {dependents.length > 0 ? (
+            dependents.map((dependent) => (
+              <Text key={dependent.age} style={styles.agregado}>
+                {dependent.quantity} - {dependent.age} anos -{' '}
+                {convertToCurrency(dependent.value)}
+              </Text>
+            ))
+          ) : (
+            <Text style={styles.agregado}>Nenhum</Text>
+          )}
         </View>
         <Text style={styles.subtitle}>Contrato</Text>
-        <Text style={styles.text}>
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industrys standard dummy text ever
-          since the 1500s, when an unknown printer took a galley of type and
-          scrambled it to make a type specimen book. It has survived not only
-          five centuries, but also the leap into electronic typesetting,
-          remaining essentially unchanged. It was popularised in the 1960s with
-          the release of Letraset sheets containing Lorem Ipsum passages, and
-          more recently with desktop publishing software like Aldus PageMaker
-          including versions of Lorem Ipsum.
-        </Text>
+        <Text style={styles.text}>{contract}</Text>
       </Page>
     </Document>
   )
 }
 
-export function PdfView() {
-  if (typeof window === 'undefined') return <>ssr</>
+export function PdfView(props: PDFFuneral) {
+  const [isServer, setIsServer] = useState(true)
+  useEffect(() => {
+    setIsServer(false)
+  }, [isServer])
   return (
-    <PDFViewer style={{ width: '100vw', height: '100vh' }}>
-      <PdfFuneral />
-    </PDFViewer>
+    <>
+      {!isServer && (
+        <PDFViewer style={{ width: '100vw', height: '100vh' }}>
+          <PdfFuneral {...props} />
+        </PDFViewer>
+      )}
+    </>
   )
 }
-
-const ViewFile = () => {
-  const [client, setClient] = useState(false)
-
-  useEffect(() => {
-    setClient(true)
-  }, [])
-
-  return client && <PdfFuneral />
-}
-
-// ReactPDF.render(<PdfFuneral />, `${__dirname}/pdf/file.pdf`)

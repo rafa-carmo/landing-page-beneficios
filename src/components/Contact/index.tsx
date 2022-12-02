@@ -8,10 +8,8 @@ import {
 } from 'phosphor-react'
 import { useState } from 'react'
 
-import {
-  FieldErrors,
-  sendMessageValidate
-} from '../../utils/validations/messageValidate'
+import { FieldErrors } from '../../utils/validations'
+import { sendMessageValidate } from '../../utils/validations/messageValidate'
 import { Input } from '../Input'
 
 const icons = {

@@ -7,7 +7,7 @@ type InputProps = {
   mask?: 'telephone' | 'name' | 'cpf' | 'card' | 'number'
   error?: string
   valueInput: string | null
-  setValue: (value: null | string) => void
+  setValue: (value: string) => void
 } & InputHTMLAttributes<HTMLInputElement>
 
 export function Input({
@@ -23,7 +23,7 @@ export function Input({
   const [cardFlag, setCardFlag] = useState<string | null>(null)
   function maskValue(valueChanged?: string) {
     if (!valueChanged) {
-      setValue(null)
+      setValue('')
       return
     }
     let replaced = valueChanged
@@ -34,7 +34,7 @@ export function Input({
         return
 
       case 'cpf':
-        setError(null)
+        setError('')
         replaced = valueChanged
           .replace(/\D/g, '') // substitui qualquer caracter que nao seja numero por nada
           .replace(/(\d{3})(\d)/, '$1.$2') // captura 2 grupos de numero o primeiro de 3 e o segundo de 1, apos capturar o primeiro grupo ele adiciona um ponto antes do segundo grupo de numero
