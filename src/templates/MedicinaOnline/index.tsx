@@ -1,11 +1,18 @@
+import axios from 'axios'
 import Image from 'next/image'
 import Script from 'next/script'
 import { Check } from 'phosphor-react'
 import { useEffect, useState } from 'react'
 
+import { Button } from '../../components/Button'
 import { Input } from '../../components/Input/index'
 import { TimerCard } from '../../components/TimerCard'
 import { countDown } from '../../utils/monthsToSeconds'
+import { FieldErrors } from '../../utils/validations/index'
+import {
+  cardMedicoNaTelaValidator,
+  medicoNaTelaValidator
+} from '../../utils/validations/medicoNaTela'
 import { convertToCurrency } from '../../utils/valueConvert'
 import { Base, BaseProps } from '../Base'
 import { CardPrice } from './CardPrice'
@@ -51,15 +58,19 @@ export function MedicinaOnlineTemplate({
 }: MedicinaOnlineTemplateProps) {
   const [loop, setLoop] = useState(0)
   const [expires, setExpires] = useState<ExpiresProps | null>(null)
-  const [selectedPlan, setSelectedPlan] = useState<null | SelectedPlan>()
+  const [selectedPlan, setSelectedPlan] = useState<null | SelectedPlan>(null)
   const [inputsData, setInputsData] = useState({
     name: '',
     cpf: '',
     birthDate: '',
     email: '',
     telephone: '',
-    cep: ''
+    cep: '',
+    number: ''
   })
+
+  const [address, setAddress] = useState<AddressProps | null>(null)
+  const [fieldErrors, setFieldErrors] = useState<FieldErrors>()
 
   const [cardData, setCardData] = useState({
     name: '',
@@ -323,15 +334,69 @@ export function MedicinaOnlineTemplate({
                 mask="telephone"
                 label="Telefone"
                 placeholder="Digite seu telefone"
+                error={fieldErrors?.telephone}
               />
             </div>
-            <Input
-              setValue={() => {}}
-              valueInput=""
-              label="CEP"
-              id="cep"
-              placeholder="Digite seu CEP"
-            />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              <Input
+                valueInput={inputsData.cep}
+                setValue={(change) => {
+                  setInputsData((state) => ({
+                    ...state,
+                    cep: change || ''
+                  }))
+                }}
+                label="CEP"
+                id="cep"
+                placeholder="Digite seu CEP"
+                error={fieldErrors?.cep}
+              />
+              <Input
+                valueInput={inputsData.number}
+                setValue={(change) => {
+                  setInputsData((state) => ({
+                    ...state,
+                    number: change || ''
+                  }))
+                }}
+                label="Numero"
+                placeholder="1023"
+                error={fieldErrors?.number}
+              />
+            </div>
+
+            <div
+              className={`h-0 ${
+                address ? 'h-auto opacity-100' : 'opacity-0 '
+              } overflow-hidden transition-all duration-300`}
+            >
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                <Input
+                  valueInput={address?.street || ''}
+                  setValue={() => {}}
+                  label="Logradouro"
+                  disabled
+                />
+                <Input
+                  valueInput={address?.state || ''}
+                  setValue={() => {}}
+                  label="Estado"
+                  disabled
+                />
+                <Input
+                  valueInput={address?.city || ''}
+                  setValue={() => {}}
+                  label="Cidade"
+                  disabled
+                />
+                <Input
+                  valueInput={address?.neighborhood || ''}
+                  setValue={() => {}}
+                  label="Bairro"
+                  disabled
+                />
+              </div>
+            </div>
 
             <hr />
             <div className=" w-full flex items-center justify-center pt-14">
