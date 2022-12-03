@@ -32,9 +32,16 @@ type CardProps = {
 }
 
 export type SelectedPlan = {
-  id: string
+  id: number
   title: string
   value: number
+}
+
+type AddressProps = {
+  state: string
+  city: string
+  neighborhood: string
+  street: string
 }
 
 export interface MedicinaOnlineTemplateProps {
@@ -79,6 +86,8 @@ export function MedicinaOnlineTemplate({
     cvv: '',
     hash: ''
   })
+
+  const [sendingInfo, setSendingInfo] = useState(false)
   const waitTime = async (seconds: number) => {
     return new Promise((resolve) => setTimeout(resolve, seconds))
   }
@@ -108,31 +117,130 @@ export function MedicinaOnlineTemplate({
     }
   }, [])
 
-  function handleSubmit() {
+  useEffect(() => {
+    if (inputsData.cep.length >= 8) {
+      axios
+        .get(`https://brasilapi.com.br/api/cep/v1/${inputsData.cep}`)
+        .then((res) => res.data)
+        .then((data) => {
+          setAddress({
+            state: data.state,
+            city: data.city,
+            neighborhood: data.neighborhood,
+            street: data.street
+          })
+        })
+        .catch(() => setAddress(null))
+      return
+    }
+    setAddress(null)
+  }, [inputsData.cep])
+
+  async function handleSubmit() {
+    setFieldErrors({})
+    const errorsInputs = medicoNaTelaValidator(inputsData)
+    const errorsCard = cardMedicoNaTelaValidator(cardData)
+    const errorPlan = !selectedPlan && {
+      planSelected: 'selecione um plano'
+    }
+
+    const errors = {
+      ...errorsInputs,
+      ...errorsCard,
+      ...errorPlan
+    }
+
+    if (Object.keys(errors).length) {
+      setSendingInfo(false)
+      setFieldErrors(errors)
+      return
+    }
+
     // @ts-ignore
     const hashCard = document.getElementById('hashCard').value
+    const data = {
+      ...inputsData,
+      card: {
+        ...cardData,
+        hash: hashCard as string
+      },
+      selectedPlan,
+      address
+    }
+
+    await axios.post('/api/registerOnGalaxPay', data)
+    setSendingInfo(false)
   }
 
+  const getHash = async () => {
+    const token = process.env.NEXT_PUBLIC_GALAXY_TOKEN
+    // @ts-ignore
+    const galaxPay = new GalaxPay(token, false)
+
+    const card = galaxPay.newCard({
+      number: cardData.number,
+      holder: cardData.name,
+      expiresAt: cardData.expiresAt,
+      cvv: cardData.cvv
+    })
+
+    galaxPay.hashCreditCard(
+      card,
+      (hash: string) => {
+        setCardData((state) => ({ ...state, hash }))
+      },
+      () => {
+        setFieldErrors({
+          hash: 'error'
+        })
+      }
+    )
+  }
   const handleButton = async () => {
     if (typeof window !== 'undefined') {
-      const token = process.env.NEXT_PUBLIC_GALAXY_TOKEN
+      setCardData((state) => ({ ...state, hash: '' }))
+      setSendingInfo(true)
+      setFieldErrors({})
+      const errorsInputs = medicoNaTelaValidator(inputsData)
+      const errorsCard = cardMedicoNaTelaValidator(cardData)
+      const errorPlan = !selectedPlan && {
+        planSelected: 'selecione um plano'
+      }
 
+      const errors = {
+        ...errorsInputs,
+        ...errorsCard,
+        ...errorPlan
+      }
+
+      if (Object.keys(errors).length) {
+        setFieldErrors(errors)
+        setSendingInfo(false)
+        return
+      }
+      try {
+        await getHash()
+      } catch (e) {
+        setFieldErrors({
+          hash: 'error'
+        })
+        console.log('Error')
+      }
+
+      await waitTime(5000)
       // @ts-ignore
-      const galaxPay = new GalaxPay(token, false)
+      const hashCard = document.getElementById('hashCard').value
+      if (hashCard !== '') {
+        handleSubmit()
+        setSendingInfo(false)
+        return
+      }
 
-      const card = galaxPay.newCard({
-        number: cardData.number,
-        holder: cardData.name,
-        expiresAt: cardData.expiresAt,
-        cvv: cardData.cvv
+      setFieldErrors({
+        hash: 'error'
       })
-
-      await galaxPay.hashCreditCard(card, (hash: string) => {
-        setCardData((state) => ({ ...state, hash }))
-      })
-      await waitTime(100)
+      setSendingInfo(false)
     }
-    handleSubmit()
   }
 
   useEffect(() => {
@@ -247,6 +355,9 @@ export function MedicinaOnlineTemplate({
               Simples e rápido
             </h4>
           </div>
+          {fieldErrors?.planSelected && (
+            <p className="text-center text-red-500">*Selecione um plano*</p>
+          )}
           <div className="relative">
             <div className="absolute -right-32 top-5 bottom-5 z-0">
               <div className="  w-40 h-40 my-auto">
@@ -286,6 +397,7 @@ export function MedicinaOnlineTemplate({
               label="Nome"
               mask="name"
               placeholder="Digite seu nome completo"
+              error={fieldErrors?.name}
             />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
               <Input
@@ -297,6 +409,7 @@ export function MedicinaOnlineTemplate({
                 mask="cpf"
                 label="CPF"
                 placeholder="Digite seu CPF"
+                error={fieldErrors?.cpf}
               />
 
               <Input
@@ -310,6 +423,7 @@ export function MedicinaOnlineTemplate({
                 valueInput={inputsData.birthDate}
                 type="date"
                 label="Data de Nascimento"
+                error={fieldErrors?.birthDate}
               />
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -321,6 +435,7 @@ export function MedicinaOnlineTemplate({
                 valueInput={inputsData.email}
                 label="E-mail"
                 placeholder="Digite seu E-mail"
+                error={fieldErrors?.email}
               />
               <Input
                 setValue={(change) => {
@@ -416,6 +531,7 @@ export function MedicinaOnlineTemplate({
               label="Nome"
               mask="name"
               placeholder="Digite seu nome completo"
+              error={fieldErrors?.name}
             />
             <Input
               setValue={(change) => {
@@ -429,6 +545,7 @@ export function MedicinaOnlineTemplate({
               valueInput={cardData.number}
               label="Numero do cartão"
               placeholder="Numero do cartão"
+              error={fieldErrors?.number}
             />
             <div className="grid md:grid-cols-2 grid-cols-1 gap-4">
               <Input
@@ -439,9 +556,13 @@ export function MedicinaOnlineTemplate({
                   }))
                 }}
                 id="cardExpires"
+                type="month"
+                min={`${new Date(Date.now()).getFullYear()}-${new Date(
+                  Date.now()
+                ).getMonth()}`}
                 valueInput={cardData.expiresAt}
                 label="Validade"
-                placeholder="Validade (MM/AA)"
+                error={fieldErrors?.expiresAt}
               />
               <Input
                 setValue={(change) => {
@@ -456,22 +577,28 @@ export function MedicinaOnlineTemplate({
                 label="CVV"
                 maxLength={3}
                 placeholder="Chave de segurança"
+                error={fieldErrors?.cvv}
               />
               <input
                 id="hashCard"
                 type="hidden"
-                onChange={(change) => {
+                onRateChange={(e) => {
                   setCardData((state) => ({
                     ...state,
-                    hash: change.currentTarget.value || ''
+                    // @ts-ignore
+                    hash: e.current.value || ''
                   }))
                 }}
                 value={cardData.hash}
-                maxLength={3}
               />
             </div>
           </form>
         </div>
+        {fieldErrors?.hash && (
+          <p className="text-red-500 text-center">
+            algo deu errado - Favor verifique as informações do cartão
+          </p>
+        )}
         {selectedPlan && (
           <div className="flex flex-col items-center justify-center">
             <p className="font-bold text-lg">
@@ -490,13 +617,34 @@ export function MedicinaOnlineTemplate({
         )}
 
         <div className="flex items-center justify-center">
-          <button
-            onClick={handleButton}
-            type="button"
-            className="cursor-pointer bg-primary-300 text-zinc-100 font-bold text-lg py-4 px-10 rounded-sm hover:bg-primary-500 transition-colors"
-          >
-            Contrate agora!
-          </button>
+          <Button onClick={handleButton} type="button" disabled={sendingInfo}>
+            {sendingInfo ? (
+              <div className="flex items-center justify-center gap-5">
+                <div>
+                  <svg
+                    aria-hidden="true"
+                    className="mr-2 w-8 h-8 text-gray-200 animate-spin  fill-primary-500"
+                    viewBox="0 0 100 101"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+                      fill="currentColor"
+                    />
+                    <path
+                      d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+                      fill="currentFill"
+                    />
+                  </svg>
+                  <span className="sr-only">Loading...</span>
+                </div>
+                Enviando informações...
+              </div>
+            ) : (
+              'Contrate agora!'
+            )}
+          </Button>
         </div>
         <hr className="border-black" />
         <div className="flex flex-col items-center justify-center space-y-14">

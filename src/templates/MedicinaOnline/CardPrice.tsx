@@ -5,7 +5,7 @@ import { SelectedPlan } from '.'
 import { convertToCurrency } from '../../utils/valueConvert'
 
 export interface CardPrice {
-  id: string
+  id: number
   title: string
   value: number
   inclidesItems: string[]
