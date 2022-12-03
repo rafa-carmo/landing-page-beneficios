@@ -1,6 +1,6 @@
 import Joi from 'joi'
 
-import { getFieldErrors } from '.'
+import { errorsMessages, getFieldErrors } from '.'
 
 type SendMessageValues = {
   name: string
@@ -8,11 +8,6 @@ type SendMessageValues = {
   telephone: string
 }
 // plan: number
-
-const errorsMessages = {
-  'string.empty': 'Este campo não pode estar vazio',
-  'string.email': 'Favor digite um email valido'
-}
 
 const fieldValidations = {
   name: Joi.string().min(2).required().messages(errorsMessages),

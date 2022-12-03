@@ -15,3 +15,8 @@ export function getFieldErrors(objErrors: Joi.ValidationResult<any>) {
 
   return errors
 }
+
+export const errorsMessages = {
+  'string.empty': 'Este campo não pode estar vazio',
+  'string.email': 'Favor digite um email valido'
+}
