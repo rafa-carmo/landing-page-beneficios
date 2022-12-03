@@ -49,7 +49,7 @@ export function Input({
         setValue(replaced)
         return
       case 'name':
-        replaced = valueChanged.replace(/[^a-zA-Z\s]/gi, '')
+        replaced = valueChanged.replace(/[^a-zA-Zà-úÀ-Ú\s]/gi, '')
         setValue(replaced)
         return
       case 'telephone':
@@ -111,7 +111,7 @@ export function Input({
         id={props.id || `input-${label}`}
         value={valueInput || undefined}
         onChange={(e) => maskValue(e.target.value)}
-        className="w-full border py-2 px-4 mt-1 rounded-lg form-input"
+        className="w-full border py-2 px-4 mt-1 rounded-lg form-input disabled:bg-zinc-300"
         {...props}
       />
 
