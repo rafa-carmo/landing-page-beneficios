@@ -68,6 +68,9 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     textAlign: 'center',
     color: 'grey'
+  },
+  contract: {
+    textAlign: 'justify'
   }
 })
 Font.register({
@@ -91,7 +94,7 @@ export interface PDFFuneral {
     age: string
     value: number
   }[]
-  contract: string
+  contract: string[]
 }
 
 export function PdfFuneral({
@@ -144,7 +147,13 @@ export function PdfFuneral({
           )}
         </View>
         <Text style={styles.subtitle}>Contrato</Text>
-        <Text style={styles.text}>{contract}</Text>
+        <View style={styles.text}>
+          {contract.map((item) => (
+            <Text key={item} style={styles.contract}>
+              {item}
+            </Text>
+          ))}
+        </View>
       </Page>
     </Document>
   )

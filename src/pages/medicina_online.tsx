@@ -57,6 +57,19 @@ export const getStaticProps: GetStaticProps = async () => {
             link: '/assistencia_funeral',
             icon: 'aid'
           }
+        ],
+        socialMedias: [
+          { icon: 'facebook', url: 'https://facebook.com' },
+          { icon: 'instagram', url: 'https://instagram.com' }
+        ]
+      },
+      footer: {
+        about: 'Melhore a sua qualidade de vida e de sua família.',
+        values:
+          'Transparência, qualidade, cliente em primeiro lugar e relacionamento.',
+        socialMedias: [
+          { icon: 'facebook', url: 'https://facebook.com' },
+          { icon: 'instagram', url: 'https://instagram.com' }
         ]
       }
     },

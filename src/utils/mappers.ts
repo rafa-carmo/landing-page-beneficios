@@ -8,6 +8,18 @@ export function homeMapper(homeQuery: HomepageQuery) {
           name: menu.name,
           link: menu.url,
           icon: 'home'
+        })),
+        socialMedias: homeQuery.socialMedias.map((media) => ({
+          icon: media.icon,
+          url: media.url
+        }))
+      },
+      footer: {
+        values: homeQuery.abouts[0].valores,
+        about: homeQuery.abouts[0].about,
+        socialMedias: homeQuery.socialMedias.map((media) => ({
+          icon: media.icon,
+          url: media.url
         }))
       }
     },

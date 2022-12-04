@@ -1,8 +1,8 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import {
-  Book,
   FacebookLogo,
+  FirstAid,
   FirstAidKit,
   House,
   InstagramLogo,
@@ -10,6 +10,8 @@ import {
   X
 } from 'phosphor-react'
 import { useState } from 'react'
+
+import { socialMediaIcons, socialMediasProps } from '../../utils/icons'
 
 const icons = {
   home: (
@@ -25,6 +27,13 @@ const icons = {
       weight="regular"
       className="group-hover:text-primary-500 transition-colors duration-300"
     />
+  ),
+  cross: (
+    <FirstAid
+      size={22}
+      weight="regular"
+      className="group-hover:text-primary-500 transition-colors duration-300"
+    />
   )
 }
 
@@ -36,11 +45,17 @@ type MenuItem = {
   icon: Icons
 }
 
-export interface MenuProps {
-  items: MenuItem[]
+type SocialMedia = {
+  icon: socialMediasProps
+  url: string
 }
 
-export default function Menu({ items }: MenuProps) {
+export interface MenuProps {
+  items: MenuItem[]
+  socialMedias: SocialMedia[]
+}
+
+export default function Menu({ items, socialMedias }: MenuProps) {
   const [showMenu, setShowMenu] = useState(false)
   return (
     <div className="border-b-2 border-b-black/75 bg-white">
@@ -74,34 +89,29 @@ export default function Menu({ items }: MenuProps) {
                 )
             )}
             <ul className="group transition duration-300">
-              <a href="#" className="hover:text-zinc-900">
+              <Link href="/#contact" className="hover:text-zinc-900">
                 Contato
-              </a>
+              </Link>
               <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-primary-500"></span>
             </ul>
           </nav>
 
           <div className="flex gap-4">
-            <a
-              href="#"
-              className="text-zinc-500 hover:text-zinc-400 transition-colors duration-300"
-            >
-              <FacebookLogo size={32} weight="bold" />
-            </a>
-
-            <a
-              href="#"
-              className="text-zinc-500 hover:text-zinc-400 transition-colors duration-300"
-            >
-              <InstagramLogo size={32} weight="bold" />
-            </a>
+            {socialMedias.map((media) => (
+              <Link
+                key={`head-${media.url}`}
+                href={media.url}
+                target="_blank"
+                className="text-zinc-500 hover:text-zinc-400 transition-colors duration-300"
+              >
+                {socialMediaIcons[media.icon]}
+              </Link>
+            ))}
           </div>
         </div>
 
-        <div className="flex items-center lg:hidden">
+        <div className="flex p-5 items-center lg:hidden">
           <button onClick={() => setShowMenu(true)}>
-            {/* <List size={32} weight="light" />
-             */}
             <div className="HAMBURGER-ICON space-y-2">
               <span className="block h-0.5 w-8 animate-pulse bg-gray-600"></span>
               <span className="block h-0.5 w-8 animate-pulse bg-gray-600"></span>
@@ -112,43 +122,60 @@ export default function Menu({ items }: MenuProps) {
       </div>
 
       <div
-        className={`fixed left-0 top-0 bottom-0 right-0 z-[99] opacity-0 pointer-events-none ${
-          showMenu && 'opacity-100 pointer-events-auto'
+        className={`fixed left-0 top-0 bottom-0 right-0 z-40  ${
+          showMenu
+            ? 'opacity-100 pointer-events-auto'
+            : 'opacity-0 pointer-events-none'
         } transition-all`}
       >
         <button
           onClick={() => setShowMenu(false)}
-          className="absolute bg-white/70 left-0 top-0 bottom-0 right-0 z-50 cursor-default"
+          className="absolute bg-white/70 left-0 top-0 bottom-0 right-0 z-40 cursor-default"
         ></button>
         <button
           onClick={() => setShowMenu(false)}
-          className="absolute right-0 top-5 z-50"
+          className="absolute right-0 top-5 z-40"
         >
           <X size={32} weight="bold" />
         </button>
-        <div className="fixed bg-white w-fit h-screen flex flex-col z-50">
-          <div className="border-b py-5 flex items-center justify-center">
-            Logo - <b className="font-bold">Beneficios</b>
-          </div>
-          <nav className="py-5">
-            <ul className="flex flex-col space-y-6">
-              {items.map((item) => (
-                <li
-                  key={`mobile-${item.name}`}
-                  className="group transition duration-300 py-2"
-                >
-                  <Link
-                    href={item.link}
-                    className="text-zinc-700 flex items-center gap-2 pl-2 pr-10"
+        <div className="fixed bg-white w-fit h-screen flex flex-col justify-between z-40">
+          <div>
+            <div className="border-b py-5 flex items-center justify-center">
+              <Image
+                src="/images/logo.png"
+                width={125}
+                height={125}
+                alt="Logo viver mais"
+              />
+            </div>
+            <nav className="py-5">
+              <ul className="divide-y divide-primary-500">
+                {items.map((item) => (
+                  <li
+                    key={`mobile-${item.name}`}
+                    className="group transition duration-300 flex items-center  justify-center py-5"
                   >
-                    {icons[item.icon]}
-                    {item.name}
-                  </Link>
-                  <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-primary-500"></span>
-                </li>
-              ))}
-            </ul>
-          </nav>
+                    <Link
+                      href={item.link}
+                      className="text-zinc-700 flex items-center justify-center gap-2 pl-2 pr-10"
+                    >
+                      {icons[item.icon]}
+                      {item.name}
+                    </Link>
+                    {/* <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-primary-500"></span> */}
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          </div>
+
+          <div className="flex p-5 gap-5 items-center justify-center border-t border-primary-500">
+            {socialMedias.map((media) => (
+              <Link key={media.url} href={media.url} target="_blank">
+                {socialMediaIcons[media.icon]}
+              </Link>
+            ))}
+          </div>
         </div>
       </div>
     </div>
