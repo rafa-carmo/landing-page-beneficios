@@ -42,4 +42,8 @@ query Homepage {
     valores
     name
   }
+    socialMedias {
+    url
+    icon
+  }
 }
