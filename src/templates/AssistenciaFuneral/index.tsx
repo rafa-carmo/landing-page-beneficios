@@ -136,6 +136,8 @@ export function AssistenciaFuneralTemplate({
   const [telephone, setTelephone] = useState<string>('')
   const [fieldErrors, setFieldErrors] = useState<FieldErrors>()
 
+  const [sendingInfo, setSendingInfo] = useState(false)
+
   const [dependents, setDependents] = useState<DependentStateProps[]>([])
 
   useEffect(() => {
@@ -199,12 +201,14 @@ export function AssistenciaFuneralTemplate({
   }
 
   async function handleSendContact() {
+    setSendingInfo(true)
     const errors = assistenciaFuneralValidator({
       name,
       email,
       telephone
     })
     if (!acceptedContract) {
+      setSendingInfo(false)
       return setFieldErrors({
         terms: 'Aceite os termos antes de prosseguir'
       })
@@ -212,6 +216,7 @@ export function AssistenciaFuneralTemplate({
 
     if (Object.keys(errors).length) {
       setFieldErrors(errors)
+      setSendingInfo(false)
       return
     }
     if (!planSelected) {
@@ -232,6 +237,12 @@ export function AssistenciaFuneralTemplate({
         contract
       })
       .then((data) => data.data)
+      .catch(() => {
+        setSendingInfo(false)
+        setFieldErrors({
+          terms: 'Houve um erro, tente novamente.'
+        })
+      })
     if (response.token) {
       return router.push(`/pdf?token=${response.token}`)
     }
@@ -445,7 +456,9 @@ export function AssistenciaFuneralTemplate({
             <p className="text-center">{fieldErrors?.terms}</p>
           )}
           <div className="flex items-center justify-center my-8">
-            <Button onClick={handleSendContact}>Enviar</Button>
+            <Button onClick={handleSendContact} loading={sendingInfo}>
+              Enviar
+            </Button>
           </div>
         </div>
       </div>
