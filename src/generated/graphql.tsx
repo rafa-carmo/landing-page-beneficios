@@ -8749,6 +8749,11 @@ export type HomepageQuery = {
     valores?: string | null
     name?: string | null
   }>
+  socialMedias: Array<{
+    __typename?: 'SocialMedia'
+    url: string
+    icon: SocialMedias
+  }>
 }
 
 export const HomepageDocument = gql`
@@ -8795,6 +8800,10 @@ export const HomepageDocument = gql`
       visao
       valores
       name
+    }
+    socialMedias {
+      url
+      icon
     }
   }
 `
