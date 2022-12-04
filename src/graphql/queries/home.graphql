@@ -47,6 +47,9 @@ query Homepage {
     visao
     valores
     name
+    image {
+      url
+    }
   }
   socialMedias {
     url

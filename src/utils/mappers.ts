@@ -64,6 +64,12 @@ export function homeMapper(homeQuery: HomepageQuery) {
         value: contact.value,
         icon: contact.icon
       }))
+    },
+    about: {
+      mission: homeQuery.abouts[0].about,
+      vision: homeQuery.abouts[0].visao,
+      values: homeQuery.abouts[0].valores,
+      image: homeQuery.abouts[0]?.image.url || '/images/maps.jpg'
     }
   }
 }

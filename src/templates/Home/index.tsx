@@ -5,6 +5,12 @@ import { Pricing, PricingProps } from '../../components/Pricing'
 import { SliderComponent, SliderComponentProps } from '../../components/Slider'
 import { Base, BaseProps } from '../Base/index'
 
+type AboutProps = {
+  mission: string
+  vision: string
+  values: string
+  image: string
+}
 export interface HomeTemplateProps {
   base: BaseProps
   slider: SliderComponentProps
@@ -12,6 +18,7 @@ export interface HomeTemplateProps {
   partnership: PartnershipsProps
   howWorks: HowWorksProps
   contact: ContactProps
+  about: AboutProps
 }
 
 export function HomeTemplate({
@@ -20,7 +27,8 @@ export function HomeTemplate({
   pricing,
   partnership,
   howWorks,
-  contact
+  contact,
+  about
 }: HomeTemplateProps) {
   return (
     <Base {...base}>
@@ -42,24 +50,21 @@ export function HomeTemplate({
             </h3>
             <span>
               <b className="font-bold text-primary-500">Nossa Missão:</b> <br />
-              <p>trazer excelentes benefícios para todos os associados.</p>
+              <p>{about.mission}</p>
             </span>
             <span>
               <b className="font-bold text-primary-500">Nossa Visão:</b> <br />
-              <p>ser a maior empresa de benefícios do Brasil.</p>
+              <p>{about.vision}</p>
             </span>
             <span>
               <b className="font-bold text-primary-500"> Nossos Valores:</b>{' '}
               <br />
-              <p>
-                Transparência, qualidade, cliente em primeiro lugar e
-                relacionamento.
-              </p>
+              <p>{about.values}</p>
             </span>
           </div>
           <div className="md:flex-1">
             <img
-              src="/images/maps.jpg"
+              src={about.image || '/images/maps.jpg'}
               alt="Local of business in map"
               className="lg:max-w-lg w-screen"
             />

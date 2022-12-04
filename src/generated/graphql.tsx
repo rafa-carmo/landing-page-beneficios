@@ -43,6 +43,7 @@ export type About = Node & {
   howWorks: Scalars['String']
   /** The unique identifier */
   id: Scalars['ID']
+  image: Asset
   missao?: Maybe<Scalars['String']>
   name?: Maybe<Scalars['String']>
   objetivo?: Maybe<Scalars['String']>
@@ -75,6 +76,10 @@ export type AboutHistoryArgs = {
   limit?: Scalars['Int']
   skip?: Scalars['Int']
   stageOverride?: InputMaybe<Stage>
+}
+
+export type AboutImageArgs = {
+  locales?: InputMaybe<Array<Locale>>
 }
 
 export type AboutPublishedByArgs = {
@@ -116,6 +121,7 @@ export type AboutCreateInput = {
   about?: InputMaybe<Scalars['String']>
   createdAt?: InputMaybe<Scalars['DateTime']>
   howWorks: Scalars['String']
+  image: AssetCreateOneInlineInput
   missao?: InputMaybe<Scalars['String']>
   name?: InputMaybe<Scalars['String']>
   objetivo?: InputMaybe<Scalars['String']>
@@ -233,6 +239,7 @@ export type AboutManyWhereInput = {
   id_not_starts_with?: InputMaybe<Scalars['ID']>
   /** All values starting with the given string. */
   id_starts_with?: InputMaybe<Scalars['ID']>
+  image?: InputMaybe<AssetWhereInput>
   missao?: InputMaybe<Scalars['String']>
   /** All values containing the given string. */
   missao_contains?: InputMaybe<Scalars['String']>
@@ -393,6 +400,7 @@ export enum AboutOrderByInput {
 export type AboutUpdateInput = {
   about?: InputMaybe<Scalars['String']>
   howWorks?: InputMaybe<Scalars['String']>
+  image?: InputMaybe<AssetUpdateOneInlineInput>
   missao?: InputMaybe<Scalars['String']>
   name?: InputMaybe<Scalars['String']>
   objetivo?: InputMaybe<Scalars['String']>
@@ -562,6 +570,7 @@ export type AboutWhereInput = {
   id_not_starts_with?: InputMaybe<Scalars['ID']>
   /** All values starting with the given string. */
   id_starts_with?: InputMaybe<Scalars['ID']>
+  image?: InputMaybe<AssetWhereInput>
   missao?: InputMaybe<Scalars['String']>
   /** All values containing the given string. */
   missao_contains?: InputMaybe<Scalars['String']>
@@ -737,6 +746,7 @@ export type Asset = Node & {
   history: Array<Version>
   /** The unique identifier */
   id: Scalars['ID']
+  imageAbout: Array<About>
   imageBanner: Array<Banner>
   imageHowWork: Array<HowWork>
   imageMetaTag: Array<MetaTag>
@@ -788,6 +798,18 @@ export type AssetHistoryArgs = {
   limit?: Scalars['Int']
   skip?: Scalars['Int']
   stageOverride?: InputMaybe<Stage>
+}
+
+/** Asset system model */
+export type AssetImageAboutArgs = {
+  after?: InputMaybe<Scalars['String']>
+  before?: InputMaybe<Scalars['String']>
+  first?: InputMaybe<Scalars['Int']>
+  last?: InputMaybe<Scalars['Int']>
+  locales?: InputMaybe<Array<Locale>>
+  orderBy?: InputMaybe<AboutOrderByInput>
+  skip?: InputMaybe<Scalars['Int']>
+  where?: InputMaybe<AboutWhereInput>
 }
 
 /** Asset system model */
@@ -902,6 +924,7 @@ export type AssetCreateInput = {
   fileName: Scalars['String']
   handle: Scalars['String']
   height?: InputMaybe<Scalars['Float']>
+  imageAbout?: InputMaybe<AboutCreateManyInlineInput>
   imageBanner?: InputMaybe<BannerCreateManyInlineInput>
   imageHowWork?: InputMaybe<HowWorkCreateManyInlineInput>
   imageMetaTag?: InputMaybe<MetaTagCreateManyInlineInput>
@@ -1007,6 +1030,9 @@ export type AssetManyWhereInput = {
   id_not_starts_with?: InputMaybe<Scalars['ID']>
   /** All values starting with the given string. */
   id_starts_with?: InputMaybe<Scalars['ID']>
+  imageAbout_every?: InputMaybe<AboutWhereInput>
+  imageAbout_none?: InputMaybe<AboutWhereInput>
+  imageAbout_some?: InputMaybe<AboutWhereInput>
   imageBanner_every?: InputMaybe<BannerWhereInput>
   imageBanner_none?: InputMaybe<BannerWhereInput>
   imageBanner_some?: InputMaybe<BannerWhereInput>
@@ -1091,6 +1117,7 @@ export type AssetUpdateInput = {
   fileName?: InputMaybe<Scalars['String']>
   handle?: InputMaybe<Scalars['String']>
   height?: InputMaybe<Scalars['Float']>
+  imageAbout?: InputMaybe<AboutUpdateManyInlineInput>
   imageBanner?: InputMaybe<BannerUpdateManyInlineInput>
   imageHowWork?: InputMaybe<HowWorkUpdateManyInlineInput>
   imageMetaTag?: InputMaybe<MetaTagUpdateManyInlineInput>
@@ -1327,6 +1354,9 @@ export type AssetWhereInput = {
   id_not_starts_with?: InputMaybe<Scalars['ID']>
   /** All values starting with the given string. */
   id_starts_with?: InputMaybe<Scalars['ID']>
+  imageAbout_every?: InputMaybe<AboutWhereInput>
+  imageAbout_none?: InputMaybe<AboutWhereInput>
+  imageAbout_some?: InputMaybe<AboutWhereInput>
   imageBanner_every?: InputMaybe<BannerWhereInput>
   imageBanner_none?: InputMaybe<BannerWhereInput>
   imageBanner_some?: InputMaybe<BannerWhereInput>
@@ -9436,6 +9466,7 @@ export type HomepageQuery = {
     visao?: string | null
     valores?: string | null
     name?: string | null
+    image: { __typename?: 'Asset'; url: string }
   }>
   socialMedias: Array<{
     __typename?: 'SocialMedia'
@@ -9494,6 +9525,9 @@ export const HomepageDocument = gql`
       visao
       valores
       name
+      image {
+        url
+      }
     }
     socialMedias {
       url
