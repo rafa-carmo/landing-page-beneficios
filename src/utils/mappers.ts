@@ -24,7 +24,7 @@ export function homeMapper(homeQuery: HomepageQuery) {
       },
       meta: {
         description: homeQuery.metaTag?.description,
-        image: homeQuery.metaTag?.image?.url
+        image: homeQuery.metaTag?.image?.url || null
       }
     },
     slider: {
