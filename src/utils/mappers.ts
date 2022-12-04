@@ -59,8 +59,7 @@ export function homeMapper(homeQuery: HomepageQuery) {
       text: homeQuery.abouts[0].howWorks
     },
     contact: {
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vitae arcu lorem cras lacus amet. In cras odio enim rhoncus consectetur.',
+      description: homeQuery.abouts[0].about,
       contacts: homeQuery.contacts.map((contact) => ({
         value: contact.value,
         icon: contact.icon
