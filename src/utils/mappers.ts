@@ -1,4 +1,5 @@
-import { HomepageQuery } from '../generated/graphql'
+import { HomepageQuery, MedicOnlinePageQuery } from '../generated/graphql'
+import { MedicinaOnlineTemplateProps } from '../templates/MedicinaOnline/index'
 
 export function homeMapper(homeQuery: HomepageQuery) {
   return {
@@ -72,4 +73,52 @@ export function homeMapper(homeQuery: HomepageQuery) {
       image: homeQuery.abouts[0]?.image.url || '/images/maps.jpg'
     }
   }
+}
+
+export function medicOnlineMapper(homeQuery: MedicOnlinePageQuery) {
+  const medicPage = homeQuery.medicoOnlinePages[0]
+  return {
+    base: {
+      menu: {
+        items: homeQuery.menus[0].links.map((menu) => ({
+          name: menu.name,
+          link: menu.url,
+          icon: 'home'
+        })),
+        socialMedias: homeQuery.socialMedias.map((media) => ({
+          icon: media.icon,
+          url: media.url
+        }))
+      },
+      footer: {
+        values: homeQuery.abouts[0].valores,
+        about: homeQuery.abouts[0].about,
+        socialMedias: homeQuery.socialMedias.map((media) => ({
+          icon: media.icon,
+          url: media.url
+        }))
+      },
+      meta: {
+        description: homeQuery.metaTag?.description,
+        image: homeQuery.metaTag?.image?.url || null
+      },
+      title: 'Viver Mais - Medico na tela 24 hrs.'
+    },
+    title: medicPage.title,
+    subtitle: medicPage.subtitle,
+    planItems: medicPage.include,
+    cards: medicPage.cards.map((card) => ({
+      title: card.title,
+      text: card.description,
+      image: card.localImage || card.image.url,
+      alt: card.alternativeTextImage || card.title
+    })),
+    priceArea: 'Médico na Tela sem burocracia!',
+    cardsPrice: medicPage.medicPlans.map((price) => ({
+      id: price.idGalaxPay,
+      title: price.name,
+      value: price.value,
+      inclidesItems: price.itens
+    }))
+  } as MedicinaOnlineTemplateProps
 }

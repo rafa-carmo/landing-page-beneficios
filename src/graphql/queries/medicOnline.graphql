@@ -1,0 +1,50 @@
+query MedicOnlinePage {
+  menus {
+    links(orderBy: order_ASC) {
+      name
+      url
+    }
+  }
+  metaTag(where: {page: "medic"}) {
+  description
+    image{
+      url
+    }
+}
+  abouts {
+    about
+    howWorks
+    objetivo
+    visao
+    valores
+    name
+    image {
+      url
+    }
+  }
+  socialMedias {
+    url
+    icon
+  }
+  
+  medicoOnlinePages {
+    title
+    subtitle
+    include
+    cards{
+      title
+      description
+      image {
+        url
+      }
+      alternativeTextImage
+      localImage
+    }
+    medicPlans{
+      name
+      idGalaxPay
+      value
+      itens
+    }
+  }
+}

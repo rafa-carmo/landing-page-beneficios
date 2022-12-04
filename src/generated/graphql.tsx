@@ -926,6 +926,7 @@ export type AssetCreateInput = {
   height?: InputMaybe<Scalars['Float']>
   imageAbout?: InputMaybe<AboutCreateManyInlineInput>
   imageBanner?: InputMaybe<BannerCreateManyInlineInput>
+  imageCardMedic?: InputMaybe<CardMedicCreateManyInlineInput>
   imageHowWork?: InputMaybe<HowWorkCreateManyInlineInput>
   imageMetaTag?: InputMaybe<MetaTagCreateManyInlineInput>
   imagePartnership?: InputMaybe<PartnershipCreateManyInlineInput>
@@ -1119,6 +1120,7 @@ export type AssetUpdateInput = {
   height?: InputMaybe<Scalars['Float']>
   imageAbout?: InputMaybe<AboutUpdateManyInlineInput>
   imageBanner?: InputMaybe<BannerUpdateManyInlineInput>
+  imageCardMedic?: InputMaybe<CardMedicUpdateManyInlineInput>
   imageHowWork?: InputMaybe<HowWorkUpdateManyInlineInput>
   imageMetaTag?: InputMaybe<MetaTagUpdateManyInlineInput>
   imagePartnership?: InputMaybe<PartnershipUpdateManyInlineInput>
@@ -2427,6 +2429,475 @@ export type ButtonWhereUniqueInput = {
   id?: InputMaybe<Scalars['ID']>
 }
 
+export type CardMedic = {
+  __typename?: 'CardMedic'
+  alternativeTextImage?: Maybe<Scalars['String']>
+  description: Scalars['String']
+  /** The unique identifier */
+  id: Scalars['ID']
+  image: Asset
+  localImage?: Maybe<Scalars['String']>
+  /** System stage field */
+  stage: Stage
+  title: Scalars['String']
+}
+
+export type CardMedicImageArgs = {
+  locales?: InputMaybe<Array<Locale>>
+}
+
+export type CardMedicConnectInput = {
+  /** Allow to specify document position in list of connected documents, will default to appending at end of list */
+  position?: InputMaybe<ConnectPositionInput>
+  /** Document to connect */
+  where: CardMedicWhereUniqueInput
+}
+
+/** A connection to a list of items. */
+export type CardMedicConnection = {
+  __typename?: 'CardMedicConnection'
+  aggregate: Aggregate
+  /** A list of edges. */
+  edges: Array<CardMedicEdge>
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo
+}
+
+export type CardMedicCreateInput = {
+  alternativeTextImage?: InputMaybe<Scalars['String']>
+  description: Scalars['String']
+  image: AssetCreateOneInlineInput
+  localImage?: InputMaybe<Scalars['String']>
+  title: Scalars['String']
+}
+
+export type CardMedicCreateManyInlineInput = {
+  /** Create and connect multiple existing CardMedic documents */
+  create?: InputMaybe<Array<CardMedicCreateInput>>
+}
+
+export type CardMedicCreateOneInlineInput = {
+  /** Create and connect one CardMedic document */
+  create?: InputMaybe<CardMedicCreateInput>
+}
+
+export type CardMedicCreateWithPositionInput = {
+  /** Document to create */
+  data: CardMedicCreateInput
+  /** Position in the list of existing component instances, will default to appending at the end of list */
+  position?: InputMaybe<ConnectPositionInput>
+}
+
+/** An edge in a connection. */
+export type CardMedicEdge = {
+  __typename?: 'CardMedicEdge'
+  /** A cursor for use in pagination. */
+  cursor: Scalars['String']
+  /** The item at the end of the edge. */
+  node: CardMedic
+}
+
+/** Identifies documents */
+export type CardMedicManyWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<CardMedicWhereInput>>
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<CardMedicWhereInput>>
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<CardMedicWhereInput>>
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']>
+  alternativeTextImage?: InputMaybe<Scalars['String']>
+  /** All values containing the given string. */
+  alternativeTextImage_contains?: InputMaybe<Scalars['String']>
+  /** All values ending with the given string. */
+  alternativeTextImage_ends_with?: InputMaybe<Scalars['String']>
+  /** All values that are contained in given list. */
+  alternativeTextImage_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  /** All values that are not equal to given value. */
+  alternativeTextImage_not?: InputMaybe<Scalars['String']>
+  /** All values not containing the given string. */
+  alternativeTextImage_not_contains?: InputMaybe<Scalars['String']>
+  /** All values not ending with the given string */
+  alternativeTextImage_not_ends_with?: InputMaybe<Scalars['String']>
+  /** All values that are not contained in given list. */
+  alternativeTextImage_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  /** All values not starting with the given string. */
+  alternativeTextImage_not_starts_with?: InputMaybe<Scalars['String']>
+  /** All values starting with the given string. */
+  alternativeTextImage_starts_with?: InputMaybe<Scalars['String']>
+  description?: InputMaybe<Scalars['String']>
+  /** All values containing the given string. */
+  description_contains?: InputMaybe<Scalars['String']>
+  /** All values ending with the given string. */
+  description_ends_with?: InputMaybe<Scalars['String']>
+  /** All values that are contained in given list. */
+  description_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  /** All values that are not equal to given value. */
+  description_not?: InputMaybe<Scalars['String']>
+  /** All values not containing the given string. */
+  description_not_contains?: InputMaybe<Scalars['String']>
+  /** All values not ending with the given string */
+  description_not_ends_with?: InputMaybe<Scalars['String']>
+  /** All values that are not contained in given list. */
+  description_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  /** All values not starting with the given string. */
+  description_not_starts_with?: InputMaybe<Scalars['String']>
+  /** All values starting with the given string. */
+  description_starts_with?: InputMaybe<Scalars['String']>
+  id?: InputMaybe<Scalars['ID']>
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']>
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']>
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
+  /** All values that are not equal to given value. */
+  id_not?: InputMaybe<Scalars['ID']>
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']>
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']>
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']>
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']>
+  image?: InputMaybe<AssetWhereInput>
+  localImage?: InputMaybe<Scalars['String']>
+  /** All values containing the given string. */
+  localImage_contains?: InputMaybe<Scalars['String']>
+  /** All values ending with the given string. */
+  localImage_ends_with?: InputMaybe<Scalars['String']>
+  /** All values that are contained in given list. */
+  localImage_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  /** All values that are not equal to given value. */
+  localImage_not?: InputMaybe<Scalars['String']>
+  /** All values not containing the given string. */
+  localImage_not_contains?: InputMaybe<Scalars['String']>
+  /** All values not ending with the given string */
+  localImage_not_ends_with?: InputMaybe<Scalars['String']>
+  /** All values that are not contained in given list. */
+  localImage_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  /** All values not starting with the given string. */
+  localImage_not_starts_with?: InputMaybe<Scalars['String']>
+  /** All values starting with the given string. */
+  localImage_starts_with?: InputMaybe<Scalars['String']>
+  title?: InputMaybe<Scalars['String']>
+  /** All values containing the given string. */
+  title_contains?: InputMaybe<Scalars['String']>
+  /** All values ending with the given string. */
+  title_ends_with?: InputMaybe<Scalars['String']>
+  /** All values that are contained in given list. */
+  title_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  /** All values that are not equal to given value. */
+  title_not?: InputMaybe<Scalars['String']>
+  /** All values not containing the given string. */
+  title_not_contains?: InputMaybe<Scalars['String']>
+  /** All values not ending with the given string */
+  title_not_ends_with?: InputMaybe<Scalars['String']>
+  /** All values that are not contained in given list. */
+  title_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  /** All values not starting with the given string. */
+  title_not_starts_with?: InputMaybe<Scalars['String']>
+  /** All values starting with the given string. */
+  title_starts_with?: InputMaybe<Scalars['String']>
+}
+
+export enum CardMedicOrderByInput {
+  AlternativeTextImageAsc = 'alternativeTextImage_ASC',
+  AlternativeTextImageDesc = 'alternativeTextImage_DESC',
+  DescriptionAsc = 'description_ASC',
+  DescriptionDesc = 'description_DESC',
+  IdAsc = 'id_ASC',
+  IdDesc = 'id_DESC',
+  LocalImageAsc = 'localImage_ASC',
+  LocalImageDesc = 'localImage_DESC',
+  TitleAsc = 'title_ASC',
+  TitleDesc = 'title_DESC'
+}
+
+export type CardMedicParent = MedicoOnlinePage
+
+export type CardMedicParentConnectInput = {
+  MedicoOnlinePage?: InputMaybe<MedicoOnlinePageConnectInput>
+}
+
+export type CardMedicParentCreateInput = {
+  MedicoOnlinePage?: InputMaybe<MedicoOnlinePageCreateInput>
+}
+
+export type CardMedicParentCreateManyInlineInput = {
+  /** Connect multiple existing CardMedicParent documents */
+  connect?: InputMaybe<Array<CardMedicParentWhereUniqueInput>>
+  /** Create and connect multiple existing CardMedicParent documents */
+  create?: InputMaybe<Array<CardMedicParentCreateInput>>
+}
+
+export type CardMedicParentCreateOneInlineInput = {
+  /** Connect one existing CardMedicParent document */
+  connect?: InputMaybe<CardMedicParentWhereUniqueInput>
+  /** Create and connect one CardMedicParent document */
+  create?: InputMaybe<CardMedicParentCreateInput>
+}
+
+export type CardMedicParentUpdateInput = {
+  MedicoOnlinePage?: InputMaybe<MedicoOnlinePageUpdateInput>
+}
+
+export type CardMedicParentUpdateManyInlineInput = {
+  /** Connect multiple existing CardMedicParent documents */
+  connect?: InputMaybe<Array<CardMedicParentConnectInput>>
+  /** Create and connect multiple CardMedicParent documents */
+  create?: InputMaybe<Array<CardMedicParentCreateInput>>
+  /** Delete multiple CardMedicParent documents */
+  delete?: InputMaybe<Array<CardMedicParentWhereUniqueInput>>
+  /** Disconnect multiple CardMedicParent documents */
+  disconnect?: InputMaybe<Array<CardMedicParentWhereUniqueInput>>
+  /** Override currently-connected documents with multiple existing CardMedicParent documents */
+  set?: InputMaybe<Array<CardMedicParentWhereUniqueInput>>
+  /** Update multiple CardMedicParent documents */
+  update?: InputMaybe<Array<CardMedicParentUpdateWithNestedWhereUniqueInput>>
+  /** Upsert multiple CardMedicParent documents */
+  upsert?: InputMaybe<Array<CardMedicParentUpsertWithNestedWhereUniqueInput>>
+}
+
+export type CardMedicParentUpdateManyWithNestedWhereInput = {
+  MedicoOnlinePage?: InputMaybe<MedicoOnlinePageUpdateManyWithNestedWhereInput>
+}
+
+export type CardMedicParentUpdateOneInlineInput = {
+  /** Connect existing CardMedicParent document */
+  connect?: InputMaybe<CardMedicParentWhereUniqueInput>
+  /** Create and connect one CardMedicParent document */
+  create?: InputMaybe<CardMedicParentCreateInput>
+  /** Delete currently connected CardMedicParent document */
+  delete?: InputMaybe<Scalars['Boolean']>
+  /** Disconnect currently connected CardMedicParent document */
+  disconnect?: InputMaybe<Scalars['Boolean']>
+  /** Update single CardMedicParent document */
+  update?: InputMaybe<CardMedicParentUpdateWithNestedWhereUniqueInput>
+  /** Upsert single CardMedicParent document */
+  upsert?: InputMaybe<CardMedicParentUpsertWithNestedWhereUniqueInput>
+}
+
+export type CardMedicParentUpdateWithNestedWhereUniqueInput = {
+  MedicoOnlinePage?: InputMaybe<MedicoOnlinePageUpdateWithNestedWhereUniqueInput>
+}
+
+export type CardMedicParentUpsertWithNestedWhereUniqueInput = {
+  MedicoOnlinePage?: InputMaybe<MedicoOnlinePageUpsertWithNestedWhereUniqueInput>
+}
+
+export type CardMedicParentWhereInput = {
+  MedicoOnlinePage?: InputMaybe<MedicoOnlinePageWhereInput>
+}
+
+export type CardMedicParentWhereUniqueInput = {
+  MedicoOnlinePage?: InputMaybe<MedicoOnlinePageWhereUniqueInput>
+}
+
+export type CardMedicUpdateInput = {
+  alternativeTextImage?: InputMaybe<Scalars['String']>
+  description?: InputMaybe<Scalars['String']>
+  image?: InputMaybe<AssetUpdateOneInlineInput>
+  localImage?: InputMaybe<Scalars['String']>
+  title?: InputMaybe<Scalars['String']>
+}
+
+export type CardMedicUpdateManyInlineInput = {
+  /** Create and connect multiple CardMedic component instances */
+  create?: InputMaybe<Array<CardMedicCreateWithPositionInput>>
+  /** Delete multiple CardMedic documents */
+  delete?: InputMaybe<Array<CardMedicWhereUniqueInput>>
+  /** Update multiple CardMedic component instances */
+  update?: InputMaybe<
+    Array<CardMedicUpdateWithNestedWhereUniqueAndPositionInput>
+  >
+  /** Upsert multiple CardMedic component instances */
+  upsert?: InputMaybe<
+    Array<CardMedicUpsertWithNestedWhereUniqueAndPositionInput>
+  >
+}
+
+export type CardMedicUpdateManyInput = {
+  alternativeTextImage?: InputMaybe<Scalars['String']>
+  description?: InputMaybe<Scalars['String']>
+  localImage?: InputMaybe<Scalars['String']>
+  title?: InputMaybe<Scalars['String']>
+}
+
+export type CardMedicUpdateManyWithNestedWhereInput = {
+  /** Update many input */
+  data: CardMedicUpdateManyInput
+  /** Document search */
+  where: CardMedicWhereInput
+}
+
+export type CardMedicUpdateOneInlineInput = {
+  /** Create and connect one CardMedic document */
+  create?: InputMaybe<CardMedicCreateInput>
+  /** Delete currently connected CardMedic document */
+  delete?: InputMaybe<Scalars['Boolean']>
+  /** Update single CardMedic document */
+  update?: InputMaybe<CardMedicUpdateWithNestedWhereUniqueInput>
+  /** Upsert single CardMedic document */
+  upsert?: InputMaybe<CardMedicUpsertWithNestedWhereUniqueInput>
+}
+
+export type CardMedicUpdateWithNestedWhereUniqueAndPositionInput = {
+  /** Document to update */
+  data?: InputMaybe<CardMedicUpdateInput>
+  /** Position in the list of existing component instances, will default to appending at the end of list */
+  position?: InputMaybe<ConnectPositionInput>
+  /** Unique component instance search */
+  where: CardMedicWhereUniqueInput
+}
+
+export type CardMedicUpdateWithNestedWhereUniqueInput = {
+  /** Document to update */
+  data: CardMedicUpdateInput
+  /** Unique document search */
+  where: CardMedicWhereUniqueInput
+}
+
+export type CardMedicUpsertInput = {
+  /** Create document if it didn't exist */
+  create: CardMedicCreateInput
+  /** Update document if it exists */
+  update: CardMedicUpdateInput
+}
+
+export type CardMedicUpsertWithNestedWhereUniqueAndPositionInput = {
+  /** Document to upsert */
+  data?: InputMaybe<CardMedicUpsertInput>
+  /** Position in the list of existing component instances, will default to appending at the end of list */
+  position?: InputMaybe<ConnectPositionInput>
+  /** Unique component instance search */
+  where: CardMedicWhereUniqueInput
+}
+
+export type CardMedicUpsertWithNestedWhereUniqueInput = {
+  /** Upsert data */
+  data: CardMedicUpsertInput
+  /** Unique document search */
+  where: CardMedicWhereUniqueInput
+}
+
+/** Identifies documents */
+export type CardMedicWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<CardMedicWhereInput>>
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<CardMedicWhereInput>>
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<CardMedicWhereInput>>
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']>
+  alternativeTextImage?: InputMaybe<Scalars['String']>
+  /** All values containing the given string. */
+  alternativeTextImage_contains?: InputMaybe<Scalars['String']>
+  /** All values ending with the given string. */
+  alternativeTextImage_ends_with?: InputMaybe<Scalars['String']>
+  /** All values that are contained in given list. */
+  alternativeTextImage_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  /** All values that are not equal to given value. */
+  alternativeTextImage_not?: InputMaybe<Scalars['String']>
+  /** All values not containing the given string. */
+  alternativeTextImage_not_contains?: InputMaybe<Scalars['String']>
+  /** All values not ending with the given string */
+  alternativeTextImage_not_ends_with?: InputMaybe<Scalars['String']>
+  /** All values that are not contained in given list. */
+  alternativeTextImage_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  /** All values not starting with the given string. */
+  alternativeTextImage_not_starts_with?: InputMaybe<Scalars['String']>
+  /** All values starting with the given string. */
+  alternativeTextImage_starts_with?: InputMaybe<Scalars['String']>
+  description?: InputMaybe<Scalars['String']>
+  /** All values containing the given string. */
+  description_contains?: InputMaybe<Scalars['String']>
+  /** All values ending with the given string. */
+  description_ends_with?: InputMaybe<Scalars['String']>
+  /** All values that are contained in given list. */
+  description_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  /** All values that are not equal to given value. */
+  description_not?: InputMaybe<Scalars['String']>
+  /** All values not containing the given string. */
+  description_not_contains?: InputMaybe<Scalars['String']>
+  /** All values not ending with the given string */
+  description_not_ends_with?: InputMaybe<Scalars['String']>
+  /** All values that are not contained in given list. */
+  description_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  /** All values not starting with the given string. */
+  description_not_starts_with?: InputMaybe<Scalars['String']>
+  /** All values starting with the given string. */
+  description_starts_with?: InputMaybe<Scalars['String']>
+  id?: InputMaybe<Scalars['ID']>
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']>
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']>
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
+  /** All values that are not equal to given value. */
+  id_not?: InputMaybe<Scalars['ID']>
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']>
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']>
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']>
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']>
+  image?: InputMaybe<AssetWhereInput>
+  localImage?: InputMaybe<Scalars['String']>
+  /** All values containing the given string. */
+  localImage_contains?: InputMaybe<Scalars['String']>
+  /** All values ending with the given string. */
+  localImage_ends_with?: InputMaybe<Scalars['String']>
+  /** All values that are contained in given list. */
+  localImage_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  /** All values that are not equal to given value. */
+  localImage_not?: InputMaybe<Scalars['String']>
+  /** All values not containing the given string. */
+  localImage_not_contains?: InputMaybe<Scalars['String']>
+  /** All values not ending with the given string */
+  localImage_not_ends_with?: InputMaybe<Scalars['String']>
+  /** All values that are not contained in given list. */
+  localImage_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  /** All values not starting with the given string. */
+  localImage_not_starts_with?: InputMaybe<Scalars['String']>
+  /** All values starting with the given string. */
+  localImage_starts_with?: InputMaybe<Scalars['String']>
+  title?: InputMaybe<Scalars['String']>
+  /** All values containing the given string. */
+  title_contains?: InputMaybe<Scalars['String']>
+  /** All values ending with the given string. */
+  title_ends_with?: InputMaybe<Scalars['String']>
+  /** All values that are contained in given list. */
+  title_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  /** All values that are not equal to given value. */
+  title_not?: InputMaybe<Scalars['String']>
+  /** All values not containing the given string. */
+  title_not_contains?: InputMaybe<Scalars['String']>
+  /** All values not ending with the given string */
+  title_not_ends_with?: InputMaybe<Scalars['String']>
+  /** All values that are not contained in given list. */
+  title_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  /** All values not starting with the given string. */
+  title_not_starts_with?: InputMaybe<Scalars['String']>
+  /** All values starting with the given string. */
+  title_starts_with?: InputMaybe<Scalars['String']>
+}
+
+/** References CardMedic record uniquely */
+export type CardMedicWhereUniqueInput = {
+  id?: InputMaybe<Scalars['ID']>
+}
+
 /** Representing a color value comprising of HEX, RGBA and css color values */
 export type Color = {
   __typename?: 'Color'
@@ -3487,6 +3958,962 @@ export type LocationInput = {
   longitude: Scalars['Float']
 }
 
+export type MedicPlan = {
+  __typename?: 'MedicPlan'
+  /** The unique identifier */
+  id: Scalars['ID']
+  idGalaxPay: Scalars['Int']
+  itens: Array<Scalars['String']>
+  name: Scalars['String']
+  /** System stage field */
+  stage: Stage
+  value: Scalars['Float']
+}
+
+export type MedicPlanConnectInput = {
+  /** Allow to specify document position in list of connected documents, will default to appending at end of list */
+  position?: InputMaybe<ConnectPositionInput>
+  /** Document to connect */
+  where: MedicPlanWhereUniqueInput
+}
+
+/** A connection to a list of items. */
+export type MedicPlanConnection = {
+  __typename?: 'MedicPlanConnection'
+  aggregate: Aggregate
+  /** A list of edges. */
+  edges: Array<MedicPlanEdge>
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo
+}
+
+export type MedicPlanCreateInput = {
+  idGalaxPay: Scalars['Int']
+  itens: Array<Scalars['String']>
+  name: Scalars['String']
+  value: Scalars['Float']
+}
+
+export type MedicPlanCreateManyInlineInput = {
+  /** Create and connect multiple existing MedicPlan documents */
+  create?: InputMaybe<Array<MedicPlanCreateInput>>
+}
+
+export type MedicPlanCreateOneInlineInput = {
+  /** Create and connect one MedicPlan document */
+  create?: InputMaybe<MedicPlanCreateInput>
+}
+
+export type MedicPlanCreateWithPositionInput = {
+  /** Document to create */
+  data: MedicPlanCreateInput
+  /** Position in the list of existing component instances, will default to appending at the end of list */
+  position?: InputMaybe<ConnectPositionInput>
+}
+
+/** An edge in a connection. */
+export type MedicPlanEdge = {
+  __typename?: 'MedicPlanEdge'
+  /** A cursor for use in pagination. */
+  cursor: Scalars['String']
+  /** The item at the end of the edge. */
+  node: MedicPlan
+}
+
+/** Identifies documents */
+export type MedicPlanManyWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<MedicPlanWhereInput>>
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<MedicPlanWhereInput>>
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<MedicPlanWhereInput>>
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']>
+  id?: InputMaybe<Scalars['ID']>
+  idGalaxPay?: InputMaybe<Scalars['Int']>
+  /** All values greater than the given value. */
+  idGalaxPay_gt?: InputMaybe<Scalars['Int']>
+  /** All values greater than or equal the given value. */
+  idGalaxPay_gte?: InputMaybe<Scalars['Int']>
+  /** All values that are contained in given list. */
+  idGalaxPay_in?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>
+  /** All values less than the given value. */
+  idGalaxPay_lt?: InputMaybe<Scalars['Int']>
+  /** All values less than or equal the given value. */
+  idGalaxPay_lte?: InputMaybe<Scalars['Int']>
+  /** All values that are not equal to given value. */
+  idGalaxPay_not?: InputMaybe<Scalars['Int']>
+  /** All values that are not contained in given list. */
+  idGalaxPay_not_in?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']>
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']>
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
+  /** All values that are not equal to given value. */
+  id_not?: InputMaybe<Scalars['ID']>
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']>
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']>
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']>
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']>
+  /** Matches if the field array contains *all* items provided to the filter and order does match */
+  itens?: InputMaybe<Array<Scalars['String']>>
+  /** Matches if the field array contains *all* items provided to the filter */
+  itens_contains_all?: InputMaybe<Array<Scalars['String']>>
+  /** Matches if the field array does not contain any of the items provided to the filter */
+  itens_contains_none?: InputMaybe<Array<Scalars['String']>>
+  /** Matches if the field array contains at least one item provided to the filter */
+  itens_contains_some?: InputMaybe<Array<Scalars['String']>>
+  /** Matches if the field array does not contains *all* items provided to the filter or order does not match */
+  itens_not?: InputMaybe<Array<Scalars['String']>>
+  name?: InputMaybe<Scalars['String']>
+  /** All values containing the given string. */
+  name_contains?: InputMaybe<Scalars['String']>
+  /** All values ending with the given string. */
+  name_ends_with?: InputMaybe<Scalars['String']>
+  /** All values that are contained in given list. */
+  name_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  /** All values that are not equal to given value. */
+  name_not?: InputMaybe<Scalars['String']>
+  /** All values not containing the given string. */
+  name_not_contains?: InputMaybe<Scalars['String']>
+  /** All values not ending with the given string */
+  name_not_ends_with?: InputMaybe<Scalars['String']>
+  /** All values that are not contained in given list. */
+  name_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  /** All values not starting with the given string. */
+  name_not_starts_with?: InputMaybe<Scalars['String']>
+  /** All values starting with the given string. */
+  name_starts_with?: InputMaybe<Scalars['String']>
+  value?: InputMaybe<Scalars['Float']>
+  /** All values greater than the given value. */
+  value_gt?: InputMaybe<Scalars['Float']>
+  /** All values greater than or equal the given value. */
+  value_gte?: InputMaybe<Scalars['Float']>
+  /** All values that are contained in given list. */
+  value_in?: InputMaybe<Array<InputMaybe<Scalars['Float']>>>
+  /** All values less than the given value. */
+  value_lt?: InputMaybe<Scalars['Float']>
+  /** All values less than or equal the given value. */
+  value_lte?: InputMaybe<Scalars['Float']>
+  /** All values that are not equal to given value. */
+  value_not?: InputMaybe<Scalars['Float']>
+  /** All values that are not contained in given list. */
+  value_not_in?: InputMaybe<Array<InputMaybe<Scalars['Float']>>>
+}
+
+export enum MedicPlanOrderByInput {
+  IdGalaxPayAsc = 'idGalaxPay_ASC',
+  IdGalaxPayDesc = 'idGalaxPay_DESC',
+  IdAsc = 'id_ASC',
+  IdDesc = 'id_DESC',
+  ItensAsc = 'itens_ASC',
+  ItensDesc = 'itens_DESC',
+  NameAsc = 'name_ASC',
+  NameDesc = 'name_DESC',
+  ValueAsc = 'value_ASC',
+  ValueDesc = 'value_DESC'
+}
+
+export type MedicPlanParent = MedicoOnlinePage
+
+export type MedicPlanParentConnectInput = {
+  MedicoOnlinePage?: InputMaybe<MedicoOnlinePageConnectInput>
+}
+
+export type MedicPlanParentCreateInput = {
+  MedicoOnlinePage?: InputMaybe<MedicoOnlinePageCreateInput>
+}
+
+export type MedicPlanParentCreateManyInlineInput = {
+  /** Connect multiple existing MedicPlanParent documents */
+  connect?: InputMaybe<Array<MedicPlanParentWhereUniqueInput>>
+  /** Create and connect multiple existing MedicPlanParent documents */
+  create?: InputMaybe<Array<MedicPlanParentCreateInput>>
+}
+
+export type MedicPlanParentCreateOneInlineInput = {
+  /** Connect one existing MedicPlanParent document */
+  connect?: InputMaybe<MedicPlanParentWhereUniqueInput>
+  /** Create and connect one MedicPlanParent document */
+  create?: InputMaybe<MedicPlanParentCreateInput>
+}
+
+export type MedicPlanParentUpdateInput = {
+  MedicoOnlinePage?: InputMaybe<MedicoOnlinePageUpdateInput>
+}
+
+export type MedicPlanParentUpdateManyInlineInput = {
+  /** Connect multiple existing MedicPlanParent documents */
+  connect?: InputMaybe<Array<MedicPlanParentConnectInput>>
+  /** Create and connect multiple MedicPlanParent documents */
+  create?: InputMaybe<Array<MedicPlanParentCreateInput>>
+  /** Delete multiple MedicPlanParent documents */
+  delete?: InputMaybe<Array<MedicPlanParentWhereUniqueInput>>
+  /** Disconnect multiple MedicPlanParent documents */
+  disconnect?: InputMaybe<Array<MedicPlanParentWhereUniqueInput>>
+  /** Override currently-connected documents with multiple existing MedicPlanParent documents */
+  set?: InputMaybe<Array<MedicPlanParentWhereUniqueInput>>
+  /** Update multiple MedicPlanParent documents */
+  update?: InputMaybe<Array<MedicPlanParentUpdateWithNestedWhereUniqueInput>>
+  /** Upsert multiple MedicPlanParent documents */
+  upsert?: InputMaybe<Array<MedicPlanParentUpsertWithNestedWhereUniqueInput>>
+}
+
+export type MedicPlanParentUpdateManyWithNestedWhereInput = {
+  MedicoOnlinePage?: InputMaybe<MedicoOnlinePageUpdateManyWithNestedWhereInput>
+}
+
+export type MedicPlanParentUpdateOneInlineInput = {
+  /** Connect existing MedicPlanParent document */
+  connect?: InputMaybe<MedicPlanParentWhereUniqueInput>
+  /** Create and connect one MedicPlanParent document */
+  create?: InputMaybe<MedicPlanParentCreateInput>
+  /** Delete currently connected MedicPlanParent document */
+  delete?: InputMaybe<Scalars['Boolean']>
+  /** Disconnect currently connected MedicPlanParent document */
+  disconnect?: InputMaybe<Scalars['Boolean']>
+  /** Update single MedicPlanParent document */
+  update?: InputMaybe<MedicPlanParentUpdateWithNestedWhereUniqueInput>
+  /** Upsert single MedicPlanParent document */
+  upsert?: InputMaybe<MedicPlanParentUpsertWithNestedWhereUniqueInput>
+}
+
+export type MedicPlanParentUpdateWithNestedWhereUniqueInput = {
+  MedicoOnlinePage?: InputMaybe<MedicoOnlinePageUpdateWithNestedWhereUniqueInput>
+}
+
+export type MedicPlanParentUpsertWithNestedWhereUniqueInput = {
+  MedicoOnlinePage?: InputMaybe<MedicoOnlinePageUpsertWithNestedWhereUniqueInput>
+}
+
+export type MedicPlanParentWhereInput = {
+  MedicoOnlinePage?: InputMaybe<MedicoOnlinePageWhereInput>
+}
+
+export type MedicPlanParentWhereUniqueInput = {
+  MedicoOnlinePage?: InputMaybe<MedicoOnlinePageWhereUniqueInput>
+}
+
+export type MedicPlanUpdateInput = {
+  idGalaxPay?: InputMaybe<Scalars['Int']>
+  itens?: InputMaybe<Array<Scalars['String']>>
+  name?: InputMaybe<Scalars['String']>
+  value?: InputMaybe<Scalars['Float']>
+}
+
+export type MedicPlanUpdateManyInlineInput = {
+  /** Create and connect multiple MedicPlan component instances */
+  create?: InputMaybe<Array<MedicPlanCreateWithPositionInput>>
+  /** Delete multiple MedicPlan documents */
+  delete?: InputMaybe<Array<MedicPlanWhereUniqueInput>>
+  /** Update multiple MedicPlan component instances */
+  update?: InputMaybe<
+    Array<MedicPlanUpdateWithNestedWhereUniqueAndPositionInput>
+  >
+  /** Upsert multiple MedicPlan component instances */
+  upsert?: InputMaybe<
+    Array<MedicPlanUpsertWithNestedWhereUniqueAndPositionInput>
+  >
+}
+
+export type MedicPlanUpdateManyInput = {
+  idGalaxPay?: InputMaybe<Scalars['Int']>
+  itens?: InputMaybe<Array<Scalars['String']>>
+  name?: InputMaybe<Scalars['String']>
+  value?: InputMaybe<Scalars['Float']>
+}
+
+export type MedicPlanUpdateManyWithNestedWhereInput = {
+  /** Update many input */
+  data: MedicPlanUpdateManyInput
+  /** Document search */
+  where: MedicPlanWhereInput
+}
+
+export type MedicPlanUpdateOneInlineInput = {
+  /** Create and connect one MedicPlan document */
+  create?: InputMaybe<MedicPlanCreateInput>
+  /** Delete currently connected MedicPlan document */
+  delete?: InputMaybe<Scalars['Boolean']>
+  /** Update single MedicPlan document */
+  update?: InputMaybe<MedicPlanUpdateWithNestedWhereUniqueInput>
+  /** Upsert single MedicPlan document */
+  upsert?: InputMaybe<MedicPlanUpsertWithNestedWhereUniqueInput>
+}
+
+export type MedicPlanUpdateWithNestedWhereUniqueAndPositionInput = {
+  /** Document to update */
+  data?: InputMaybe<MedicPlanUpdateInput>
+  /** Position in the list of existing component instances, will default to appending at the end of list */
+  position?: InputMaybe<ConnectPositionInput>
+  /** Unique component instance search */
+  where: MedicPlanWhereUniqueInput
+}
+
+export type MedicPlanUpdateWithNestedWhereUniqueInput = {
+  /** Document to update */
+  data: MedicPlanUpdateInput
+  /** Unique document search */
+  where: MedicPlanWhereUniqueInput
+}
+
+export type MedicPlanUpsertInput = {
+  /** Create document if it didn't exist */
+  create: MedicPlanCreateInput
+  /** Update document if it exists */
+  update: MedicPlanUpdateInput
+}
+
+export type MedicPlanUpsertWithNestedWhereUniqueAndPositionInput = {
+  /** Document to upsert */
+  data?: InputMaybe<MedicPlanUpsertInput>
+  /** Position in the list of existing component instances, will default to appending at the end of list */
+  position?: InputMaybe<ConnectPositionInput>
+  /** Unique component instance search */
+  where: MedicPlanWhereUniqueInput
+}
+
+export type MedicPlanUpsertWithNestedWhereUniqueInput = {
+  /** Upsert data */
+  data: MedicPlanUpsertInput
+  /** Unique document search */
+  where: MedicPlanWhereUniqueInput
+}
+
+/** Identifies documents */
+export type MedicPlanWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<MedicPlanWhereInput>>
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<MedicPlanWhereInput>>
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<MedicPlanWhereInput>>
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']>
+  id?: InputMaybe<Scalars['ID']>
+  idGalaxPay?: InputMaybe<Scalars['Int']>
+  /** All values greater than the given value. */
+  idGalaxPay_gt?: InputMaybe<Scalars['Int']>
+  /** All values greater than or equal the given value. */
+  idGalaxPay_gte?: InputMaybe<Scalars['Int']>
+  /** All values that are contained in given list. */
+  idGalaxPay_in?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>
+  /** All values less than the given value. */
+  idGalaxPay_lt?: InputMaybe<Scalars['Int']>
+  /** All values less than or equal the given value. */
+  idGalaxPay_lte?: InputMaybe<Scalars['Int']>
+  /** All values that are not equal to given value. */
+  idGalaxPay_not?: InputMaybe<Scalars['Int']>
+  /** All values that are not contained in given list. */
+  idGalaxPay_not_in?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']>
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']>
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
+  /** All values that are not equal to given value. */
+  id_not?: InputMaybe<Scalars['ID']>
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']>
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']>
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']>
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']>
+  /** Matches if the field array contains *all* items provided to the filter and order does match */
+  itens?: InputMaybe<Array<Scalars['String']>>
+  /** Matches if the field array contains *all* items provided to the filter */
+  itens_contains_all?: InputMaybe<Array<Scalars['String']>>
+  /** Matches if the field array does not contain any of the items provided to the filter */
+  itens_contains_none?: InputMaybe<Array<Scalars['String']>>
+  /** Matches if the field array contains at least one item provided to the filter */
+  itens_contains_some?: InputMaybe<Array<Scalars['String']>>
+  /** Matches if the field array does not contains *all* items provided to the filter or order does not match */
+  itens_not?: InputMaybe<Array<Scalars['String']>>
+  name?: InputMaybe<Scalars['String']>
+  /** All values containing the given string. */
+  name_contains?: InputMaybe<Scalars['String']>
+  /** All values ending with the given string. */
+  name_ends_with?: InputMaybe<Scalars['String']>
+  /** All values that are contained in given list. */
+  name_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  /** All values that are not equal to given value. */
+  name_not?: InputMaybe<Scalars['String']>
+  /** All values not containing the given string. */
+  name_not_contains?: InputMaybe<Scalars['String']>
+  /** All values not ending with the given string */
+  name_not_ends_with?: InputMaybe<Scalars['String']>
+  /** All values that are not contained in given list. */
+  name_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  /** All values not starting with the given string. */
+  name_not_starts_with?: InputMaybe<Scalars['String']>
+  /** All values starting with the given string. */
+  name_starts_with?: InputMaybe<Scalars['String']>
+  value?: InputMaybe<Scalars['Float']>
+  /** All values greater than the given value. */
+  value_gt?: InputMaybe<Scalars['Float']>
+  /** All values greater than or equal the given value. */
+  value_gte?: InputMaybe<Scalars['Float']>
+  /** All values that are contained in given list. */
+  value_in?: InputMaybe<Array<InputMaybe<Scalars['Float']>>>
+  /** All values less than the given value. */
+  value_lt?: InputMaybe<Scalars['Float']>
+  /** All values less than or equal the given value. */
+  value_lte?: InputMaybe<Scalars['Float']>
+  /** All values that are not equal to given value. */
+  value_not?: InputMaybe<Scalars['Float']>
+  /** All values that are not contained in given list. */
+  value_not_in?: InputMaybe<Array<InputMaybe<Scalars['Float']>>>
+}
+
+/** References MedicPlan record uniquely */
+export type MedicPlanWhereUniqueInput = {
+  id?: InputMaybe<Scalars['ID']>
+}
+
+export type MedicoOnlinePage = Node & {
+  __typename?: 'MedicoOnlinePage'
+  cards: Array<CardMedic>
+  /** The time the document was created */
+  createdAt: Scalars['DateTime']
+  /** User that created this document */
+  createdBy?: Maybe<User>
+  /** Get the document in other stages */
+  documentInStages: Array<MedicoOnlinePage>
+  /** List of MedicoOnlinePage versions */
+  history: Array<Version>
+  /** The unique identifier */
+  id: Scalars['ID']
+  include: Array<Scalars['String']>
+  medicPlans: Array<MedicPlan>
+  /** The time the document was published. Null on documents in draft stage. */
+  publishedAt?: Maybe<Scalars['DateTime']>
+  /** User that last published this document */
+  publishedBy?: Maybe<User>
+  scheduledIn: Array<ScheduledOperation>
+  /** System stage field */
+  stage: Stage
+  subtitle: Scalars['String']
+  title: Scalars['String']
+  /** The time the document was updated */
+  updatedAt: Scalars['DateTime']
+  /** User that last updated this document */
+  updatedBy?: Maybe<User>
+}
+
+export type MedicoOnlinePageCardsArgs = {
+  after?: InputMaybe<Scalars['String']>
+  before?: InputMaybe<Scalars['String']>
+  first?: InputMaybe<Scalars['Int']>
+  last?: InputMaybe<Scalars['Int']>
+  locales?: InputMaybe<Array<Locale>>
+  orderBy?: InputMaybe<CardMedicOrderByInput>
+  skip?: InputMaybe<Scalars['Int']>
+  where?: InputMaybe<CardMedicWhereInput>
+}
+
+export type MedicoOnlinePageCreatedByArgs = {
+  locales?: InputMaybe<Array<Locale>>
+}
+
+export type MedicoOnlinePageDocumentInStagesArgs = {
+  includeCurrent?: Scalars['Boolean']
+  inheritLocale?: Scalars['Boolean']
+  stages?: Array<Stage>
+}
+
+export type MedicoOnlinePageHistoryArgs = {
+  limit?: Scalars['Int']
+  skip?: Scalars['Int']
+  stageOverride?: InputMaybe<Stage>
+}
+
+export type MedicoOnlinePageMedicPlansArgs = {
+  after?: InputMaybe<Scalars['String']>
+  before?: InputMaybe<Scalars['String']>
+  first?: InputMaybe<Scalars['Int']>
+  last?: InputMaybe<Scalars['Int']>
+  locales?: InputMaybe<Array<Locale>>
+  orderBy?: InputMaybe<MedicPlanOrderByInput>
+  skip?: InputMaybe<Scalars['Int']>
+  where?: InputMaybe<MedicPlanWhereInput>
+}
+
+export type MedicoOnlinePagePublishedByArgs = {
+  locales?: InputMaybe<Array<Locale>>
+}
+
+export type MedicoOnlinePageScheduledInArgs = {
+  after?: InputMaybe<Scalars['String']>
+  before?: InputMaybe<Scalars['String']>
+  first?: InputMaybe<Scalars['Int']>
+  last?: InputMaybe<Scalars['Int']>
+  locales?: InputMaybe<Array<Locale>>
+  skip?: InputMaybe<Scalars['Int']>
+  where?: InputMaybe<ScheduledOperationWhereInput>
+}
+
+export type MedicoOnlinePageUpdatedByArgs = {
+  locales?: InputMaybe<Array<Locale>>
+}
+
+export type MedicoOnlinePageConnectInput = {
+  /** Allow to specify document position in list of connected documents, will default to appending at end of list */
+  position?: InputMaybe<ConnectPositionInput>
+  /** Document to connect */
+  where: MedicoOnlinePageWhereUniqueInput
+}
+
+/** A connection to a list of items. */
+export type MedicoOnlinePageConnection = {
+  __typename?: 'MedicoOnlinePageConnection'
+  aggregate: Aggregate
+  /** A list of edges. */
+  edges: Array<MedicoOnlinePageEdge>
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo
+}
+
+export type MedicoOnlinePageCreateInput = {
+  cards?: InputMaybe<CardMedicCreateManyInlineInput>
+  createdAt?: InputMaybe<Scalars['DateTime']>
+  include: Array<Scalars['String']>
+  medicPlans?: InputMaybe<MedicPlanCreateManyInlineInput>
+  subtitle: Scalars['String']
+  title: Scalars['String']
+  updatedAt?: InputMaybe<Scalars['DateTime']>
+}
+
+export type MedicoOnlinePageCreateManyInlineInput = {
+  /** Connect multiple existing MedicoOnlinePage documents */
+  connect?: InputMaybe<Array<MedicoOnlinePageWhereUniqueInput>>
+  /** Create and connect multiple existing MedicoOnlinePage documents */
+  create?: InputMaybe<Array<MedicoOnlinePageCreateInput>>
+}
+
+export type MedicoOnlinePageCreateOneInlineInput = {
+  /** Connect one existing MedicoOnlinePage document */
+  connect?: InputMaybe<MedicoOnlinePageWhereUniqueInput>
+  /** Create and connect one MedicoOnlinePage document */
+  create?: InputMaybe<MedicoOnlinePageCreateInput>
+}
+
+/** An edge in a connection. */
+export type MedicoOnlinePageEdge = {
+  __typename?: 'MedicoOnlinePageEdge'
+  /** A cursor for use in pagination. */
+  cursor: Scalars['String']
+  /** The item at the end of the edge. */
+  node: MedicoOnlinePage
+}
+
+/** Identifies documents */
+export type MedicoOnlinePageManyWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<MedicoOnlinePageWhereInput>>
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<MedicoOnlinePageWhereInput>>
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<MedicoOnlinePageWhereInput>>
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']>
+  cards_every?: InputMaybe<CardMedicWhereInput>
+  cards_none?: InputMaybe<CardMedicWhereInput>
+  cards_some?: InputMaybe<CardMedicWhereInput>
+  createdAt?: InputMaybe<Scalars['DateTime']>
+  /** All values greater than the given value. */
+  createdAt_gt?: InputMaybe<Scalars['DateTime']>
+  /** All values greater than or equal the given value. */
+  createdAt_gte?: InputMaybe<Scalars['DateTime']>
+  /** All values that are contained in given list. */
+  createdAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>
+  /** All values less than the given value. */
+  createdAt_lt?: InputMaybe<Scalars['DateTime']>
+  /** All values less than or equal the given value. */
+  createdAt_lte?: InputMaybe<Scalars['DateTime']>
+  /** All values that are not equal to given value. */
+  createdAt_not?: InputMaybe<Scalars['DateTime']>
+  /** All values that are not contained in given list. */
+  createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>
+  createdBy?: InputMaybe<UserWhereInput>
+  documentInStages_every?: InputMaybe<MedicoOnlinePageWhereStageInput>
+  documentInStages_none?: InputMaybe<MedicoOnlinePageWhereStageInput>
+  documentInStages_some?: InputMaybe<MedicoOnlinePageWhereStageInput>
+  id?: InputMaybe<Scalars['ID']>
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']>
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']>
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
+  /** All values that are not equal to given value. */
+  id_not?: InputMaybe<Scalars['ID']>
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']>
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']>
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']>
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']>
+  /** Matches if the field array contains *all* items provided to the filter and order does match */
+  include?: InputMaybe<Array<Scalars['String']>>
+  /** Matches if the field array contains *all* items provided to the filter */
+  include_contains_all?: InputMaybe<Array<Scalars['String']>>
+  /** Matches if the field array does not contain any of the items provided to the filter */
+  include_contains_none?: InputMaybe<Array<Scalars['String']>>
+  /** Matches if the field array contains at least one item provided to the filter */
+  include_contains_some?: InputMaybe<Array<Scalars['String']>>
+  /** Matches if the field array does not contains *all* items provided to the filter or order does not match */
+  include_not?: InputMaybe<Array<Scalars['String']>>
+  medicPlans_every?: InputMaybe<MedicPlanWhereInput>
+  medicPlans_none?: InputMaybe<MedicPlanWhereInput>
+  medicPlans_some?: InputMaybe<MedicPlanWhereInput>
+  publishedAt?: InputMaybe<Scalars['DateTime']>
+  /** All values greater than the given value. */
+  publishedAt_gt?: InputMaybe<Scalars['DateTime']>
+  /** All values greater than or equal the given value. */
+  publishedAt_gte?: InputMaybe<Scalars['DateTime']>
+  /** All values that are contained in given list. */
+  publishedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>
+  /** All values less than the given value. */
+  publishedAt_lt?: InputMaybe<Scalars['DateTime']>
+  /** All values less than or equal the given value. */
+  publishedAt_lte?: InputMaybe<Scalars['DateTime']>
+  /** All values that are not equal to given value. */
+  publishedAt_not?: InputMaybe<Scalars['DateTime']>
+  /** All values that are not contained in given list. */
+  publishedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>
+  publishedBy?: InputMaybe<UserWhereInput>
+  scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>
+  scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>
+  scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>
+  subtitle?: InputMaybe<Scalars['String']>
+  /** All values containing the given string. */
+  subtitle_contains?: InputMaybe<Scalars['String']>
+  /** All values ending with the given string. */
+  subtitle_ends_with?: InputMaybe<Scalars['String']>
+  /** All values that are contained in given list. */
+  subtitle_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  /** All values that are not equal to given value. */
+  subtitle_not?: InputMaybe<Scalars['String']>
+  /** All values not containing the given string. */
+  subtitle_not_contains?: InputMaybe<Scalars['String']>
+  /** All values not ending with the given string */
+  subtitle_not_ends_with?: InputMaybe<Scalars['String']>
+  /** All values that are not contained in given list. */
+  subtitle_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  /** All values not starting with the given string. */
+  subtitle_not_starts_with?: InputMaybe<Scalars['String']>
+  /** All values starting with the given string. */
+  subtitle_starts_with?: InputMaybe<Scalars['String']>
+  title?: InputMaybe<Scalars['String']>
+  /** All values containing the given string. */
+  title_contains?: InputMaybe<Scalars['String']>
+  /** All values ending with the given string. */
+  title_ends_with?: InputMaybe<Scalars['String']>
+  /** All values that are contained in given list. */
+  title_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  /** All values that are not equal to given value. */
+  title_not?: InputMaybe<Scalars['String']>
+  /** All values not containing the given string. */
+  title_not_contains?: InputMaybe<Scalars['String']>
+  /** All values not ending with the given string */
+  title_not_ends_with?: InputMaybe<Scalars['String']>
+  /** All values that are not contained in given list. */
+  title_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  /** All values not starting with the given string. */
+  title_not_starts_with?: InputMaybe<Scalars['String']>
+  /** All values starting with the given string. */
+  title_starts_with?: InputMaybe<Scalars['String']>
+  updatedAt?: InputMaybe<Scalars['DateTime']>
+  /** All values greater than the given value. */
+  updatedAt_gt?: InputMaybe<Scalars['DateTime']>
+  /** All values greater than or equal the given value. */
+  updatedAt_gte?: InputMaybe<Scalars['DateTime']>
+  /** All values that are contained in given list. */
+  updatedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>
+  /** All values less than the given value. */
+  updatedAt_lt?: InputMaybe<Scalars['DateTime']>
+  /** All values less than or equal the given value. */
+  updatedAt_lte?: InputMaybe<Scalars['DateTime']>
+  /** All values that are not equal to given value. */
+  updatedAt_not?: InputMaybe<Scalars['DateTime']>
+  /** All values that are not contained in given list. */
+  updatedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>
+  updatedBy?: InputMaybe<UserWhereInput>
+}
+
+export enum MedicoOnlinePageOrderByInput {
+  CreatedAtAsc = 'createdAt_ASC',
+  CreatedAtDesc = 'createdAt_DESC',
+  IdAsc = 'id_ASC',
+  IdDesc = 'id_DESC',
+  IncludeAsc = 'include_ASC',
+  IncludeDesc = 'include_DESC',
+  PublishedAtAsc = 'publishedAt_ASC',
+  PublishedAtDesc = 'publishedAt_DESC',
+  SubtitleAsc = 'subtitle_ASC',
+  SubtitleDesc = 'subtitle_DESC',
+  TitleAsc = 'title_ASC',
+  TitleDesc = 'title_DESC',
+  UpdatedAtAsc = 'updatedAt_ASC',
+  UpdatedAtDesc = 'updatedAt_DESC'
+}
+
+export type MedicoOnlinePageUpdateInput = {
+  cards?: InputMaybe<CardMedicUpdateManyInlineInput>
+  include?: InputMaybe<Array<Scalars['String']>>
+  medicPlans?: InputMaybe<MedicPlanUpdateManyInlineInput>
+  subtitle?: InputMaybe<Scalars['String']>
+  title?: InputMaybe<Scalars['String']>
+}
+
+export type MedicoOnlinePageUpdateManyInlineInput = {
+  /** Connect multiple existing MedicoOnlinePage documents */
+  connect?: InputMaybe<Array<MedicoOnlinePageConnectInput>>
+  /** Create and connect multiple MedicoOnlinePage documents */
+  create?: InputMaybe<Array<MedicoOnlinePageCreateInput>>
+  /** Delete multiple MedicoOnlinePage documents */
+  delete?: InputMaybe<Array<MedicoOnlinePageWhereUniqueInput>>
+  /** Disconnect multiple MedicoOnlinePage documents */
+  disconnect?: InputMaybe<Array<MedicoOnlinePageWhereUniqueInput>>
+  /** Override currently-connected documents with multiple existing MedicoOnlinePage documents */
+  set?: InputMaybe<Array<MedicoOnlinePageWhereUniqueInput>>
+  /** Update multiple MedicoOnlinePage documents */
+  update?: InputMaybe<Array<MedicoOnlinePageUpdateWithNestedWhereUniqueInput>>
+  /** Upsert multiple MedicoOnlinePage documents */
+  upsert?: InputMaybe<Array<MedicoOnlinePageUpsertWithNestedWhereUniqueInput>>
+}
+
+export type MedicoOnlinePageUpdateManyInput = {
+  include?: InputMaybe<Array<Scalars['String']>>
+  subtitle?: InputMaybe<Scalars['String']>
+  title?: InputMaybe<Scalars['String']>
+}
+
+export type MedicoOnlinePageUpdateManyWithNestedWhereInput = {
+  /** Update many input */
+  data: MedicoOnlinePageUpdateManyInput
+  /** Document search */
+  where: MedicoOnlinePageWhereInput
+}
+
+export type MedicoOnlinePageUpdateOneInlineInput = {
+  /** Connect existing MedicoOnlinePage document */
+  connect?: InputMaybe<MedicoOnlinePageWhereUniqueInput>
+  /** Create and connect one MedicoOnlinePage document */
+  create?: InputMaybe<MedicoOnlinePageCreateInput>
+  /** Delete currently connected MedicoOnlinePage document */
+  delete?: InputMaybe<Scalars['Boolean']>
+  /** Disconnect currently connected MedicoOnlinePage document */
+  disconnect?: InputMaybe<Scalars['Boolean']>
+  /** Update single MedicoOnlinePage document */
+  update?: InputMaybe<MedicoOnlinePageUpdateWithNestedWhereUniqueInput>
+  /** Upsert single MedicoOnlinePage document */
+  upsert?: InputMaybe<MedicoOnlinePageUpsertWithNestedWhereUniqueInput>
+}
+
+export type MedicoOnlinePageUpdateWithNestedWhereUniqueInput = {
+  /** Document to update */
+  data: MedicoOnlinePageUpdateInput
+  /** Unique document search */
+  where: MedicoOnlinePageWhereUniqueInput
+}
+
+export type MedicoOnlinePageUpsertInput = {
+  /** Create document if it didn't exist */
+  create: MedicoOnlinePageCreateInput
+  /** Update document if it exists */
+  update: MedicoOnlinePageUpdateInput
+}
+
+export type MedicoOnlinePageUpsertWithNestedWhereUniqueInput = {
+  /** Upsert data */
+  data: MedicoOnlinePageUpsertInput
+  /** Unique document search */
+  where: MedicoOnlinePageWhereUniqueInput
+}
+
+/** This contains a set of filters that can be used to compare values internally */
+export type MedicoOnlinePageWhereComparatorInput = {
+  /** This field can be used to request to check if the entry is outdated by internal comparison */
+  outdated_to?: InputMaybe<Scalars['Boolean']>
+}
+
+/** Identifies documents */
+export type MedicoOnlinePageWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<MedicoOnlinePageWhereInput>>
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<MedicoOnlinePageWhereInput>>
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<MedicoOnlinePageWhereInput>>
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']>
+  cards_every?: InputMaybe<CardMedicWhereInput>
+  cards_none?: InputMaybe<CardMedicWhereInput>
+  cards_some?: InputMaybe<CardMedicWhereInput>
+  createdAt?: InputMaybe<Scalars['DateTime']>
+  /** All values greater than the given value. */
+  createdAt_gt?: InputMaybe<Scalars['DateTime']>
+  /** All values greater than or equal the given value. */
+  createdAt_gte?: InputMaybe<Scalars['DateTime']>
+  /** All values that are contained in given list. */
+  createdAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>
+  /** All values less than the given value. */
+  createdAt_lt?: InputMaybe<Scalars['DateTime']>
+  /** All values less than or equal the given value. */
+  createdAt_lte?: InputMaybe<Scalars['DateTime']>
+  /** All values that are not equal to given value. */
+  createdAt_not?: InputMaybe<Scalars['DateTime']>
+  /** All values that are not contained in given list. */
+  createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>
+  createdBy?: InputMaybe<UserWhereInput>
+  documentInStages_every?: InputMaybe<MedicoOnlinePageWhereStageInput>
+  documentInStages_none?: InputMaybe<MedicoOnlinePageWhereStageInput>
+  documentInStages_some?: InputMaybe<MedicoOnlinePageWhereStageInput>
+  id?: InputMaybe<Scalars['ID']>
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']>
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']>
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
+  /** All values that are not equal to given value. */
+  id_not?: InputMaybe<Scalars['ID']>
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']>
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']>
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']>
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']>
+  /** Matches if the field array contains *all* items provided to the filter and order does match */
+  include?: InputMaybe<Array<Scalars['String']>>
+  /** Matches if the field array contains *all* items provided to the filter */
+  include_contains_all?: InputMaybe<Array<Scalars['String']>>
+  /** Matches if the field array does not contain any of the items provided to the filter */
+  include_contains_none?: InputMaybe<Array<Scalars['String']>>
+  /** Matches if the field array contains at least one item provided to the filter */
+  include_contains_some?: InputMaybe<Array<Scalars['String']>>
+  /** Matches if the field array does not contains *all* items provided to the filter or order does not match */
+  include_not?: InputMaybe<Array<Scalars['String']>>
+  medicPlans_every?: InputMaybe<MedicPlanWhereInput>
+  medicPlans_none?: InputMaybe<MedicPlanWhereInput>
+  medicPlans_some?: InputMaybe<MedicPlanWhereInput>
+  publishedAt?: InputMaybe<Scalars['DateTime']>
+  /** All values greater than the given value. */
+  publishedAt_gt?: InputMaybe<Scalars['DateTime']>
+  /** All values greater than or equal the given value. */
+  publishedAt_gte?: InputMaybe<Scalars['DateTime']>
+  /** All values that are contained in given list. */
+  publishedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>
+  /** All values less than the given value. */
+  publishedAt_lt?: InputMaybe<Scalars['DateTime']>
+  /** All values less than or equal the given value. */
+  publishedAt_lte?: InputMaybe<Scalars['DateTime']>
+  /** All values that are not equal to given value. */
+  publishedAt_not?: InputMaybe<Scalars['DateTime']>
+  /** All values that are not contained in given list. */
+  publishedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>
+  publishedBy?: InputMaybe<UserWhereInput>
+  scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>
+  scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>
+  scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>
+  subtitle?: InputMaybe<Scalars['String']>
+  /** All values containing the given string. */
+  subtitle_contains?: InputMaybe<Scalars['String']>
+  /** All values ending with the given string. */
+  subtitle_ends_with?: InputMaybe<Scalars['String']>
+  /** All values that are contained in given list. */
+  subtitle_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  /** All values that are not equal to given value. */
+  subtitle_not?: InputMaybe<Scalars['String']>
+  /** All values not containing the given string. */
+  subtitle_not_contains?: InputMaybe<Scalars['String']>
+  /** All values not ending with the given string */
+  subtitle_not_ends_with?: InputMaybe<Scalars['String']>
+  /** All values that are not contained in given list. */
+  subtitle_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  /** All values not starting with the given string. */
+  subtitle_not_starts_with?: InputMaybe<Scalars['String']>
+  /** All values starting with the given string. */
+  subtitle_starts_with?: InputMaybe<Scalars['String']>
+  title?: InputMaybe<Scalars['String']>
+  /** All values containing the given string. */
+  title_contains?: InputMaybe<Scalars['String']>
+  /** All values ending with the given string. */
+  title_ends_with?: InputMaybe<Scalars['String']>
+  /** All values that are contained in given list. */
+  title_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  /** All values that are not equal to given value. */
+  title_not?: InputMaybe<Scalars['String']>
+  /** All values not containing the given string. */
+  title_not_contains?: InputMaybe<Scalars['String']>
+  /** All values not ending with the given string */
+  title_not_ends_with?: InputMaybe<Scalars['String']>
+  /** All values that are not contained in given list. */
+  title_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  /** All values not starting with the given string. */
+  title_not_starts_with?: InputMaybe<Scalars['String']>
+  /** All values starting with the given string. */
+  title_starts_with?: InputMaybe<Scalars['String']>
+  updatedAt?: InputMaybe<Scalars['DateTime']>
+  /** All values greater than the given value. */
+  updatedAt_gt?: InputMaybe<Scalars['DateTime']>
+  /** All values greater than or equal the given value. */
+  updatedAt_gte?: InputMaybe<Scalars['DateTime']>
+  /** All values that are contained in given list. */
+  updatedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>
+  /** All values less than the given value. */
+  updatedAt_lt?: InputMaybe<Scalars['DateTime']>
+  /** All values less than or equal the given value. */
+  updatedAt_lte?: InputMaybe<Scalars['DateTime']>
+  /** All values that are not equal to given value. */
+  updatedAt_not?: InputMaybe<Scalars['DateTime']>
+  /** All values that are not contained in given list. */
+  updatedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>
+  updatedBy?: InputMaybe<UserWhereInput>
+}
+
+/** The document in stages filter allows specifying a stage entry to cross compare the same document between different stages */
+export type MedicoOnlinePageWhereStageInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<MedicoOnlinePageWhereStageInput>>
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<MedicoOnlinePageWhereStageInput>>
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<MedicoOnlinePageWhereStageInput>>
+  /** This field contains fields which can be set as true or false to specify an internal comparison */
+  compareWithParent?: InputMaybe<MedicoOnlinePageWhereComparatorInput>
+  /** Specify the stage to compare with */
+  stage?: InputMaybe<Stage>
+}
+
+/** References MedicoOnlinePage record uniquely */
+export type MedicoOnlinePageWhereUniqueInput = {
+  id?: InputMaybe<Scalars['ID']>
+}
+
 export type Menu = Node & {
   __typename?: 'Menu'
   /** The time the document was created */
@@ -3602,6 +5029,173 @@ export type MenuEdge = {
   cursor: Scalars['String']
   /** The item at the end of the edge. */
   node: Menu
+}
+
+export type MenuLink = {
+  __typename?: 'MenuLink'
+  /** The unique identifier */
+  id: Scalars['ID']
+  /** System stage field */
+  stage: Stage
+}
+
+/** A connection to a list of items. */
+export type MenuLinkConnection = {
+  __typename?: 'MenuLinkConnection'
+  aggregate: Aggregate
+  /** A list of edges. */
+  edges: Array<MenuLinkEdge>
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo
+}
+
+export type MenuLinkCreateInput = {
+  /** No fields in create input */
+  _?: InputMaybe<Scalars['String']>
+}
+
+export type MenuLinkCreateWithPositionInput = {
+  /** Document to create */
+  data: MenuLinkCreateInput
+  /** Position in the list of existing component instances, will default to appending at the end of list */
+  position?: InputMaybe<ConnectPositionInput>
+}
+
+/** An edge in a connection. */
+export type MenuLinkEdge = {
+  __typename?: 'MenuLinkEdge'
+  /** A cursor for use in pagination. */
+  cursor: Scalars['String']
+  /** The item at the end of the edge. */
+  node: MenuLink
+}
+
+/** Identifies documents */
+export type MenuLinkManyWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<MenuLinkWhereInput>>
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<MenuLinkWhereInput>>
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<MenuLinkWhereInput>>
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']>
+  id?: InputMaybe<Scalars['ID']>
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']>
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']>
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
+  /** All values that are not equal to given value. */
+  id_not?: InputMaybe<Scalars['ID']>
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']>
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']>
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']>
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']>
+}
+
+export enum MenuLinkOrderByInput {
+  IdAsc = 'id_ASC',
+  IdDesc = 'id_DESC'
+}
+
+export type MenuLinkUpdateInput = {
+  /** No fields in update input */
+  _?: InputMaybe<Scalars['String']>
+}
+
+export type MenuLinkUpdateManyInput = {
+  /** No fields in updateMany data input */
+  _?: InputMaybe<Scalars['String']>
+}
+
+export type MenuLinkUpdateManyWithNestedWhereInput = {
+  /** Update many input */
+  data: MenuLinkUpdateManyInput
+  /** Document search */
+  where: MenuLinkWhereInput
+}
+
+export type MenuLinkUpdateWithNestedWhereUniqueAndPositionInput = {
+  /** Document to update */
+  data?: InputMaybe<MenuLinkUpdateInput>
+  /** Position in the list of existing component instances, will default to appending at the end of list */
+  position?: InputMaybe<ConnectPositionInput>
+  /** Unique component instance search */
+  where: MenuLinkWhereUniqueInput
+}
+
+export type MenuLinkUpdateWithNestedWhereUniqueInput = {
+  /** Document to update */
+  data: MenuLinkUpdateInput
+  /** Unique document search */
+  where: MenuLinkWhereUniqueInput
+}
+
+export type MenuLinkUpsertInput = {
+  /** Create document if it didn't exist */
+  create: MenuLinkCreateInput
+  /** Update document if it exists */
+  update: MenuLinkUpdateInput
+}
+
+export type MenuLinkUpsertWithNestedWhereUniqueAndPositionInput = {
+  /** Document to upsert */
+  data?: InputMaybe<MenuLinkUpsertInput>
+  /** Position in the list of existing component instances, will default to appending at the end of list */
+  position?: InputMaybe<ConnectPositionInput>
+  /** Unique component instance search */
+  where: MenuLinkWhereUniqueInput
+}
+
+export type MenuLinkUpsertWithNestedWhereUniqueInput = {
+  /** Upsert data */
+  data: MenuLinkUpsertInput
+  /** Unique document search */
+  where: MenuLinkWhereUniqueInput
+}
+
+/** Identifies documents */
+export type MenuLinkWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<MenuLinkWhereInput>>
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<MenuLinkWhereInput>>
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<MenuLinkWhereInput>>
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']>
+  id?: InputMaybe<Scalars['ID']>
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']>
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']>
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
+  /** All values that are not equal to given value. */
+  id_not?: InputMaybe<Scalars['ID']>
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']>
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']>
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']>
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']>
+}
+
+/** References MenuLink record uniquely */
+export type MenuLinkWhereUniqueInput = {
+  id?: InputMaybe<Scalars['ID']>
 }
 
 /** Identifies documents */
@@ -4373,6 +5967,8 @@ export type Mutation = {
   createContact?: Maybe<Contact>
   /** Create one howWork */
   createHowWork?: Maybe<HowWork>
+  /** Create one medicoOnlinePage */
+  createMedicoOnlinePage?: Maybe<MedicoOnlinePage>
   /** Create one menu */
   createMenu?: Maybe<Menu>
   /** Create one metaTag */
@@ -4431,6 +6027,13 @@ export type Mutation = {
   /** Delete many HowWork documents, return deleted documents */
   deleteManyHowWorksConnection: HowWorkConnection
   /**
+   * Delete many MedicoOnlinePage documents
+   * @deprecated Please use the new paginated many mutation (deleteManyMedicoOnlinePagesConnection)
+   */
+  deleteManyMedicoOnlinePages: BatchPayload
+  /** Delete many MedicoOnlinePage documents, return deleted documents */
+  deleteManyMedicoOnlinePagesConnection: MedicoOnlinePageConnection
+  /**
    * Delete many Menu documents
    * @deprecated Please use the new paginated many mutation (deleteManyMenusConnection)
    */
@@ -4465,6 +6068,8 @@ export type Mutation = {
   deleteManySocialMedias: BatchPayload
   /** Delete many SocialMedia documents, return deleted documents */
   deleteManySocialMediasConnection: SocialMediaConnection
+  /** Delete one medicoOnlinePage from _all_ existing stages. Returns deleted document. */
+  deleteMedicoOnlinePage?: Maybe<MedicoOnlinePage>
   /** Delete one menu from _all_ existing stages. Returns deleted document. */
   deleteMenu?: Maybe<Menu>
   /** Delete one metaTag from _all_ existing stages. Returns deleted document. */
@@ -4525,6 +6130,13 @@ export type Mutation = {
   /** Publish many HowWork documents */
   publishManyHowWorksConnection: HowWorkConnection
   /**
+   * Publish many MedicoOnlinePage documents
+   * @deprecated Please use the new paginated many mutation (publishManyMedicoOnlinePagesConnection)
+   */
+  publishManyMedicoOnlinePages: BatchPayload
+  /** Publish many MedicoOnlinePage documents */
+  publishManyMedicoOnlinePagesConnection: MedicoOnlinePageConnection
+  /**
    * Publish many Menu documents
    * @deprecated Please use the new paginated many mutation (publishManyMenusConnection)
    */
@@ -4559,6 +6171,8 @@ export type Mutation = {
   publishManySocialMedias: BatchPayload
   /** Publish many SocialMedia documents */
   publishManySocialMediasConnection: SocialMediaConnection
+  /** Publish one medicoOnlinePage */
+  publishMedicoOnlinePage?: Maybe<MedicoOnlinePage>
   /** Publish one menu */
   publishMenu?: Maybe<Menu>
   /** Publish one metaTag */
@@ -4579,6 +6193,8 @@ export type Mutation = {
   schedulePublishContact?: Maybe<Contact>
   /** Schedule to publish one howWork */
   schedulePublishHowWork?: Maybe<HowWork>
+  /** Schedule to publish one medicoOnlinePage */
+  schedulePublishMedicoOnlinePage?: Maybe<MedicoOnlinePage>
   /** Schedule to publish one menu */
   schedulePublishMenu?: Maybe<Menu>
   /** Schedule to publish one metaTag */
@@ -4599,6 +6215,8 @@ export type Mutation = {
   scheduleUnpublishContact?: Maybe<Contact>
   /** Unpublish one howWork from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   scheduleUnpublishHowWork?: Maybe<HowWork>
+  /** Unpublish one medicoOnlinePage from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
+  scheduleUnpublishMedicoOnlinePage?: Maybe<MedicoOnlinePage>
   /** Unpublish one menu from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   scheduleUnpublishMenu?: Maybe<Menu>
   /** Unpublish one metaTag from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
@@ -4655,6 +6273,13 @@ export type Mutation = {
   /** Find many HowWork documents that match criteria in specified stage and unpublish from target stages */
   unpublishManyHowWorksConnection: HowWorkConnection
   /**
+   * Unpublish many MedicoOnlinePage documents
+   * @deprecated Please use the new paginated many mutation (unpublishManyMedicoOnlinePagesConnection)
+   */
+  unpublishManyMedicoOnlinePages: BatchPayload
+  /** Find many MedicoOnlinePage documents that match criteria in specified stage and unpublish from target stages */
+  unpublishManyMedicoOnlinePagesConnection: MedicoOnlinePageConnection
+  /**
    * Unpublish many Menu documents
    * @deprecated Please use the new paginated many mutation (unpublishManyMenusConnection)
    */
@@ -4689,6 +6314,8 @@ export type Mutation = {
   unpublishManySocialMedias: BatchPayload
   /** Find many SocialMedia documents that match criteria in specified stage and unpublish from target stages */
   unpublishManySocialMediasConnection: SocialMediaConnection
+  /** Unpublish one medicoOnlinePage from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
+  unpublishMedicoOnlinePage?: Maybe<MedicoOnlinePage>
   /** Unpublish one menu from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   unpublishMenu?: Maybe<Menu>
   /** Unpublish one metaTag from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
@@ -4745,6 +6372,13 @@ export type Mutation = {
   /** Update many HowWork documents */
   updateManyHowWorksConnection: HowWorkConnection
   /**
+   * Update many medicoOnlinePages
+   * @deprecated Please use the new paginated many mutation (updateManyMedicoOnlinePagesConnection)
+   */
+  updateManyMedicoOnlinePages: BatchPayload
+  /** Update many MedicoOnlinePage documents */
+  updateManyMedicoOnlinePagesConnection: MedicoOnlinePageConnection
+  /**
    * Update many menus
    * @deprecated Please use the new paginated many mutation (updateManyMenusConnection)
    */
@@ -4779,6 +6413,8 @@ export type Mutation = {
   updateManySocialMedias: BatchPayload
   /** Update many SocialMedia documents */
   updateManySocialMediasConnection: SocialMediaConnection
+  /** Update one medicoOnlinePage */
+  updateMedicoOnlinePage?: Maybe<MedicoOnlinePage>
   /** Update one menu */
   updateMenu?: Maybe<Menu>
   /** Update one metaTag */
@@ -4801,6 +6437,8 @@ export type Mutation = {
   upsertContact?: Maybe<Contact>
   /** Upsert one howWork */
   upsertHowWork?: Maybe<HowWork>
+  /** Upsert one medicoOnlinePage */
+  upsertMedicoOnlinePage?: Maybe<MedicoOnlinePage>
   /** Upsert one menu */
   upsertMenu?: Maybe<Menu>
   /** Upsert one metaTag */
@@ -4831,6 +6469,10 @@ export type MutationCreateContactArgs = {
 
 export type MutationCreateHowWorkArgs = {
   data: HowWorkCreateInput
+}
+
+export type MutationCreateMedicoOnlinePageArgs = {
+  data: MedicoOnlinePageCreateInput
 }
 
 export type MutationCreateMenuArgs = {
@@ -4942,6 +6584,19 @@ export type MutationDeleteManyHowWorksConnectionArgs = {
   where?: InputMaybe<HowWorkManyWhereInput>
 }
 
+export type MutationDeleteManyMedicoOnlinePagesArgs = {
+  where?: InputMaybe<MedicoOnlinePageManyWhereInput>
+}
+
+export type MutationDeleteManyMedicoOnlinePagesConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>
+  before?: InputMaybe<Scalars['ID']>
+  first?: InputMaybe<Scalars['Int']>
+  last?: InputMaybe<Scalars['Int']>
+  skip?: InputMaybe<Scalars['Int']>
+  where?: InputMaybe<MedicoOnlinePageManyWhereInput>
+}
+
 export type MutationDeleteManyMenusArgs = {
   where?: InputMaybe<MenuManyWhereInput>
 }
@@ -5005,6 +6660,10 @@ export type MutationDeleteManySocialMediasConnectionArgs = {
   last?: InputMaybe<Scalars['Int']>
   skip?: InputMaybe<Scalars['Int']>
   where?: InputMaybe<SocialMediaManyWhereInput>
+}
+
+export type MutationDeleteMedicoOnlinePageArgs = {
+  where: MedicoOnlinePageWhereUniqueInput
 }
 
 export type MutationDeleteMenuArgs = {
@@ -5149,6 +6808,22 @@ export type MutationPublishManyHowWorksConnectionArgs = {
   where?: InputMaybe<HowWorkManyWhereInput>
 }
 
+export type MutationPublishManyMedicoOnlinePagesArgs = {
+  to?: Array<Stage>
+  where?: InputMaybe<MedicoOnlinePageManyWhereInput>
+}
+
+export type MutationPublishManyMedicoOnlinePagesConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>
+  before?: InputMaybe<Scalars['ID']>
+  first?: InputMaybe<Scalars['Int']>
+  from?: InputMaybe<Stage>
+  last?: InputMaybe<Scalars['Int']>
+  skip?: InputMaybe<Scalars['Int']>
+  to?: Array<Stage>
+  where?: InputMaybe<MedicoOnlinePageManyWhereInput>
+}
+
 export type MutationPublishManyMenusArgs = {
   to?: Array<Stage>
   where?: InputMaybe<MenuManyWhereInput>
@@ -5229,6 +6904,11 @@ export type MutationPublishManySocialMediasConnectionArgs = {
   where?: InputMaybe<SocialMediaManyWhereInput>
 }
 
+export type MutationPublishMedicoOnlinePageArgs = {
+  to?: Array<Stage>
+  where: MedicoOnlinePageWhereUniqueInput
+}
+
 export type MutationPublishMenuArgs = {
   to?: Array<Stage>
   where: MenuWhereUniqueInput
@@ -5290,6 +6970,13 @@ export type MutationSchedulePublishHowWorkArgs = {
   releaseId?: InputMaybe<Scalars['String']>
   to?: Array<Stage>
   where: HowWorkWhereUniqueInput
+}
+
+export type MutationSchedulePublishMedicoOnlinePageArgs = {
+  releaseAt?: InputMaybe<Scalars['DateTime']>
+  releaseId?: InputMaybe<Scalars['String']>
+  to?: Array<Stage>
+  where: MedicoOnlinePageWhereUniqueInput
 }
 
 export type MutationSchedulePublishMenuArgs = {
@@ -5362,6 +7049,13 @@ export type MutationScheduleUnpublishHowWorkArgs = {
   releaseAt?: InputMaybe<Scalars['DateTime']>
   releaseId?: InputMaybe<Scalars['String']>
   where: HowWorkWhereUniqueInput
+}
+
+export type MutationScheduleUnpublishMedicoOnlinePageArgs = {
+  from?: Array<Stage>
+  releaseAt?: InputMaybe<Scalars['DateTime']>
+  releaseId?: InputMaybe<Scalars['String']>
+  where: MedicoOnlinePageWhereUniqueInput
 }
 
 export type MutationScheduleUnpublishMenuArgs = {
@@ -5510,6 +7204,22 @@ export type MutationUnpublishManyHowWorksConnectionArgs = {
   where?: InputMaybe<HowWorkManyWhereInput>
 }
 
+export type MutationUnpublishManyMedicoOnlinePagesArgs = {
+  from?: Array<Stage>
+  where?: InputMaybe<MedicoOnlinePageManyWhereInput>
+}
+
+export type MutationUnpublishManyMedicoOnlinePagesConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>
+  before?: InputMaybe<Scalars['ID']>
+  first?: InputMaybe<Scalars['Int']>
+  from?: Array<Stage>
+  last?: InputMaybe<Scalars['Int']>
+  skip?: InputMaybe<Scalars['Int']>
+  stage?: InputMaybe<Stage>
+  where?: InputMaybe<MedicoOnlinePageManyWhereInput>
+}
+
 export type MutationUnpublishManyMenusArgs = {
   from?: Array<Stage>
   where?: InputMaybe<MenuManyWhereInput>
@@ -5588,6 +7298,11 @@ export type MutationUnpublishManySocialMediasConnectionArgs = {
   skip?: InputMaybe<Scalars['Int']>
   stage?: InputMaybe<Stage>
   where?: InputMaybe<SocialMediaManyWhereInput>
+}
+
+export type MutationUnpublishMedicoOnlinePageArgs = {
+  from?: Array<Stage>
+  where: MedicoOnlinePageWhereUniqueInput
 }
 
 export type MutationUnpublishMenuArgs = {
@@ -5715,6 +7430,21 @@ export type MutationUpdateManyHowWorksConnectionArgs = {
   where?: InputMaybe<HowWorkManyWhereInput>
 }
 
+export type MutationUpdateManyMedicoOnlinePagesArgs = {
+  data: MedicoOnlinePageUpdateManyInput
+  where?: InputMaybe<MedicoOnlinePageManyWhereInput>
+}
+
+export type MutationUpdateManyMedicoOnlinePagesConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>
+  before?: InputMaybe<Scalars['ID']>
+  data: MedicoOnlinePageUpdateManyInput
+  first?: InputMaybe<Scalars['Int']>
+  last?: InputMaybe<Scalars['Int']>
+  skip?: InputMaybe<Scalars['Int']>
+  where?: InputMaybe<MedicoOnlinePageManyWhereInput>
+}
+
 export type MutationUpdateManyMenusArgs = {
   data: MenuUpdateManyInput
   where?: InputMaybe<MenuManyWhereInput>
@@ -5790,6 +7520,11 @@ export type MutationUpdateManySocialMediasConnectionArgs = {
   where?: InputMaybe<SocialMediaManyWhereInput>
 }
 
+export type MutationUpdateMedicoOnlinePageArgs = {
+  data: MedicoOnlinePageUpdateInput
+  where: MedicoOnlinePageWhereUniqueInput
+}
+
 export type MutationUpdateMenuArgs = {
   data: MenuUpdateInput
   where: MenuWhereUniqueInput
@@ -5843,6 +7578,11 @@ export type MutationUpsertContactArgs = {
 export type MutationUpsertHowWorkArgs = {
   upsert: HowWorkUpsertInput
   where: HowWorkWhereUniqueInput
+}
+
+export type MutationUpsertMedicoOnlinePageArgs = {
+  upsert: MedicoOnlinePageUpsertInput
+  where: MedicoOnlinePageWhereUniqueInput
 }
 
 export type MutationUpsertMenuArgs = {
@@ -6953,6 +8693,14 @@ export type Query = {
   howWorks: Array<HowWork>
   /** Retrieve multiple howWorks using the Relay connection interface */
   howWorksConnection: HowWorkConnection
+  /** Retrieve a single medicoOnlinePage */
+  medicoOnlinePage?: Maybe<MedicoOnlinePage>
+  /** Retrieve document version */
+  medicoOnlinePageVersion?: Maybe<DocumentVersion>
+  /** Retrieve multiple medicoOnlinePages */
+  medicoOnlinePages: Array<MedicoOnlinePage>
+  /** Retrieve multiple medicoOnlinePages using the Relay connection interface */
+  medicoOnlinePagesConnection: MedicoOnlinePageConnection
   /** Retrieve a single menu */
   menu?: Maybe<Menu>
   /** Retrieve document version */
@@ -7183,6 +8931,40 @@ export type QueryHowWorksConnectionArgs = {
   skip?: InputMaybe<Scalars['Int']>
   stage?: Stage
   where?: InputMaybe<HowWorkWhereInput>
+}
+
+export type QueryMedicoOnlinePageArgs = {
+  locales?: Array<Locale>
+  stage?: Stage
+  where: MedicoOnlinePageWhereUniqueInput
+}
+
+export type QueryMedicoOnlinePageVersionArgs = {
+  where: VersionWhereInput
+}
+
+export type QueryMedicoOnlinePagesArgs = {
+  after?: InputMaybe<Scalars['String']>
+  before?: InputMaybe<Scalars['String']>
+  first?: InputMaybe<Scalars['Int']>
+  last?: InputMaybe<Scalars['Int']>
+  locales?: Array<Locale>
+  orderBy?: InputMaybe<MedicoOnlinePageOrderByInput>
+  skip?: InputMaybe<Scalars['Int']>
+  stage?: Stage
+  where?: InputMaybe<MedicoOnlinePageWhereInput>
+}
+
+export type QueryMedicoOnlinePagesConnectionArgs = {
+  after?: InputMaybe<Scalars['String']>
+  before?: InputMaybe<Scalars['String']>
+  first?: InputMaybe<Scalars['Int']>
+  last?: InputMaybe<Scalars['Int']>
+  locales?: Array<Locale>
+  orderBy?: InputMaybe<MedicoOnlinePageOrderByInput>
+  skip?: InputMaybe<Scalars['Int']>
+  stage?: Stage
+  where?: InputMaybe<MedicoOnlinePageWhereInput>
 }
 
 export type QueryMenuArgs = {
@@ -7558,6 +9340,7 @@ export type ScheduledOperationAffectedDocument =
   | Banner
   | Contact
   | HowWork
+  | MedicoOnlinePage
   | Menu
   | MetaTag
   | Partnership
@@ -9475,6 +11258,57 @@ export type HomepageQuery = {
   }>
 }
 
+export type MedicOnlinePageQueryVariables = Exact<{ [key: string]: never }>
+
+export type MedicOnlinePageQuery = {
+  __typename?: 'Query'
+  menus: Array<{
+    __typename?: 'Menu'
+    links: Array<{ __typename?: 'Button'; name: string; url: string }>
+  }>
+  metaTag?: {
+    __typename?: 'MetaTag'
+    description?: string | null
+    image?: { __typename?: 'Asset'; url: string } | null
+  } | null
+  abouts: Array<{
+    __typename?: 'About'
+    about?: string | null
+    howWorks: string
+    objetivo?: string | null
+    visao?: string | null
+    valores?: string | null
+    name?: string | null
+    image: { __typename?: 'Asset'; url: string }
+  }>
+  socialMedias: Array<{
+    __typename?: 'SocialMedia'
+    url: string
+    icon: SocialMedias
+  }>
+  medicoOnlinePages: Array<{
+    __typename?: 'MedicoOnlinePage'
+    title: string
+    subtitle: string
+    include: Array<string>
+    cards: Array<{
+      __typename?: 'CardMedic'
+      title: string
+      description: string
+      alternativeTextImage?: string | null
+      localImage?: string | null
+      image: { __typename?: 'Asset'; url: string }
+    }>
+    medicPlans: Array<{
+      __typename?: 'MedicPlan'
+      name: string
+      idGalaxPay: number
+      value: number
+      itens: Array<string>
+    }>
+  }>
+}
+
 export const HomepageDocument = gql`
   query Homepage {
     menus {
@@ -9541,6 +11375,66 @@ export function useHomepageQuery(
 ) {
   return Urql.useQuery<HomepageQuery, HomepageQueryVariables>({
     query: HomepageDocument,
+    ...options
+  })
+}
+export const MedicOnlinePageDocument = gql`
+  query MedicOnlinePage {
+    menus {
+      links(orderBy: order_ASC) {
+        name
+        url
+      }
+    }
+    metaTag(where: { page: "medic" }) {
+      description
+      image {
+        url
+      }
+    }
+    abouts {
+      about
+      howWorks
+      objetivo
+      visao
+      valores
+      name
+      image {
+        url
+      }
+    }
+    socialMedias {
+      url
+      icon
+    }
+    medicoOnlinePages {
+      title
+      subtitle
+      include
+      cards {
+        title
+        description
+        image {
+          url
+        }
+        alternativeTextImage
+        localImage
+      }
+      medicPlans {
+        name
+        idGalaxPay
+        value
+        itens
+      }
+    }
+  }
+`
+
+export function useMedicOnlinePageQuery(
+  options?: Omit<Urql.UseQueryArgs<MedicOnlinePageQueryVariables>, 'query'>
+) {
+  return Urql.useQuery<MedicOnlinePageQuery, MedicOnlinePageQueryVariables>({
+    query: MedicOnlinePageDocument,
     ...options
   })
 }
