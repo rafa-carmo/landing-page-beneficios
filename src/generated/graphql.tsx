@@ -739,6 +739,7 @@ export type Asset = Node & {
   id: Scalars['ID']
   imageBanner: Array<Banner>
   imageHowWork: Array<HowWork>
+  imageMetaTag: Array<MetaTag>
   imagePartnership: Array<Partnership>
   /** System Locale field */
   locale: Locale
@@ -811,6 +812,18 @@ export type AssetImageHowWorkArgs = {
   orderBy?: InputMaybe<HowWorkOrderByInput>
   skip?: InputMaybe<Scalars['Int']>
   where?: InputMaybe<HowWorkWhereInput>
+}
+
+/** Asset system model */
+export type AssetImageMetaTagArgs = {
+  after?: InputMaybe<Scalars['String']>
+  before?: InputMaybe<Scalars['String']>
+  first?: InputMaybe<Scalars['Int']>
+  last?: InputMaybe<Scalars['Int']>
+  locales?: InputMaybe<Array<Locale>>
+  orderBy?: InputMaybe<MetaTagOrderByInput>
+  skip?: InputMaybe<Scalars['Int']>
+  where?: InputMaybe<MetaTagWhereInput>
 }
 
 /** Asset system model */
@@ -891,6 +904,7 @@ export type AssetCreateInput = {
   height?: InputMaybe<Scalars['Float']>
   imageBanner?: InputMaybe<BannerCreateManyInlineInput>
   imageHowWork?: InputMaybe<HowWorkCreateManyInlineInput>
+  imageMetaTag?: InputMaybe<MetaTagCreateManyInlineInput>
   imagePartnership?: InputMaybe<PartnershipCreateManyInlineInput>
   /** Inline mutations for managing document localizations excluding the default locale */
   localizations?: InputMaybe<AssetCreateLocalizationsInput>
@@ -999,6 +1013,9 @@ export type AssetManyWhereInput = {
   imageHowWork_every?: InputMaybe<HowWorkWhereInput>
   imageHowWork_none?: InputMaybe<HowWorkWhereInput>
   imageHowWork_some?: InputMaybe<HowWorkWhereInput>
+  imageMetaTag_every?: InputMaybe<MetaTagWhereInput>
+  imageMetaTag_none?: InputMaybe<MetaTagWhereInput>
+  imageMetaTag_some?: InputMaybe<MetaTagWhereInput>
   imagePartnership_every?: InputMaybe<PartnershipWhereInput>
   imagePartnership_none?: InputMaybe<PartnershipWhereInput>
   imagePartnership_some?: InputMaybe<PartnershipWhereInput>
@@ -1076,6 +1093,7 @@ export type AssetUpdateInput = {
   height?: InputMaybe<Scalars['Float']>
   imageBanner?: InputMaybe<BannerUpdateManyInlineInput>
   imageHowWork?: InputMaybe<HowWorkUpdateManyInlineInput>
+  imageMetaTag?: InputMaybe<MetaTagUpdateManyInlineInput>
   imagePartnership?: InputMaybe<PartnershipUpdateManyInlineInput>
   /** Manage document localizations */
   localizations?: InputMaybe<AssetUpdateLocalizationsInput>
@@ -1315,6 +1333,9 @@ export type AssetWhereInput = {
   imageHowWork_every?: InputMaybe<HowWorkWhereInput>
   imageHowWork_none?: InputMaybe<HowWorkWhereInput>
   imageHowWork_some?: InputMaybe<HowWorkWhereInput>
+  imageMetaTag_every?: InputMaybe<MetaTagWhereInput>
+  imageMetaTag_none?: InputMaybe<MetaTagWhereInput>
+  imageMetaTag_some?: InputMaybe<MetaTagWhereInput>
   imagePartnership_every?: InputMaybe<PartnershipWhereInput>
   imagePartnership_none?: InputMaybe<PartnershipWhereInput>
   imagePartnership_some?: InputMaybe<PartnershipWhereInput>
@@ -3834,6 +3855,479 @@ export type MenuWhereUniqueInput = {
   id?: InputMaybe<Scalars['ID']>
 }
 
+export type MetaTag = Node & {
+  __typename?: 'MetaTag'
+  /** The time the document was created */
+  createdAt: Scalars['DateTime']
+  /** User that created this document */
+  createdBy?: Maybe<User>
+  description?: Maybe<Scalars['String']>
+  /** Get the document in other stages */
+  documentInStages: Array<MetaTag>
+  /** List of MetaTag versions */
+  history: Array<Version>
+  /** The unique identifier */
+  id: Scalars['ID']
+  image?: Maybe<Asset>
+  page: Scalars['String']
+  /** The time the document was published. Null on documents in draft stage. */
+  publishedAt?: Maybe<Scalars['DateTime']>
+  /** User that last published this document */
+  publishedBy?: Maybe<User>
+  scheduledIn: Array<ScheduledOperation>
+  /** System stage field */
+  stage: Stage
+  /** The time the document was updated */
+  updatedAt: Scalars['DateTime']
+  /** User that last updated this document */
+  updatedBy?: Maybe<User>
+}
+
+export type MetaTagCreatedByArgs = {
+  locales?: InputMaybe<Array<Locale>>
+}
+
+export type MetaTagDocumentInStagesArgs = {
+  includeCurrent?: Scalars['Boolean']
+  inheritLocale?: Scalars['Boolean']
+  stages?: Array<Stage>
+}
+
+export type MetaTagHistoryArgs = {
+  limit?: Scalars['Int']
+  skip?: Scalars['Int']
+  stageOverride?: InputMaybe<Stage>
+}
+
+export type MetaTagImageArgs = {
+  locales?: InputMaybe<Array<Locale>>
+}
+
+export type MetaTagPublishedByArgs = {
+  locales?: InputMaybe<Array<Locale>>
+}
+
+export type MetaTagScheduledInArgs = {
+  after?: InputMaybe<Scalars['String']>
+  before?: InputMaybe<Scalars['String']>
+  first?: InputMaybe<Scalars['Int']>
+  last?: InputMaybe<Scalars['Int']>
+  locales?: InputMaybe<Array<Locale>>
+  skip?: InputMaybe<Scalars['Int']>
+  where?: InputMaybe<ScheduledOperationWhereInput>
+}
+
+export type MetaTagUpdatedByArgs = {
+  locales?: InputMaybe<Array<Locale>>
+}
+
+export type MetaTagConnectInput = {
+  /** Allow to specify document position in list of connected documents, will default to appending at end of list */
+  position?: InputMaybe<ConnectPositionInput>
+  /** Document to connect */
+  where: MetaTagWhereUniqueInput
+}
+
+/** A connection to a list of items. */
+export type MetaTagConnection = {
+  __typename?: 'MetaTagConnection'
+  aggregate: Aggregate
+  /** A list of edges. */
+  edges: Array<MetaTagEdge>
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo
+}
+
+export type MetaTagCreateInput = {
+  createdAt?: InputMaybe<Scalars['DateTime']>
+  description?: InputMaybe<Scalars['String']>
+  image?: InputMaybe<AssetCreateOneInlineInput>
+  page: Scalars['String']
+  updatedAt?: InputMaybe<Scalars['DateTime']>
+}
+
+export type MetaTagCreateManyInlineInput = {
+  /** Connect multiple existing MetaTag documents */
+  connect?: InputMaybe<Array<MetaTagWhereUniqueInput>>
+  /** Create and connect multiple existing MetaTag documents */
+  create?: InputMaybe<Array<MetaTagCreateInput>>
+}
+
+export type MetaTagCreateOneInlineInput = {
+  /** Connect one existing MetaTag document */
+  connect?: InputMaybe<MetaTagWhereUniqueInput>
+  /** Create and connect one MetaTag document */
+  create?: InputMaybe<MetaTagCreateInput>
+}
+
+/** An edge in a connection. */
+export type MetaTagEdge = {
+  __typename?: 'MetaTagEdge'
+  /** A cursor for use in pagination. */
+  cursor: Scalars['String']
+  /** The item at the end of the edge. */
+  node: MetaTag
+}
+
+/** Identifies documents */
+export type MetaTagManyWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<MetaTagWhereInput>>
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<MetaTagWhereInput>>
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<MetaTagWhereInput>>
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']>
+  createdAt?: InputMaybe<Scalars['DateTime']>
+  /** All values greater than the given value. */
+  createdAt_gt?: InputMaybe<Scalars['DateTime']>
+  /** All values greater than or equal the given value. */
+  createdAt_gte?: InputMaybe<Scalars['DateTime']>
+  /** All values that are contained in given list. */
+  createdAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>
+  /** All values less than the given value. */
+  createdAt_lt?: InputMaybe<Scalars['DateTime']>
+  /** All values less than or equal the given value. */
+  createdAt_lte?: InputMaybe<Scalars['DateTime']>
+  /** All values that are not equal to given value. */
+  createdAt_not?: InputMaybe<Scalars['DateTime']>
+  /** All values that are not contained in given list. */
+  createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>
+  createdBy?: InputMaybe<UserWhereInput>
+  description?: InputMaybe<Scalars['String']>
+  /** All values containing the given string. */
+  description_contains?: InputMaybe<Scalars['String']>
+  /** All values ending with the given string. */
+  description_ends_with?: InputMaybe<Scalars['String']>
+  /** All values that are contained in given list. */
+  description_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  /** All values that are not equal to given value. */
+  description_not?: InputMaybe<Scalars['String']>
+  /** All values not containing the given string. */
+  description_not_contains?: InputMaybe<Scalars['String']>
+  /** All values not ending with the given string */
+  description_not_ends_with?: InputMaybe<Scalars['String']>
+  /** All values that are not contained in given list. */
+  description_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  /** All values not starting with the given string. */
+  description_not_starts_with?: InputMaybe<Scalars['String']>
+  /** All values starting with the given string. */
+  description_starts_with?: InputMaybe<Scalars['String']>
+  documentInStages_every?: InputMaybe<MetaTagWhereStageInput>
+  documentInStages_none?: InputMaybe<MetaTagWhereStageInput>
+  documentInStages_some?: InputMaybe<MetaTagWhereStageInput>
+  id?: InputMaybe<Scalars['ID']>
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']>
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']>
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
+  /** All values that are not equal to given value. */
+  id_not?: InputMaybe<Scalars['ID']>
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']>
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']>
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']>
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']>
+  image?: InputMaybe<AssetWhereInput>
+  page?: InputMaybe<Scalars['String']>
+  /** All values containing the given string. */
+  page_contains?: InputMaybe<Scalars['String']>
+  /** All values ending with the given string. */
+  page_ends_with?: InputMaybe<Scalars['String']>
+  /** All values that are contained in given list. */
+  page_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  /** All values that are not equal to given value. */
+  page_not?: InputMaybe<Scalars['String']>
+  /** All values not containing the given string. */
+  page_not_contains?: InputMaybe<Scalars['String']>
+  /** All values not ending with the given string */
+  page_not_ends_with?: InputMaybe<Scalars['String']>
+  /** All values that are not contained in given list. */
+  page_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  /** All values not starting with the given string. */
+  page_not_starts_with?: InputMaybe<Scalars['String']>
+  /** All values starting with the given string. */
+  page_starts_with?: InputMaybe<Scalars['String']>
+  publishedAt?: InputMaybe<Scalars['DateTime']>
+  /** All values greater than the given value. */
+  publishedAt_gt?: InputMaybe<Scalars['DateTime']>
+  /** All values greater than or equal the given value. */
+  publishedAt_gte?: InputMaybe<Scalars['DateTime']>
+  /** All values that are contained in given list. */
+  publishedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>
+  /** All values less than the given value. */
+  publishedAt_lt?: InputMaybe<Scalars['DateTime']>
+  /** All values less than or equal the given value. */
+  publishedAt_lte?: InputMaybe<Scalars['DateTime']>
+  /** All values that are not equal to given value. */
+  publishedAt_not?: InputMaybe<Scalars['DateTime']>
+  /** All values that are not contained in given list. */
+  publishedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>
+  publishedBy?: InputMaybe<UserWhereInput>
+  scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>
+  scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>
+  scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>
+  updatedAt?: InputMaybe<Scalars['DateTime']>
+  /** All values greater than the given value. */
+  updatedAt_gt?: InputMaybe<Scalars['DateTime']>
+  /** All values greater than or equal the given value. */
+  updatedAt_gte?: InputMaybe<Scalars['DateTime']>
+  /** All values that are contained in given list. */
+  updatedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>
+  /** All values less than the given value. */
+  updatedAt_lt?: InputMaybe<Scalars['DateTime']>
+  /** All values less than or equal the given value. */
+  updatedAt_lte?: InputMaybe<Scalars['DateTime']>
+  /** All values that are not equal to given value. */
+  updatedAt_not?: InputMaybe<Scalars['DateTime']>
+  /** All values that are not contained in given list. */
+  updatedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>
+  updatedBy?: InputMaybe<UserWhereInput>
+}
+
+export enum MetaTagOrderByInput {
+  CreatedAtAsc = 'createdAt_ASC',
+  CreatedAtDesc = 'createdAt_DESC',
+  DescriptionAsc = 'description_ASC',
+  DescriptionDesc = 'description_DESC',
+  IdAsc = 'id_ASC',
+  IdDesc = 'id_DESC',
+  PageAsc = 'page_ASC',
+  PageDesc = 'page_DESC',
+  PublishedAtAsc = 'publishedAt_ASC',
+  PublishedAtDesc = 'publishedAt_DESC',
+  UpdatedAtAsc = 'updatedAt_ASC',
+  UpdatedAtDesc = 'updatedAt_DESC'
+}
+
+export type MetaTagUpdateInput = {
+  description?: InputMaybe<Scalars['String']>
+  image?: InputMaybe<AssetUpdateOneInlineInput>
+  page?: InputMaybe<Scalars['String']>
+}
+
+export type MetaTagUpdateManyInlineInput = {
+  /** Connect multiple existing MetaTag documents */
+  connect?: InputMaybe<Array<MetaTagConnectInput>>
+  /** Create and connect multiple MetaTag documents */
+  create?: InputMaybe<Array<MetaTagCreateInput>>
+  /** Delete multiple MetaTag documents */
+  delete?: InputMaybe<Array<MetaTagWhereUniqueInput>>
+  /** Disconnect multiple MetaTag documents */
+  disconnect?: InputMaybe<Array<MetaTagWhereUniqueInput>>
+  /** Override currently-connected documents with multiple existing MetaTag documents */
+  set?: InputMaybe<Array<MetaTagWhereUniqueInput>>
+  /** Update multiple MetaTag documents */
+  update?: InputMaybe<Array<MetaTagUpdateWithNestedWhereUniqueInput>>
+  /** Upsert multiple MetaTag documents */
+  upsert?: InputMaybe<Array<MetaTagUpsertWithNestedWhereUniqueInput>>
+}
+
+export type MetaTagUpdateManyInput = {
+  description?: InputMaybe<Scalars['String']>
+}
+
+export type MetaTagUpdateManyWithNestedWhereInput = {
+  /** Update many input */
+  data: MetaTagUpdateManyInput
+  /** Document search */
+  where: MetaTagWhereInput
+}
+
+export type MetaTagUpdateOneInlineInput = {
+  /** Connect existing MetaTag document */
+  connect?: InputMaybe<MetaTagWhereUniqueInput>
+  /** Create and connect one MetaTag document */
+  create?: InputMaybe<MetaTagCreateInput>
+  /** Delete currently connected MetaTag document */
+  delete?: InputMaybe<Scalars['Boolean']>
+  /** Disconnect currently connected MetaTag document */
+  disconnect?: InputMaybe<Scalars['Boolean']>
+  /** Update single MetaTag document */
+  update?: InputMaybe<MetaTagUpdateWithNestedWhereUniqueInput>
+  /** Upsert single MetaTag document */
+  upsert?: InputMaybe<MetaTagUpsertWithNestedWhereUniqueInput>
+}
+
+export type MetaTagUpdateWithNestedWhereUniqueInput = {
+  /** Document to update */
+  data: MetaTagUpdateInput
+  /** Unique document search */
+  where: MetaTagWhereUniqueInput
+}
+
+export type MetaTagUpsertInput = {
+  /** Create document if it didn't exist */
+  create: MetaTagCreateInput
+  /** Update document if it exists */
+  update: MetaTagUpdateInput
+}
+
+export type MetaTagUpsertWithNestedWhereUniqueInput = {
+  /** Upsert data */
+  data: MetaTagUpsertInput
+  /** Unique document search */
+  where: MetaTagWhereUniqueInput
+}
+
+/** This contains a set of filters that can be used to compare values internally */
+export type MetaTagWhereComparatorInput = {
+  /** This field can be used to request to check if the entry is outdated by internal comparison */
+  outdated_to?: InputMaybe<Scalars['Boolean']>
+}
+
+/** Identifies documents */
+export type MetaTagWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<MetaTagWhereInput>>
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<MetaTagWhereInput>>
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<MetaTagWhereInput>>
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']>
+  createdAt?: InputMaybe<Scalars['DateTime']>
+  /** All values greater than the given value. */
+  createdAt_gt?: InputMaybe<Scalars['DateTime']>
+  /** All values greater than or equal the given value. */
+  createdAt_gte?: InputMaybe<Scalars['DateTime']>
+  /** All values that are contained in given list. */
+  createdAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>
+  /** All values less than the given value. */
+  createdAt_lt?: InputMaybe<Scalars['DateTime']>
+  /** All values less than or equal the given value. */
+  createdAt_lte?: InputMaybe<Scalars['DateTime']>
+  /** All values that are not equal to given value. */
+  createdAt_not?: InputMaybe<Scalars['DateTime']>
+  /** All values that are not contained in given list. */
+  createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>
+  createdBy?: InputMaybe<UserWhereInput>
+  description?: InputMaybe<Scalars['String']>
+  /** All values containing the given string. */
+  description_contains?: InputMaybe<Scalars['String']>
+  /** All values ending with the given string. */
+  description_ends_with?: InputMaybe<Scalars['String']>
+  /** All values that are contained in given list. */
+  description_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  /** All values that are not equal to given value. */
+  description_not?: InputMaybe<Scalars['String']>
+  /** All values not containing the given string. */
+  description_not_contains?: InputMaybe<Scalars['String']>
+  /** All values not ending with the given string */
+  description_not_ends_with?: InputMaybe<Scalars['String']>
+  /** All values that are not contained in given list. */
+  description_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  /** All values not starting with the given string. */
+  description_not_starts_with?: InputMaybe<Scalars['String']>
+  /** All values starting with the given string. */
+  description_starts_with?: InputMaybe<Scalars['String']>
+  documentInStages_every?: InputMaybe<MetaTagWhereStageInput>
+  documentInStages_none?: InputMaybe<MetaTagWhereStageInput>
+  documentInStages_some?: InputMaybe<MetaTagWhereStageInput>
+  id?: InputMaybe<Scalars['ID']>
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']>
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']>
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
+  /** All values that are not equal to given value. */
+  id_not?: InputMaybe<Scalars['ID']>
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']>
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']>
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']>
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']>
+  image?: InputMaybe<AssetWhereInput>
+  page?: InputMaybe<Scalars['String']>
+  /** All values containing the given string. */
+  page_contains?: InputMaybe<Scalars['String']>
+  /** All values ending with the given string. */
+  page_ends_with?: InputMaybe<Scalars['String']>
+  /** All values that are contained in given list. */
+  page_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  /** All values that are not equal to given value. */
+  page_not?: InputMaybe<Scalars['String']>
+  /** All values not containing the given string. */
+  page_not_contains?: InputMaybe<Scalars['String']>
+  /** All values not ending with the given string */
+  page_not_ends_with?: InputMaybe<Scalars['String']>
+  /** All values that are not contained in given list. */
+  page_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  /** All values not starting with the given string. */
+  page_not_starts_with?: InputMaybe<Scalars['String']>
+  /** All values starting with the given string. */
+  page_starts_with?: InputMaybe<Scalars['String']>
+  publishedAt?: InputMaybe<Scalars['DateTime']>
+  /** All values greater than the given value. */
+  publishedAt_gt?: InputMaybe<Scalars['DateTime']>
+  /** All values greater than or equal the given value. */
+  publishedAt_gte?: InputMaybe<Scalars['DateTime']>
+  /** All values that are contained in given list. */
+  publishedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>
+  /** All values less than the given value. */
+  publishedAt_lt?: InputMaybe<Scalars['DateTime']>
+  /** All values less than or equal the given value. */
+  publishedAt_lte?: InputMaybe<Scalars['DateTime']>
+  /** All values that are not equal to given value. */
+  publishedAt_not?: InputMaybe<Scalars['DateTime']>
+  /** All values that are not contained in given list. */
+  publishedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>
+  publishedBy?: InputMaybe<UserWhereInput>
+  scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>
+  scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>
+  scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>
+  updatedAt?: InputMaybe<Scalars['DateTime']>
+  /** All values greater than the given value. */
+  updatedAt_gt?: InputMaybe<Scalars['DateTime']>
+  /** All values greater than or equal the given value. */
+  updatedAt_gte?: InputMaybe<Scalars['DateTime']>
+  /** All values that are contained in given list. */
+  updatedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>
+  /** All values less than the given value. */
+  updatedAt_lt?: InputMaybe<Scalars['DateTime']>
+  /** All values less than or equal the given value. */
+  updatedAt_lte?: InputMaybe<Scalars['DateTime']>
+  /** All values that are not equal to given value. */
+  updatedAt_not?: InputMaybe<Scalars['DateTime']>
+  /** All values that are not contained in given list. */
+  updatedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>
+  updatedBy?: InputMaybe<UserWhereInput>
+}
+
+/** The document in stages filter allows specifying a stage entry to cross compare the same document between different stages */
+export type MetaTagWhereStageInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<MetaTagWhereStageInput>>
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<MetaTagWhereStageInput>>
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<MetaTagWhereStageInput>>
+  /** This field contains fields which can be set as true or false to specify an internal comparison */
+  compareWithParent?: InputMaybe<MetaTagWhereComparatorInput>
+  /** Specify the stage to compare with */
+  stage?: InputMaybe<Stage>
+}
+
+/** References MetaTag record uniquely */
+export type MetaTagWhereUniqueInput = {
+  id?: InputMaybe<Scalars['ID']>
+  page?: InputMaybe<Scalars['String']>
+}
+
 export type Mutation = {
   __typename?: 'Mutation'
   /** Create one about */
@@ -3851,6 +4345,8 @@ export type Mutation = {
   createHowWork?: Maybe<HowWork>
   /** Create one menu */
   createMenu?: Maybe<Menu>
+  /** Create one metaTag */
+  createMetaTag?: Maybe<MetaTag>
   /** Create one partnership */
   createPartnership?: Maybe<Partnership>
   /** Create one pricing */
@@ -3912,6 +4408,13 @@ export type Mutation = {
   /** Delete many Menu documents, return deleted documents */
   deleteManyMenusConnection: MenuConnection
   /**
+   * Delete many MetaTag documents
+   * @deprecated Please use the new paginated many mutation (deleteManyMetaTagsConnection)
+   */
+  deleteManyMetaTags: BatchPayload
+  /** Delete many MetaTag documents, return deleted documents */
+  deleteManyMetaTagsConnection: MetaTagConnection
+  /**
    * Delete many Partnership documents
    * @deprecated Please use the new paginated many mutation (deleteManyPartnershipsConnection)
    */
@@ -3934,6 +4437,8 @@ export type Mutation = {
   deleteManySocialMediasConnection: SocialMediaConnection
   /** Delete one menu from _all_ existing stages. Returns deleted document. */
   deleteMenu?: Maybe<Menu>
+  /** Delete one metaTag from _all_ existing stages. Returns deleted document. */
+  deleteMetaTag?: Maybe<MetaTag>
   /** Delete one partnership from _all_ existing stages. Returns deleted document. */
   deletePartnership?: Maybe<Partnership>
   /** Delete one pricing from _all_ existing stages. Returns deleted document. */
@@ -3997,6 +4502,13 @@ export type Mutation = {
   /** Publish many Menu documents */
   publishManyMenusConnection: MenuConnection
   /**
+   * Publish many MetaTag documents
+   * @deprecated Please use the new paginated many mutation (publishManyMetaTagsConnection)
+   */
+  publishManyMetaTags: BatchPayload
+  /** Publish many MetaTag documents */
+  publishManyMetaTagsConnection: MetaTagConnection
+  /**
    * Publish many Partnership documents
    * @deprecated Please use the new paginated many mutation (publishManyPartnershipsConnection)
    */
@@ -4019,6 +4531,8 @@ export type Mutation = {
   publishManySocialMediasConnection: SocialMediaConnection
   /** Publish one menu */
   publishMenu?: Maybe<Menu>
+  /** Publish one metaTag */
+  publishMetaTag?: Maybe<MetaTag>
   /** Publish one partnership */
   publishPartnership?: Maybe<Partnership>
   /** Publish one pricing */
@@ -4037,6 +4551,8 @@ export type Mutation = {
   schedulePublishHowWork?: Maybe<HowWork>
   /** Schedule to publish one menu */
   schedulePublishMenu?: Maybe<Menu>
+  /** Schedule to publish one metaTag */
+  schedulePublishMetaTag?: Maybe<MetaTag>
   /** Schedule to publish one partnership */
   schedulePublishPartnership?: Maybe<Partnership>
   /** Schedule to publish one pricing */
@@ -4055,6 +4571,8 @@ export type Mutation = {
   scheduleUnpublishHowWork?: Maybe<HowWork>
   /** Unpublish one menu from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   scheduleUnpublishMenu?: Maybe<Menu>
+  /** Unpublish one metaTag from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
+  scheduleUnpublishMetaTag?: Maybe<MetaTag>
   /** Unpublish one partnership from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   scheduleUnpublishPartnership?: Maybe<Partnership>
   /** Unpublish one pricing from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
@@ -4114,6 +4632,13 @@ export type Mutation = {
   /** Find many Menu documents that match criteria in specified stage and unpublish from target stages */
   unpublishManyMenusConnection: MenuConnection
   /**
+   * Unpublish many MetaTag documents
+   * @deprecated Please use the new paginated many mutation (unpublishManyMetaTagsConnection)
+   */
+  unpublishManyMetaTags: BatchPayload
+  /** Find many MetaTag documents that match criteria in specified stage and unpublish from target stages */
+  unpublishManyMetaTagsConnection: MetaTagConnection
+  /**
    * Unpublish many Partnership documents
    * @deprecated Please use the new paginated many mutation (unpublishManyPartnershipsConnection)
    */
@@ -4136,6 +4661,8 @@ export type Mutation = {
   unpublishManySocialMediasConnection: SocialMediaConnection
   /** Unpublish one menu from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   unpublishMenu?: Maybe<Menu>
+  /** Unpublish one metaTag from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
+  unpublishMetaTag?: Maybe<MetaTag>
   /** Unpublish one partnership from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   unpublishPartnership?: Maybe<Partnership>
   /** Unpublish one pricing from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
@@ -4195,6 +4722,13 @@ export type Mutation = {
   /** Update many Menu documents */
   updateManyMenusConnection: MenuConnection
   /**
+   * Update many metaTags
+   * @deprecated Please use the new paginated many mutation (updateManyMetaTagsConnection)
+   */
+  updateManyMetaTags: BatchPayload
+  /** Update many MetaTag documents */
+  updateManyMetaTagsConnection: MetaTagConnection
+  /**
    * Update many partnerships
    * @deprecated Please use the new paginated many mutation (updateManyPartnershipsConnection)
    */
@@ -4217,6 +4751,8 @@ export type Mutation = {
   updateManySocialMediasConnection: SocialMediaConnection
   /** Update one menu */
   updateMenu?: Maybe<Menu>
+  /** Update one metaTag */
+  updateMetaTag?: Maybe<MetaTag>
   /** Update one partnership */
   updatePartnership?: Maybe<Partnership>
   /** Update one pricing */
@@ -4237,6 +4773,8 @@ export type Mutation = {
   upsertHowWork?: Maybe<HowWork>
   /** Upsert one menu */
   upsertMenu?: Maybe<Menu>
+  /** Upsert one metaTag */
+  upsertMetaTag?: Maybe<MetaTag>
   /** Upsert one partnership */
   upsertPartnership?: Maybe<Partnership>
   /** Upsert one pricing */
@@ -4267,6 +4805,10 @@ export type MutationCreateHowWorkArgs = {
 
 export type MutationCreateMenuArgs = {
   data: MenuCreateInput
+}
+
+export type MutationCreateMetaTagArgs = {
+  data: MetaTagCreateInput
 }
 
 export type MutationCreatePartnershipArgs = {
@@ -4383,6 +4925,19 @@ export type MutationDeleteManyMenusConnectionArgs = {
   where?: InputMaybe<MenuManyWhereInput>
 }
 
+export type MutationDeleteManyMetaTagsArgs = {
+  where?: InputMaybe<MetaTagManyWhereInput>
+}
+
+export type MutationDeleteManyMetaTagsConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>
+  before?: InputMaybe<Scalars['ID']>
+  first?: InputMaybe<Scalars['Int']>
+  last?: InputMaybe<Scalars['Int']>
+  skip?: InputMaybe<Scalars['Int']>
+  where?: InputMaybe<MetaTagManyWhereInput>
+}
+
 export type MutationDeleteManyPartnershipsArgs = {
   where?: InputMaybe<PartnershipManyWhereInput>
 }
@@ -4424,6 +4979,10 @@ export type MutationDeleteManySocialMediasConnectionArgs = {
 
 export type MutationDeleteMenuArgs = {
   where: MenuWhereUniqueInput
+}
+
+export type MutationDeleteMetaTagArgs = {
+  where: MetaTagWhereUniqueInput
 }
 
 export type MutationDeletePartnershipArgs = {
@@ -4576,6 +5135,22 @@ export type MutationPublishManyMenusConnectionArgs = {
   where?: InputMaybe<MenuManyWhereInput>
 }
 
+export type MutationPublishManyMetaTagsArgs = {
+  to?: Array<Stage>
+  where?: InputMaybe<MetaTagManyWhereInput>
+}
+
+export type MutationPublishManyMetaTagsConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>
+  before?: InputMaybe<Scalars['ID']>
+  first?: InputMaybe<Scalars['Int']>
+  from?: InputMaybe<Stage>
+  last?: InputMaybe<Scalars['Int']>
+  skip?: InputMaybe<Scalars['Int']>
+  to?: Array<Stage>
+  where?: InputMaybe<MetaTagManyWhereInput>
+}
+
 export type MutationPublishManyPartnershipsArgs = {
   to?: Array<Stage>
   where?: InputMaybe<PartnershipManyWhereInput>
@@ -4627,6 +5202,11 @@ export type MutationPublishManySocialMediasConnectionArgs = {
 export type MutationPublishMenuArgs = {
   to?: Array<Stage>
   where: MenuWhereUniqueInput
+}
+
+export type MutationPublishMetaTagArgs = {
+  to?: Array<Stage>
+  where: MetaTagWhereUniqueInput
 }
 
 export type MutationPublishPartnershipArgs = {
@@ -4687,6 +5267,13 @@ export type MutationSchedulePublishMenuArgs = {
   releaseId?: InputMaybe<Scalars['String']>
   to?: Array<Stage>
   where: MenuWhereUniqueInput
+}
+
+export type MutationSchedulePublishMetaTagArgs = {
+  releaseAt?: InputMaybe<Scalars['DateTime']>
+  releaseId?: InputMaybe<Scalars['String']>
+  to?: Array<Stage>
+  where: MetaTagWhereUniqueInput
 }
 
 export type MutationSchedulePublishPartnershipArgs = {
@@ -4752,6 +5339,13 @@ export type MutationScheduleUnpublishMenuArgs = {
   releaseAt?: InputMaybe<Scalars['DateTime']>
   releaseId?: InputMaybe<Scalars['String']>
   where: MenuWhereUniqueInput
+}
+
+export type MutationScheduleUnpublishMetaTagArgs = {
+  from?: Array<Stage>
+  releaseAt?: InputMaybe<Scalars['DateTime']>
+  releaseId?: InputMaybe<Scalars['String']>
+  where: MetaTagWhereUniqueInput
 }
 
 export type MutationScheduleUnpublishPartnershipArgs = {
@@ -4902,6 +5496,22 @@ export type MutationUnpublishManyMenusConnectionArgs = {
   where?: InputMaybe<MenuManyWhereInput>
 }
 
+export type MutationUnpublishManyMetaTagsArgs = {
+  from?: Array<Stage>
+  where?: InputMaybe<MetaTagManyWhereInput>
+}
+
+export type MutationUnpublishManyMetaTagsConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>
+  before?: InputMaybe<Scalars['ID']>
+  first?: InputMaybe<Scalars['Int']>
+  from?: Array<Stage>
+  last?: InputMaybe<Scalars['Int']>
+  skip?: InputMaybe<Scalars['Int']>
+  stage?: InputMaybe<Stage>
+  where?: InputMaybe<MetaTagManyWhereInput>
+}
+
 export type MutationUnpublishManyPartnershipsArgs = {
   from?: Array<Stage>
   where?: InputMaybe<PartnershipManyWhereInput>
@@ -4953,6 +5563,11 @@ export type MutationUnpublishManySocialMediasConnectionArgs = {
 export type MutationUnpublishMenuArgs = {
   from?: Array<Stage>
   where: MenuWhereUniqueInput
+}
+
+export type MutationUnpublishMetaTagArgs = {
+  from?: Array<Stage>
+  where: MetaTagWhereUniqueInput
 }
 
 export type MutationUnpublishPartnershipArgs = {
@@ -5085,6 +5700,21 @@ export type MutationUpdateManyMenusConnectionArgs = {
   where?: InputMaybe<MenuManyWhereInput>
 }
 
+export type MutationUpdateManyMetaTagsArgs = {
+  data: MetaTagUpdateManyInput
+  where?: InputMaybe<MetaTagManyWhereInput>
+}
+
+export type MutationUpdateManyMetaTagsConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>
+  before?: InputMaybe<Scalars['ID']>
+  data: MetaTagUpdateManyInput
+  first?: InputMaybe<Scalars['Int']>
+  last?: InputMaybe<Scalars['Int']>
+  skip?: InputMaybe<Scalars['Int']>
+  where?: InputMaybe<MetaTagManyWhereInput>
+}
+
 export type MutationUpdateManyPartnershipsArgs = {
   data: PartnershipUpdateManyInput
   where?: InputMaybe<PartnershipManyWhereInput>
@@ -5135,6 +5765,11 @@ export type MutationUpdateMenuArgs = {
   where: MenuWhereUniqueInput
 }
 
+export type MutationUpdateMetaTagArgs = {
+  data: MetaTagUpdateInput
+  where: MetaTagWhereUniqueInput
+}
+
 export type MutationUpdatePartnershipArgs = {
   data: PartnershipUpdateInput
   where: PartnershipWhereUniqueInput
@@ -5183,6 +5818,11 @@ export type MutationUpsertHowWorkArgs = {
 export type MutationUpsertMenuArgs = {
   upsert: MenuUpsertInput
   where: MenuWhereUniqueInput
+}
+
+export type MutationUpsertMetaTagArgs = {
+  upsert: MetaTagUpsertInput
+  where: MetaTagWhereUniqueInput
 }
 
 export type MutationUpsertPartnershipArgs = {
@@ -6291,6 +6931,14 @@ export type Query = {
   menus: Array<Menu>
   /** Retrieve multiple menus using the Relay connection interface */
   menusConnection: MenuConnection
+  /** Retrieve a single metaTag */
+  metaTag?: Maybe<MetaTag>
+  /** Retrieve document version */
+  metaTagVersion?: Maybe<DocumentVersion>
+  /** Retrieve multiple metaTags */
+  metaTags: Array<MetaTag>
+  /** Retrieve multiple metaTags using the Relay connection interface */
+  metaTagsConnection: MetaTagConnection
   /** Fetches an object given its ID */
   node?: Maybe<Node>
   /** Retrieve a single partnership */
@@ -6539,6 +7187,40 @@ export type QueryMenusConnectionArgs = {
   skip?: InputMaybe<Scalars['Int']>
   stage?: Stage
   where?: InputMaybe<MenuWhereInput>
+}
+
+export type QueryMetaTagArgs = {
+  locales?: Array<Locale>
+  stage?: Stage
+  where: MetaTagWhereUniqueInput
+}
+
+export type QueryMetaTagVersionArgs = {
+  where: VersionWhereInput
+}
+
+export type QueryMetaTagsArgs = {
+  after?: InputMaybe<Scalars['String']>
+  before?: InputMaybe<Scalars['String']>
+  first?: InputMaybe<Scalars['Int']>
+  last?: InputMaybe<Scalars['Int']>
+  locales?: Array<Locale>
+  orderBy?: InputMaybe<MetaTagOrderByInput>
+  skip?: InputMaybe<Scalars['Int']>
+  stage?: Stage
+  where?: InputMaybe<MetaTagWhereInput>
+}
+
+export type QueryMetaTagsConnectionArgs = {
+  after?: InputMaybe<Scalars['String']>
+  before?: InputMaybe<Scalars['String']>
+  first?: InputMaybe<Scalars['Int']>
+  last?: InputMaybe<Scalars['Int']>
+  locales?: Array<Locale>
+  orderBy?: InputMaybe<MetaTagOrderByInput>
+  skip?: InputMaybe<Scalars['Int']>
+  stage?: Stage
+  where?: InputMaybe<MetaTagWhereInput>
 }
 
 export type QueryNodeArgs = {
@@ -6847,6 +7529,7 @@ export type ScheduledOperationAffectedDocument =
   | Contact
   | HowWork
   | Menu
+  | MetaTag
   | Partnership
   | Pricing
   | SocialMedia
@@ -8714,6 +9397,11 @@ export type HomepageQuery = {
     __typename?: 'Menu'
     links: Array<{ __typename?: 'Button'; name: string; url: string }>
   }>
+  metaTag?: {
+    __typename?: 'MetaTag'
+    description?: string | null
+    image?: { __typename?: 'Asset'; url: string } | null
+  } | null
   banners: Array<{
     __typename?: 'Banner'
     title?: string | null
@@ -8761,6 +9449,12 @@ export const HomepageDocument = gql`
     menus {
       links(orderBy: order_ASC) {
         name
+        url
+      }
+    }
+    metaTag(where: { page: "home" }) {
+      description
+      image {
         url
       }
     }

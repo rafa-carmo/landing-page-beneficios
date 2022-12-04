@@ -5,6 +5,12 @@ query Homepage {
       url
     }
   }
+  metaTag(where: {page: "home"}) {
+  description
+    image{
+      url
+    }
+}
   banners {
     title
     subtitle
@@ -42,7 +48,7 @@ query Homepage {
     valores
     name
   }
-    socialMedias {
+  socialMedias {
     url
     icon
   }

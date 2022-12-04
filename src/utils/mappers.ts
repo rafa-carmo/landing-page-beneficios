@@ -21,6 +21,10 @@ export function homeMapper(homeQuery: HomepageQuery) {
           icon: media.icon,
           url: media.url
         }))
+      },
+      meta: {
+        description: homeQuery.metaTag?.description,
+        image: homeQuery.metaTag?.image?.url
       }
     },
     slider: {
