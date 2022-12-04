@@ -1,0 +1,42 @@
+query FuneralPage {
+  menus {
+    links(orderBy: order_ASC) {
+      name
+      url
+    }
+  }
+  metaTag(where: {page: "funeral"}) {
+  description
+    image{
+      url
+    }
+}
+  abouts {
+    about
+    howWorks
+    objetivo
+    visao
+    valores
+    name
+    image {
+      url
+    }
+  }
+  socialMedias {
+    url
+    icon
+  }
+  funeralAssistencePages {
+    funeralContractClauses
+    plans {
+      age
+      individualValue
+      familiarValue
+    }
+    aggregatesValues{
+      age
+      value
+    }
+  }
+
+}

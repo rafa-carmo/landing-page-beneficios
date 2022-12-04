@@ -1,4 +1,9 @@
-import { HomepageQuery, MedicOnlinePageQuery } from '../generated/graphql'
+import {
+  FuneralPageQuery,
+  HomepageQuery,
+  MedicOnlinePageQuery
+} from '../generated/graphql'
+import { AssistenciaFuneralTemplateProps } from '../templates/AssistenciaFuneral'
 import { MedicinaOnlineTemplateProps } from '../templates/MedicinaOnline/index'
 
 export function homeMapper(homeQuery: HomepageQuery) {
@@ -121,4 +126,38 @@ export function medicOnlineMapper(homeQuery: MedicOnlinePageQuery) {
       inclidesItems: price.itens
     }))
   } as MedicinaOnlineTemplateProps
+}
+
+export function funeralPageMapper(homeQuery: FuneralPageQuery) {
+  const funeralPage = homeQuery.funeralAssistencePages[0]
+  return {
+    base: {
+      menu: {
+        items: homeQuery.menus[0].links.map((menu) => ({
+          name: menu.name,
+          link: menu.url,
+          icon: 'home'
+        })),
+        socialMedias: homeQuery.socialMedias.map((media) => ({
+          icon: media.icon,
+          url: media.url
+        }))
+      },
+      footer: {
+        values: homeQuery.abouts[0].valores,
+        about: homeQuery.abouts[0].about,
+        socialMedias: homeQuery.socialMedias.map((media) => ({
+          icon: media.icon,
+          url: media.url
+        }))
+      },
+      meta: {
+        description: homeQuery.metaTag?.description,
+        image: homeQuery.metaTag?.image?.url || null
+      }
+    },
+    contract: funeralPage.funeralContractClauses,
+    aggregates: funeralPage.aggregatesValues,
+    plans: funeralPage.plans
+  } as AssistenciaFuneralTemplateProps
 }

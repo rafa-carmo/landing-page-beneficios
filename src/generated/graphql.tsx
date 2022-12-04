@@ -727,6 +727,374 @@ export type Aggregate = {
   count: Scalars['Int']
 }
 
+export type AggregateItem = {
+  __typename?: 'AggregateItem'
+  age: Scalars['String']
+  /** The unique identifier */
+  id: Scalars['ID']
+  /** System stage field */
+  stage: Stage
+  value: Scalars['Float']
+}
+
+export type AggregateItemConnectInput = {
+  /** Allow to specify document position in list of connected documents, will default to appending at end of list */
+  position?: InputMaybe<ConnectPositionInput>
+  /** Document to connect */
+  where: AggregateItemWhereUniqueInput
+}
+
+/** A connection to a list of items. */
+export type AggregateItemConnection = {
+  __typename?: 'AggregateItemConnection'
+  aggregate: Aggregate
+  /** A list of edges. */
+  edges: Array<AggregateItemEdge>
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo
+}
+
+export type AggregateItemCreateInput = {
+  age: Scalars['String']
+  value: Scalars['Float']
+}
+
+export type AggregateItemCreateManyInlineInput = {
+  /** Create and connect multiple existing AggregateItem documents */
+  create?: InputMaybe<Array<AggregateItemCreateInput>>
+}
+
+export type AggregateItemCreateOneInlineInput = {
+  /** Create and connect one AggregateItem document */
+  create?: InputMaybe<AggregateItemCreateInput>
+}
+
+export type AggregateItemCreateWithPositionInput = {
+  /** Document to create */
+  data: AggregateItemCreateInput
+  /** Position in the list of existing component instances, will default to appending at the end of list */
+  position?: InputMaybe<ConnectPositionInput>
+}
+
+/** An edge in a connection. */
+export type AggregateItemEdge = {
+  __typename?: 'AggregateItemEdge'
+  /** A cursor for use in pagination. */
+  cursor: Scalars['String']
+  /** The item at the end of the edge. */
+  node: AggregateItem
+}
+
+/** Identifies documents */
+export type AggregateItemManyWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<AggregateItemWhereInput>>
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<AggregateItemWhereInput>>
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<AggregateItemWhereInput>>
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']>
+  age?: InputMaybe<Scalars['String']>
+  /** All values containing the given string. */
+  age_contains?: InputMaybe<Scalars['String']>
+  /** All values ending with the given string. */
+  age_ends_with?: InputMaybe<Scalars['String']>
+  /** All values that are contained in given list. */
+  age_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  /** All values that are not equal to given value. */
+  age_not?: InputMaybe<Scalars['String']>
+  /** All values not containing the given string. */
+  age_not_contains?: InputMaybe<Scalars['String']>
+  /** All values not ending with the given string */
+  age_not_ends_with?: InputMaybe<Scalars['String']>
+  /** All values that are not contained in given list. */
+  age_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  /** All values not starting with the given string. */
+  age_not_starts_with?: InputMaybe<Scalars['String']>
+  /** All values starting with the given string. */
+  age_starts_with?: InputMaybe<Scalars['String']>
+  id?: InputMaybe<Scalars['ID']>
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']>
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']>
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
+  /** All values that are not equal to given value. */
+  id_not?: InputMaybe<Scalars['ID']>
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']>
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']>
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']>
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']>
+  value?: InputMaybe<Scalars['Float']>
+  /** All values greater than the given value. */
+  value_gt?: InputMaybe<Scalars['Float']>
+  /** All values greater than or equal the given value. */
+  value_gte?: InputMaybe<Scalars['Float']>
+  /** All values that are contained in given list. */
+  value_in?: InputMaybe<Array<InputMaybe<Scalars['Float']>>>
+  /** All values less than the given value. */
+  value_lt?: InputMaybe<Scalars['Float']>
+  /** All values less than or equal the given value. */
+  value_lte?: InputMaybe<Scalars['Float']>
+  /** All values that are not equal to given value. */
+  value_not?: InputMaybe<Scalars['Float']>
+  /** All values that are not contained in given list. */
+  value_not_in?: InputMaybe<Array<InputMaybe<Scalars['Float']>>>
+}
+
+export enum AggregateItemOrderByInput {
+  AgeAsc = 'age_ASC',
+  AgeDesc = 'age_DESC',
+  IdAsc = 'id_ASC',
+  IdDesc = 'id_DESC',
+  ValueAsc = 'value_ASC',
+  ValueDesc = 'value_DESC'
+}
+
+export type AggregateItemParent = FuneralAssistencePage
+
+export type AggregateItemParentConnectInput = {
+  FuneralAssistencePage?: InputMaybe<FuneralAssistencePageConnectInput>
+}
+
+export type AggregateItemParentCreateInput = {
+  FuneralAssistencePage?: InputMaybe<FuneralAssistencePageCreateInput>
+}
+
+export type AggregateItemParentCreateManyInlineInput = {
+  /** Connect multiple existing AggregateItemParent documents */
+  connect?: InputMaybe<Array<AggregateItemParentWhereUniqueInput>>
+  /** Create and connect multiple existing AggregateItemParent documents */
+  create?: InputMaybe<Array<AggregateItemParentCreateInput>>
+}
+
+export type AggregateItemParentCreateOneInlineInput = {
+  /** Connect one existing AggregateItemParent document */
+  connect?: InputMaybe<AggregateItemParentWhereUniqueInput>
+  /** Create and connect one AggregateItemParent document */
+  create?: InputMaybe<AggregateItemParentCreateInput>
+}
+
+export type AggregateItemParentUpdateInput = {
+  FuneralAssistencePage?: InputMaybe<FuneralAssistencePageUpdateInput>
+}
+
+export type AggregateItemParentUpdateManyInlineInput = {
+  /** Connect multiple existing AggregateItemParent documents */
+  connect?: InputMaybe<Array<AggregateItemParentConnectInput>>
+  /** Create and connect multiple AggregateItemParent documents */
+  create?: InputMaybe<Array<AggregateItemParentCreateInput>>
+  /** Delete multiple AggregateItemParent documents */
+  delete?: InputMaybe<Array<AggregateItemParentWhereUniqueInput>>
+  /** Disconnect multiple AggregateItemParent documents */
+  disconnect?: InputMaybe<Array<AggregateItemParentWhereUniqueInput>>
+  /** Override currently-connected documents with multiple existing AggregateItemParent documents */
+  set?: InputMaybe<Array<AggregateItemParentWhereUniqueInput>>
+  /** Update multiple AggregateItemParent documents */
+  update?: InputMaybe<
+    Array<AggregateItemParentUpdateWithNestedWhereUniqueInput>
+  >
+  /** Upsert multiple AggregateItemParent documents */
+  upsert?: InputMaybe<
+    Array<AggregateItemParentUpsertWithNestedWhereUniqueInput>
+  >
+}
+
+export type AggregateItemParentUpdateManyWithNestedWhereInput = {
+  FuneralAssistencePage?: InputMaybe<FuneralAssistencePageUpdateManyWithNestedWhereInput>
+}
+
+export type AggregateItemParentUpdateOneInlineInput = {
+  /** Connect existing AggregateItemParent document */
+  connect?: InputMaybe<AggregateItemParentWhereUniqueInput>
+  /** Create and connect one AggregateItemParent document */
+  create?: InputMaybe<AggregateItemParentCreateInput>
+  /** Delete currently connected AggregateItemParent document */
+  delete?: InputMaybe<Scalars['Boolean']>
+  /** Disconnect currently connected AggregateItemParent document */
+  disconnect?: InputMaybe<Scalars['Boolean']>
+  /** Update single AggregateItemParent document */
+  update?: InputMaybe<AggregateItemParentUpdateWithNestedWhereUniqueInput>
+  /** Upsert single AggregateItemParent document */
+  upsert?: InputMaybe<AggregateItemParentUpsertWithNestedWhereUniqueInput>
+}
+
+export type AggregateItemParentUpdateWithNestedWhereUniqueInput = {
+  FuneralAssistencePage?: InputMaybe<FuneralAssistencePageUpdateWithNestedWhereUniqueInput>
+}
+
+export type AggregateItemParentUpsertWithNestedWhereUniqueInput = {
+  FuneralAssistencePage?: InputMaybe<FuneralAssistencePageUpsertWithNestedWhereUniqueInput>
+}
+
+export type AggregateItemParentWhereInput = {
+  FuneralAssistencePage?: InputMaybe<FuneralAssistencePageWhereInput>
+}
+
+export type AggregateItemParentWhereUniqueInput = {
+  FuneralAssistencePage?: InputMaybe<FuneralAssistencePageWhereUniqueInput>
+}
+
+export type AggregateItemUpdateInput = {
+  age?: InputMaybe<Scalars['String']>
+  value?: InputMaybe<Scalars['Float']>
+}
+
+export type AggregateItemUpdateManyInlineInput = {
+  /** Create and connect multiple AggregateItem component instances */
+  create?: InputMaybe<Array<AggregateItemCreateWithPositionInput>>
+  /** Delete multiple AggregateItem documents */
+  delete?: InputMaybe<Array<AggregateItemWhereUniqueInput>>
+  /** Update multiple AggregateItem component instances */
+  update?: InputMaybe<
+    Array<AggregateItemUpdateWithNestedWhereUniqueAndPositionInput>
+  >
+  /** Upsert multiple AggregateItem component instances */
+  upsert?: InputMaybe<
+    Array<AggregateItemUpsertWithNestedWhereUniqueAndPositionInput>
+  >
+}
+
+export type AggregateItemUpdateManyInput = {
+  age?: InputMaybe<Scalars['String']>
+  value?: InputMaybe<Scalars['Float']>
+}
+
+export type AggregateItemUpdateManyWithNestedWhereInput = {
+  /** Update many input */
+  data: AggregateItemUpdateManyInput
+  /** Document search */
+  where: AggregateItemWhereInput
+}
+
+export type AggregateItemUpdateOneInlineInput = {
+  /** Create and connect one AggregateItem document */
+  create?: InputMaybe<AggregateItemCreateInput>
+  /** Delete currently connected AggregateItem document */
+  delete?: InputMaybe<Scalars['Boolean']>
+  /** Update single AggregateItem document */
+  update?: InputMaybe<AggregateItemUpdateWithNestedWhereUniqueInput>
+  /** Upsert single AggregateItem document */
+  upsert?: InputMaybe<AggregateItemUpsertWithNestedWhereUniqueInput>
+}
+
+export type AggregateItemUpdateWithNestedWhereUniqueAndPositionInput = {
+  /** Document to update */
+  data?: InputMaybe<AggregateItemUpdateInput>
+  /** Position in the list of existing component instances, will default to appending at the end of list */
+  position?: InputMaybe<ConnectPositionInput>
+  /** Unique component instance search */
+  where: AggregateItemWhereUniqueInput
+}
+
+export type AggregateItemUpdateWithNestedWhereUniqueInput = {
+  /** Document to update */
+  data: AggregateItemUpdateInput
+  /** Unique document search */
+  where: AggregateItemWhereUniqueInput
+}
+
+export type AggregateItemUpsertInput = {
+  /** Create document if it didn't exist */
+  create: AggregateItemCreateInput
+  /** Update document if it exists */
+  update: AggregateItemUpdateInput
+}
+
+export type AggregateItemUpsertWithNestedWhereUniqueAndPositionInput = {
+  /** Document to upsert */
+  data?: InputMaybe<AggregateItemUpsertInput>
+  /** Position in the list of existing component instances, will default to appending at the end of list */
+  position?: InputMaybe<ConnectPositionInput>
+  /** Unique component instance search */
+  where: AggregateItemWhereUniqueInput
+}
+
+export type AggregateItemUpsertWithNestedWhereUniqueInput = {
+  /** Upsert data */
+  data: AggregateItemUpsertInput
+  /** Unique document search */
+  where: AggregateItemWhereUniqueInput
+}
+
+/** Identifies documents */
+export type AggregateItemWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<AggregateItemWhereInput>>
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<AggregateItemWhereInput>>
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<AggregateItemWhereInput>>
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']>
+  age?: InputMaybe<Scalars['String']>
+  /** All values containing the given string. */
+  age_contains?: InputMaybe<Scalars['String']>
+  /** All values ending with the given string. */
+  age_ends_with?: InputMaybe<Scalars['String']>
+  /** All values that are contained in given list. */
+  age_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  /** All values that are not equal to given value. */
+  age_not?: InputMaybe<Scalars['String']>
+  /** All values not containing the given string. */
+  age_not_contains?: InputMaybe<Scalars['String']>
+  /** All values not ending with the given string */
+  age_not_ends_with?: InputMaybe<Scalars['String']>
+  /** All values that are not contained in given list. */
+  age_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  /** All values not starting with the given string. */
+  age_not_starts_with?: InputMaybe<Scalars['String']>
+  /** All values starting with the given string. */
+  age_starts_with?: InputMaybe<Scalars['String']>
+  id?: InputMaybe<Scalars['ID']>
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']>
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']>
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
+  /** All values that are not equal to given value. */
+  id_not?: InputMaybe<Scalars['ID']>
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']>
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']>
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']>
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']>
+  value?: InputMaybe<Scalars['Float']>
+  /** All values greater than the given value. */
+  value_gt?: InputMaybe<Scalars['Float']>
+  /** All values greater than or equal the given value. */
+  value_gte?: InputMaybe<Scalars['Float']>
+  /** All values that are contained in given list. */
+  value_in?: InputMaybe<Array<InputMaybe<Scalars['Float']>>>
+  /** All values less than the given value. */
+  value_lt?: InputMaybe<Scalars['Float']>
+  /** All values less than or equal the given value. */
+  value_lte?: InputMaybe<Scalars['Float']>
+  /** All values that are not equal to given value. */
+  value_not?: InputMaybe<Scalars['Float']>
+  /** All values that are not contained in given list. */
+  value_not_in?: InputMaybe<Array<InputMaybe<Scalars['Float']>>>
+}
+
+/** References AggregateItem record uniquely */
+export type AggregateItemWhereUniqueInput = {
+  id?: InputMaybe<Scalars['ID']>
+}
+
 /** Asset system model */
 export type Asset = Node & {
   __typename?: 'Asset'
@@ -3434,6 +3802,852 @@ export type DocumentVersion = {
   stage: Stage
 }
 
+export type FuneralAssistencePage = Node & {
+  __typename?: 'FuneralAssistencePage'
+  aggregatesValues: Array<AggregateItem>
+  /** The time the document was created */
+  createdAt: Scalars['DateTime']
+  /** User that created this document */
+  createdBy?: Maybe<User>
+  /** Get the document in other stages */
+  documentInStages: Array<FuneralAssistencePage>
+  funeralContractClauses: Array<Scalars['String']>
+  /** List of FuneralAssistencePage versions */
+  history: Array<Version>
+  /** The unique identifier */
+  id: Scalars['ID']
+  plans: Array<FuneralPlan>
+  /** The time the document was published. Null on documents in draft stage. */
+  publishedAt?: Maybe<Scalars['DateTime']>
+  /** User that last published this document */
+  publishedBy?: Maybe<User>
+  scheduledIn: Array<ScheduledOperation>
+  /** System stage field */
+  stage: Stage
+  /** The time the document was updated */
+  updatedAt: Scalars['DateTime']
+  /** User that last updated this document */
+  updatedBy?: Maybe<User>
+}
+
+export type FuneralAssistencePageAggregatesValuesArgs = {
+  after?: InputMaybe<Scalars['String']>
+  before?: InputMaybe<Scalars['String']>
+  first?: InputMaybe<Scalars['Int']>
+  last?: InputMaybe<Scalars['Int']>
+  locales?: InputMaybe<Array<Locale>>
+  orderBy?: InputMaybe<AggregateItemOrderByInput>
+  skip?: InputMaybe<Scalars['Int']>
+  where?: InputMaybe<AggregateItemWhereInput>
+}
+
+export type FuneralAssistencePageCreatedByArgs = {
+  locales?: InputMaybe<Array<Locale>>
+}
+
+export type FuneralAssistencePageDocumentInStagesArgs = {
+  includeCurrent?: Scalars['Boolean']
+  inheritLocale?: Scalars['Boolean']
+  stages?: Array<Stage>
+}
+
+export type FuneralAssistencePageHistoryArgs = {
+  limit?: Scalars['Int']
+  skip?: Scalars['Int']
+  stageOverride?: InputMaybe<Stage>
+}
+
+export type FuneralAssistencePagePlansArgs = {
+  after?: InputMaybe<Scalars['String']>
+  before?: InputMaybe<Scalars['String']>
+  first?: InputMaybe<Scalars['Int']>
+  last?: InputMaybe<Scalars['Int']>
+  locales?: InputMaybe<Array<Locale>>
+  orderBy?: InputMaybe<FuneralPlanOrderByInput>
+  skip?: InputMaybe<Scalars['Int']>
+  where?: InputMaybe<FuneralPlanWhereInput>
+}
+
+export type FuneralAssistencePagePublishedByArgs = {
+  locales?: InputMaybe<Array<Locale>>
+}
+
+export type FuneralAssistencePageScheduledInArgs = {
+  after?: InputMaybe<Scalars['String']>
+  before?: InputMaybe<Scalars['String']>
+  first?: InputMaybe<Scalars['Int']>
+  last?: InputMaybe<Scalars['Int']>
+  locales?: InputMaybe<Array<Locale>>
+  skip?: InputMaybe<Scalars['Int']>
+  where?: InputMaybe<ScheduledOperationWhereInput>
+}
+
+export type FuneralAssistencePageUpdatedByArgs = {
+  locales?: InputMaybe<Array<Locale>>
+}
+
+export type FuneralAssistencePageConnectInput = {
+  /** Allow to specify document position in list of connected documents, will default to appending at end of list */
+  position?: InputMaybe<ConnectPositionInput>
+  /** Document to connect */
+  where: FuneralAssistencePageWhereUniqueInput
+}
+
+/** A connection to a list of items. */
+export type FuneralAssistencePageConnection = {
+  __typename?: 'FuneralAssistencePageConnection'
+  aggregate: Aggregate
+  /** A list of edges. */
+  edges: Array<FuneralAssistencePageEdge>
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo
+}
+
+export type FuneralAssistencePageCreateInput = {
+  aggregatesValues?: InputMaybe<AggregateItemCreateManyInlineInput>
+  createdAt?: InputMaybe<Scalars['DateTime']>
+  funeralContractClauses: Array<Scalars['String']>
+  plans?: InputMaybe<FuneralPlanCreateManyInlineInput>
+  updatedAt?: InputMaybe<Scalars['DateTime']>
+}
+
+export type FuneralAssistencePageCreateManyInlineInput = {
+  /** Connect multiple existing FuneralAssistencePage documents */
+  connect?: InputMaybe<Array<FuneralAssistencePageWhereUniqueInput>>
+  /** Create and connect multiple existing FuneralAssistencePage documents */
+  create?: InputMaybe<Array<FuneralAssistencePageCreateInput>>
+}
+
+export type FuneralAssistencePageCreateOneInlineInput = {
+  /** Connect one existing FuneralAssistencePage document */
+  connect?: InputMaybe<FuneralAssistencePageWhereUniqueInput>
+  /** Create and connect one FuneralAssistencePage document */
+  create?: InputMaybe<FuneralAssistencePageCreateInput>
+}
+
+/** An edge in a connection. */
+export type FuneralAssistencePageEdge = {
+  __typename?: 'FuneralAssistencePageEdge'
+  /** A cursor for use in pagination. */
+  cursor: Scalars['String']
+  /** The item at the end of the edge. */
+  node: FuneralAssistencePage
+}
+
+/** Identifies documents */
+export type FuneralAssistencePageManyWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<FuneralAssistencePageWhereInput>>
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<FuneralAssistencePageWhereInput>>
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<FuneralAssistencePageWhereInput>>
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']>
+  aggregatesValues_every?: InputMaybe<AggregateItemWhereInput>
+  aggregatesValues_none?: InputMaybe<AggregateItemWhereInput>
+  aggregatesValues_some?: InputMaybe<AggregateItemWhereInput>
+  createdAt?: InputMaybe<Scalars['DateTime']>
+  /** All values greater than the given value. */
+  createdAt_gt?: InputMaybe<Scalars['DateTime']>
+  /** All values greater than or equal the given value. */
+  createdAt_gte?: InputMaybe<Scalars['DateTime']>
+  /** All values that are contained in given list. */
+  createdAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>
+  /** All values less than the given value. */
+  createdAt_lt?: InputMaybe<Scalars['DateTime']>
+  /** All values less than or equal the given value. */
+  createdAt_lte?: InputMaybe<Scalars['DateTime']>
+  /** All values that are not equal to given value. */
+  createdAt_not?: InputMaybe<Scalars['DateTime']>
+  /** All values that are not contained in given list. */
+  createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>
+  createdBy?: InputMaybe<UserWhereInput>
+  documentInStages_every?: InputMaybe<FuneralAssistencePageWhereStageInput>
+  documentInStages_none?: InputMaybe<FuneralAssistencePageWhereStageInput>
+  documentInStages_some?: InputMaybe<FuneralAssistencePageWhereStageInput>
+  /** Matches if the field array contains *all* items provided to the filter and order does match */
+  funeralContractClauses?: InputMaybe<Array<Scalars['String']>>
+  /** Matches if the field array contains *all* items provided to the filter */
+  funeralContractClauses_contains_all?: InputMaybe<Array<Scalars['String']>>
+  /** Matches if the field array does not contain any of the items provided to the filter */
+  funeralContractClauses_contains_none?: InputMaybe<Array<Scalars['String']>>
+  /** Matches if the field array contains at least one item provided to the filter */
+  funeralContractClauses_contains_some?: InputMaybe<Array<Scalars['String']>>
+  /** Matches if the field array does not contains *all* items provided to the filter or order does not match */
+  funeralContractClauses_not?: InputMaybe<Array<Scalars['String']>>
+  id?: InputMaybe<Scalars['ID']>
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']>
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']>
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
+  /** All values that are not equal to given value. */
+  id_not?: InputMaybe<Scalars['ID']>
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']>
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']>
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']>
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']>
+  plans_every?: InputMaybe<FuneralPlanWhereInput>
+  plans_none?: InputMaybe<FuneralPlanWhereInput>
+  plans_some?: InputMaybe<FuneralPlanWhereInput>
+  publishedAt?: InputMaybe<Scalars['DateTime']>
+  /** All values greater than the given value. */
+  publishedAt_gt?: InputMaybe<Scalars['DateTime']>
+  /** All values greater than or equal the given value. */
+  publishedAt_gte?: InputMaybe<Scalars['DateTime']>
+  /** All values that are contained in given list. */
+  publishedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>
+  /** All values less than the given value. */
+  publishedAt_lt?: InputMaybe<Scalars['DateTime']>
+  /** All values less than or equal the given value. */
+  publishedAt_lte?: InputMaybe<Scalars['DateTime']>
+  /** All values that are not equal to given value. */
+  publishedAt_not?: InputMaybe<Scalars['DateTime']>
+  /** All values that are not contained in given list. */
+  publishedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>
+  publishedBy?: InputMaybe<UserWhereInput>
+  scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>
+  scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>
+  scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>
+  updatedAt?: InputMaybe<Scalars['DateTime']>
+  /** All values greater than the given value. */
+  updatedAt_gt?: InputMaybe<Scalars['DateTime']>
+  /** All values greater than or equal the given value. */
+  updatedAt_gte?: InputMaybe<Scalars['DateTime']>
+  /** All values that are contained in given list. */
+  updatedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>
+  /** All values less than the given value. */
+  updatedAt_lt?: InputMaybe<Scalars['DateTime']>
+  /** All values less than or equal the given value. */
+  updatedAt_lte?: InputMaybe<Scalars['DateTime']>
+  /** All values that are not equal to given value. */
+  updatedAt_not?: InputMaybe<Scalars['DateTime']>
+  /** All values that are not contained in given list. */
+  updatedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>
+  updatedBy?: InputMaybe<UserWhereInput>
+}
+
+export enum FuneralAssistencePageOrderByInput {
+  CreatedAtAsc = 'createdAt_ASC',
+  CreatedAtDesc = 'createdAt_DESC',
+  FuneralContractClausesAsc = 'funeralContractClauses_ASC',
+  FuneralContractClausesDesc = 'funeralContractClauses_DESC',
+  IdAsc = 'id_ASC',
+  IdDesc = 'id_DESC',
+  PublishedAtAsc = 'publishedAt_ASC',
+  PublishedAtDesc = 'publishedAt_DESC',
+  UpdatedAtAsc = 'updatedAt_ASC',
+  UpdatedAtDesc = 'updatedAt_DESC'
+}
+
+export type FuneralAssistencePageUpdateInput = {
+  aggregatesValues?: InputMaybe<AggregateItemUpdateManyInlineInput>
+  funeralContractClauses?: InputMaybe<Array<Scalars['String']>>
+  plans?: InputMaybe<FuneralPlanUpdateManyInlineInput>
+}
+
+export type FuneralAssistencePageUpdateManyInlineInput = {
+  /** Connect multiple existing FuneralAssistencePage documents */
+  connect?: InputMaybe<Array<FuneralAssistencePageConnectInput>>
+  /** Create and connect multiple FuneralAssistencePage documents */
+  create?: InputMaybe<Array<FuneralAssistencePageCreateInput>>
+  /** Delete multiple FuneralAssistencePage documents */
+  delete?: InputMaybe<Array<FuneralAssistencePageWhereUniqueInput>>
+  /** Disconnect multiple FuneralAssistencePage documents */
+  disconnect?: InputMaybe<Array<FuneralAssistencePageWhereUniqueInput>>
+  /** Override currently-connected documents with multiple existing FuneralAssistencePage documents */
+  set?: InputMaybe<Array<FuneralAssistencePageWhereUniqueInput>>
+  /** Update multiple FuneralAssistencePage documents */
+  update?: InputMaybe<
+    Array<FuneralAssistencePageUpdateWithNestedWhereUniqueInput>
+  >
+  /** Upsert multiple FuneralAssistencePage documents */
+  upsert?: InputMaybe<
+    Array<FuneralAssistencePageUpsertWithNestedWhereUniqueInput>
+  >
+}
+
+export type FuneralAssistencePageUpdateManyInput = {
+  funeralContractClauses?: InputMaybe<Array<Scalars['String']>>
+}
+
+export type FuneralAssistencePageUpdateManyWithNestedWhereInput = {
+  /** Update many input */
+  data: FuneralAssistencePageUpdateManyInput
+  /** Document search */
+  where: FuneralAssistencePageWhereInput
+}
+
+export type FuneralAssistencePageUpdateOneInlineInput = {
+  /** Connect existing FuneralAssistencePage document */
+  connect?: InputMaybe<FuneralAssistencePageWhereUniqueInput>
+  /** Create and connect one FuneralAssistencePage document */
+  create?: InputMaybe<FuneralAssistencePageCreateInput>
+  /** Delete currently connected FuneralAssistencePage document */
+  delete?: InputMaybe<Scalars['Boolean']>
+  /** Disconnect currently connected FuneralAssistencePage document */
+  disconnect?: InputMaybe<Scalars['Boolean']>
+  /** Update single FuneralAssistencePage document */
+  update?: InputMaybe<FuneralAssistencePageUpdateWithNestedWhereUniqueInput>
+  /** Upsert single FuneralAssistencePage document */
+  upsert?: InputMaybe<FuneralAssistencePageUpsertWithNestedWhereUniqueInput>
+}
+
+export type FuneralAssistencePageUpdateWithNestedWhereUniqueInput = {
+  /** Document to update */
+  data: FuneralAssistencePageUpdateInput
+  /** Unique document search */
+  where: FuneralAssistencePageWhereUniqueInput
+}
+
+export type FuneralAssistencePageUpsertInput = {
+  /** Create document if it didn't exist */
+  create: FuneralAssistencePageCreateInput
+  /** Update document if it exists */
+  update: FuneralAssistencePageUpdateInput
+}
+
+export type FuneralAssistencePageUpsertWithNestedWhereUniqueInput = {
+  /** Upsert data */
+  data: FuneralAssistencePageUpsertInput
+  /** Unique document search */
+  where: FuneralAssistencePageWhereUniqueInput
+}
+
+/** This contains a set of filters that can be used to compare values internally */
+export type FuneralAssistencePageWhereComparatorInput = {
+  /** This field can be used to request to check if the entry is outdated by internal comparison */
+  outdated_to?: InputMaybe<Scalars['Boolean']>
+}
+
+/** Identifies documents */
+export type FuneralAssistencePageWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<FuneralAssistencePageWhereInput>>
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<FuneralAssistencePageWhereInput>>
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<FuneralAssistencePageWhereInput>>
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']>
+  aggregatesValues_every?: InputMaybe<AggregateItemWhereInput>
+  aggregatesValues_none?: InputMaybe<AggregateItemWhereInput>
+  aggregatesValues_some?: InputMaybe<AggregateItemWhereInput>
+  createdAt?: InputMaybe<Scalars['DateTime']>
+  /** All values greater than the given value. */
+  createdAt_gt?: InputMaybe<Scalars['DateTime']>
+  /** All values greater than or equal the given value. */
+  createdAt_gte?: InputMaybe<Scalars['DateTime']>
+  /** All values that are contained in given list. */
+  createdAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>
+  /** All values less than the given value. */
+  createdAt_lt?: InputMaybe<Scalars['DateTime']>
+  /** All values less than or equal the given value. */
+  createdAt_lte?: InputMaybe<Scalars['DateTime']>
+  /** All values that are not equal to given value. */
+  createdAt_not?: InputMaybe<Scalars['DateTime']>
+  /** All values that are not contained in given list. */
+  createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>
+  createdBy?: InputMaybe<UserWhereInput>
+  documentInStages_every?: InputMaybe<FuneralAssistencePageWhereStageInput>
+  documentInStages_none?: InputMaybe<FuneralAssistencePageWhereStageInput>
+  documentInStages_some?: InputMaybe<FuneralAssistencePageWhereStageInput>
+  /** Matches if the field array contains *all* items provided to the filter and order does match */
+  funeralContractClauses?: InputMaybe<Array<Scalars['String']>>
+  /** Matches if the field array contains *all* items provided to the filter */
+  funeralContractClauses_contains_all?: InputMaybe<Array<Scalars['String']>>
+  /** Matches if the field array does not contain any of the items provided to the filter */
+  funeralContractClauses_contains_none?: InputMaybe<Array<Scalars['String']>>
+  /** Matches if the field array contains at least one item provided to the filter */
+  funeralContractClauses_contains_some?: InputMaybe<Array<Scalars['String']>>
+  /** Matches if the field array does not contains *all* items provided to the filter or order does not match */
+  funeralContractClauses_not?: InputMaybe<Array<Scalars['String']>>
+  id?: InputMaybe<Scalars['ID']>
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']>
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']>
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
+  /** All values that are not equal to given value. */
+  id_not?: InputMaybe<Scalars['ID']>
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']>
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']>
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']>
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']>
+  plans_every?: InputMaybe<FuneralPlanWhereInput>
+  plans_none?: InputMaybe<FuneralPlanWhereInput>
+  plans_some?: InputMaybe<FuneralPlanWhereInput>
+  publishedAt?: InputMaybe<Scalars['DateTime']>
+  /** All values greater than the given value. */
+  publishedAt_gt?: InputMaybe<Scalars['DateTime']>
+  /** All values greater than or equal the given value. */
+  publishedAt_gte?: InputMaybe<Scalars['DateTime']>
+  /** All values that are contained in given list. */
+  publishedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>
+  /** All values less than the given value. */
+  publishedAt_lt?: InputMaybe<Scalars['DateTime']>
+  /** All values less than or equal the given value. */
+  publishedAt_lte?: InputMaybe<Scalars['DateTime']>
+  /** All values that are not equal to given value. */
+  publishedAt_not?: InputMaybe<Scalars['DateTime']>
+  /** All values that are not contained in given list. */
+  publishedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>
+  publishedBy?: InputMaybe<UserWhereInput>
+  scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>
+  scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>
+  scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>
+  updatedAt?: InputMaybe<Scalars['DateTime']>
+  /** All values greater than the given value. */
+  updatedAt_gt?: InputMaybe<Scalars['DateTime']>
+  /** All values greater than or equal the given value. */
+  updatedAt_gte?: InputMaybe<Scalars['DateTime']>
+  /** All values that are contained in given list. */
+  updatedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>
+  /** All values less than the given value. */
+  updatedAt_lt?: InputMaybe<Scalars['DateTime']>
+  /** All values less than or equal the given value. */
+  updatedAt_lte?: InputMaybe<Scalars['DateTime']>
+  /** All values that are not equal to given value. */
+  updatedAt_not?: InputMaybe<Scalars['DateTime']>
+  /** All values that are not contained in given list. */
+  updatedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>
+  updatedBy?: InputMaybe<UserWhereInput>
+}
+
+/** The document in stages filter allows specifying a stage entry to cross compare the same document between different stages */
+export type FuneralAssistencePageWhereStageInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<FuneralAssistencePageWhereStageInput>>
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<FuneralAssistencePageWhereStageInput>>
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<FuneralAssistencePageWhereStageInput>>
+  /** This field contains fields which can be set as true or false to specify an internal comparison */
+  compareWithParent?: InputMaybe<FuneralAssistencePageWhereComparatorInput>
+  /** Specify the stage to compare with */
+  stage?: InputMaybe<Stage>
+}
+
+/** References FuneralAssistencePage record uniquely */
+export type FuneralAssistencePageWhereUniqueInput = {
+  id?: InputMaybe<Scalars['ID']>
+}
+
+export type FuneralPlan = {
+  __typename?: 'FuneralPlan'
+  age: Scalars['String']
+  familiarValue: Scalars['Float']
+  /** The unique identifier */
+  id: Scalars['ID']
+  individualValue: Scalars['Float']
+  /** System stage field */
+  stage: Stage
+}
+
+export type FuneralPlanConnectInput = {
+  /** Allow to specify document position in list of connected documents, will default to appending at end of list */
+  position?: InputMaybe<ConnectPositionInput>
+  /** Document to connect */
+  where: FuneralPlanWhereUniqueInput
+}
+
+/** A connection to a list of items. */
+export type FuneralPlanConnection = {
+  __typename?: 'FuneralPlanConnection'
+  aggregate: Aggregate
+  /** A list of edges. */
+  edges: Array<FuneralPlanEdge>
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo
+}
+
+export type FuneralPlanCreateInput = {
+  age: Scalars['String']
+  familiarValue: Scalars['Float']
+  individualValue: Scalars['Float']
+}
+
+export type FuneralPlanCreateManyInlineInput = {
+  /** Create and connect multiple existing FuneralPlan documents */
+  create?: InputMaybe<Array<FuneralPlanCreateInput>>
+}
+
+export type FuneralPlanCreateOneInlineInput = {
+  /** Create and connect one FuneralPlan document */
+  create?: InputMaybe<FuneralPlanCreateInput>
+}
+
+export type FuneralPlanCreateWithPositionInput = {
+  /** Document to create */
+  data: FuneralPlanCreateInput
+  /** Position in the list of existing component instances, will default to appending at the end of list */
+  position?: InputMaybe<ConnectPositionInput>
+}
+
+/** An edge in a connection. */
+export type FuneralPlanEdge = {
+  __typename?: 'FuneralPlanEdge'
+  /** A cursor for use in pagination. */
+  cursor: Scalars['String']
+  /** The item at the end of the edge. */
+  node: FuneralPlan
+}
+
+/** Identifies documents */
+export type FuneralPlanManyWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<FuneralPlanWhereInput>>
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<FuneralPlanWhereInput>>
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<FuneralPlanWhereInput>>
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']>
+  age?: InputMaybe<Scalars['String']>
+  /** All values containing the given string. */
+  age_contains?: InputMaybe<Scalars['String']>
+  /** All values ending with the given string. */
+  age_ends_with?: InputMaybe<Scalars['String']>
+  /** All values that are contained in given list. */
+  age_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  /** All values that are not equal to given value. */
+  age_not?: InputMaybe<Scalars['String']>
+  /** All values not containing the given string. */
+  age_not_contains?: InputMaybe<Scalars['String']>
+  /** All values not ending with the given string */
+  age_not_ends_with?: InputMaybe<Scalars['String']>
+  /** All values that are not contained in given list. */
+  age_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  /** All values not starting with the given string. */
+  age_not_starts_with?: InputMaybe<Scalars['String']>
+  /** All values starting with the given string. */
+  age_starts_with?: InputMaybe<Scalars['String']>
+  familiarValue?: InputMaybe<Scalars['Float']>
+  /** All values greater than the given value. */
+  familiarValue_gt?: InputMaybe<Scalars['Float']>
+  /** All values greater than or equal the given value. */
+  familiarValue_gte?: InputMaybe<Scalars['Float']>
+  /** All values that are contained in given list. */
+  familiarValue_in?: InputMaybe<Array<InputMaybe<Scalars['Float']>>>
+  /** All values less than the given value. */
+  familiarValue_lt?: InputMaybe<Scalars['Float']>
+  /** All values less than or equal the given value. */
+  familiarValue_lte?: InputMaybe<Scalars['Float']>
+  /** All values that are not equal to given value. */
+  familiarValue_not?: InputMaybe<Scalars['Float']>
+  /** All values that are not contained in given list. */
+  familiarValue_not_in?: InputMaybe<Array<InputMaybe<Scalars['Float']>>>
+  id?: InputMaybe<Scalars['ID']>
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']>
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']>
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
+  /** All values that are not equal to given value. */
+  id_not?: InputMaybe<Scalars['ID']>
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']>
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']>
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']>
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']>
+  individualValue?: InputMaybe<Scalars['Float']>
+  /** All values greater than the given value. */
+  individualValue_gt?: InputMaybe<Scalars['Float']>
+  /** All values greater than or equal the given value. */
+  individualValue_gte?: InputMaybe<Scalars['Float']>
+  /** All values that are contained in given list. */
+  individualValue_in?: InputMaybe<Array<InputMaybe<Scalars['Float']>>>
+  /** All values less than the given value. */
+  individualValue_lt?: InputMaybe<Scalars['Float']>
+  /** All values less than or equal the given value. */
+  individualValue_lte?: InputMaybe<Scalars['Float']>
+  /** All values that are not equal to given value. */
+  individualValue_not?: InputMaybe<Scalars['Float']>
+  /** All values that are not contained in given list. */
+  individualValue_not_in?: InputMaybe<Array<InputMaybe<Scalars['Float']>>>
+}
+
+export enum FuneralPlanOrderByInput {
+  AgeAsc = 'age_ASC',
+  AgeDesc = 'age_DESC',
+  FamiliarValueAsc = 'familiarValue_ASC',
+  FamiliarValueDesc = 'familiarValue_DESC',
+  IdAsc = 'id_ASC',
+  IdDesc = 'id_DESC',
+  IndividualValueAsc = 'individualValue_ASC',
+  IndividualValueDesc = 'individualValue_DESC'
+}
+
+export type FuneralPlanParent = FuneralAssistencePage
+
+export type FuneralPlanParentConnectInput = {
+  FuneralAssistencePage?: InputMaybe<FuneralAssistencePageConnectInput>
+}
+
+export type FuneralPlanParentCreateInput = {
+  FuneralAssistencePage?: InputMaybe<FuneralAssistencePageCreateInput>
+}
+
+export type FuneralPlanParentCreateManyInlineInput = {
+  /** Connect multiple existing FuneralPlanParent documents */
+  connect?: InputMaybe<Array<FuneralPlanParentWhereUniqueInput>>
+  /** Create and connect multiple existing FuneralPlanParent documents */
+  create?: InputMaybe<Array<FuneralPlanParentCreateInput>>
+}
+
+export type FuneralPlanParentCreateOneInlineInput = {
+  /** Connect one existing FuneralPlanParent document */
+  connect?: InputMaybe<FuneralPlanParentWhereUniqueInput>
+  /** Create and connect one FuneralPlanParent document */
+  create?: InputMaybe<FuneralPlanParentCreateInput>
+}
+
+export type FuneralPlanParentUpdateInput = {
+  FuneralAssistencePage?: InputMaybe<FuneralAssistencePageUpdateInput>
+}
+
+export type FuneralPlanParentUpdateManyInlineInput = {
+  /** Connect multiple existing FuneralPlanParent documents */
+  connect?: InputMaybe<Array<FuneralPlanParentConnectInput>>
+  /** Create and connect multiple FuneralPlanParent documents */
+  create?: InputMaybe<Array<FuneralPlanParentCreateInput>>
+  /** Delete multiple FuneralPlanParent documents */
+  delete?: InputMaybe<Array<FuneralPlanParentWhereUniqueInput>>
+  /** Disconnect multiple FuneralPlanParent documents */
+  disconnect?: InputMaybe<Array<FuneralPlanParentWhereUniqueInput>>
+  /** Override currently-connected documents with multiple existing FuneralPlanParent documents */
+  set?: InputMaybe<Array<FuneralPlanParentWhereUniqueInput>>
+  /** Update multiple FuneralPlanParent documents */
+  update?: InputMaybe<Array<FuneralPlanParentUpdateWithNestedWhereUniqueInput>>
+  /** Upsert multiple FuneralPlanParent documents */
+  upsert?: InputMaybe<Array<FuneralPlanParentUpsertWithNestedWhereUniqueInput>>
+}
+
+export type FuneralPlanParentUpdateManyWithNestedWhereInput = {
+  FuneralAssistencePage?: InputMaybe<FuneralAssistencePageUpdateManyWithNestedWhereInput>
+}
+
+export type FuneralPlanParentUpdateOneInlineInput = {
+  /** Connect existing FuneralPlanParent document */
+  connect?: InputMaybe<FuneralPlanParentWhereUniqueInput>
+  /** Create and connect one FuneralPlanParent document */
+  create?: InputMaybe<FuneralPlanParentCreateInput>
+  /** Delete currently connected FuneralPlanParent document */
+  delete?: InputMaybe<Scalars['Boolean']>
+  /** Disconnect currently connected FuneralPlanParent document */
+  disconnect?: InputMaybe<Scalars['Boolean']>
+  /** Update single FuneralPlanParent document */
+  update?: InputMaybe<FuneralPlanParentUpdateWithNestedWhereUniqueInput>
+  /** Upsert single FuneralPlanParent document */
+  upsert?: InputMaybe<FuneralPlanParentUpsertWithNestedWhereUniqueInput>
+}
+
+export type FuneralPlanParentUpdateWithNestedWhereUniqueInput = {
+  FuneralAssistencePage?: InputMaybe<FuneralAssistencePageUpdateWithNestedWhereUniqueInput>
+}
+
+export type FuneralPlanParentUpsertWithNestedWhereUniqueInput = {
+  FuneralAssistencePage?: InputMaybe<FuneralAssistencePageUpsertWithNestedWhereUniqueInput>
+}
+
+export type FuneralPlanParentWhereInput = {
+  FuneralAssistencePage?: InputMaybe<FuneralAssistencePageWhereInput>
+}
+
+export type FuneralPlanParentWhereUniqueInput = {
+  FuneralAssistencePage?: InputMaybe<FuneralAssistencePageWhereUniqueInput>
+}
+
+export type FuneralPlanUpdateInput = {
+  age?: InputMaybe<Scalars['String']>
+  familiarValue?: InputMaybe<Scalars['Float']>
+  individualValue?: InputMaybe<Scalars['Float']>
+}
+
+export type FuneralPlanUpdateManyInlineInput = {
+  /** Create and connect multiple FuneralPlan component instances */
+  create?: InputMaybe<Array<FuneralPlanCreateWithPositionInput>>
+  /** Delete multiple FuneralPlan documents */
+  delete?: InputMaybe<Array<FuneralPlanWhereUniqueInput>>
+  /** Update multiple FuneralPlan component instances */
+  update?: InputMaybe<
+    Array<FuneralPlanUpdateWithNestedWhereUniqueAndPositionInput>
+  >
+  /** Upsert multiple FuneralPlan component instances */
+  upsert?: InputMaybe<
+    Array<FuneralPlanUpsertWithNestedWhereUniqueAndPositionInput>
+  >
+}
+
+export type FuneralPlanUpdateManyInput = {
+  age?: InputMaybe<Scalars['String']>
+  familiarValue?: InputMaybe<Scalars['Float']>
+  individualValue?: InputMaybe<Scalars['Float']>
+}
+
+export type FuneralPlanUpdateManyWithNestedWhereInput = {
+  /** Update many input */
+  data: FuneralPlanUpdateManyInput
+  /** Document search */
+  where: FuneralPlanWhereInput
+}
+
+export type FuneralPlanUpdateOneInlineInput = {
+  /** Create and connect one FuneralPlan document */
+  create?: InputMaybe<FuneralPlanCreateInput>
+  /** Delete currently connected FuneralPlan document */
+  delete?: InputMaybe<Scalars['Boolean']>
+  /** Update single FuneralPlan document */
+  update?: InputMaybe<FuneralPlanUpdateWithNestedWhereUniqueInput>
+  /** Upsert single FuneralPlan document */
+  upsert?: InputMaybe<FuneralPlanUpsertWithNestedWhereUniqueInput>
+}
+
+export type FuneralPlanUpdateWithNestedWhereUniqueAndPositionInput = {
+  /** Document to update */
+  data?: InputMaybe<FuneralPlanUpdateInput>
+  /** Position in the list of existing component instances, will default to appending at the end of list */
+  position?: InputMaybe<ConnectPositionInput>
+  /** Unique component instance search */
+  where: FuneralPlanWhereUniqueInput
+}
+
+export type FuneralPlanUpdateWithNestedWhereUniqueInput = {
+  /** Document to update */
+  data: FuneralPlanUpdateInput
+  /** Unique document search */
+  where: FuneralPlanWhereUniqueInput
+}
+
+export type FuneralPlanUpsertInput = {
+  /** Create document if it didn't exist */
+  create: FuneralPlanCreateInput
+  /** Update document if it exists */
+  update: FuneralPlanUpdateInput
+}
+
+export type FuneralPlanUpsertWithNestedWhereUniqueAndPositionInput = {
+  /** Document to upsert */
+  data?: InputMaybe<FuneralPlanUpsertInput>
+  /** Position in the list of existing component instances, will default to appending at the end of list */
+  position?: InputMaybe<ConnectPositionInput>
+  /** Unique component instance search */
+  where: FuneralPlanWhereUniqueInput
+}
+
+export type FuneralPlanUpsertWithNestedWhereUniqueInput = {
+  /** Upsert data */
+  data: FuneralPlanUpsertInput
+  /** Unique document search */
+  where: FuneralPlanWhereUniqueInput
+}
+
+/** Identifies documents */
+export type FuneralPlanWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<FuneralPlanWhereInput>>
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<FuneralPlanWhereInput>>
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<FuneralPlanWhereInput>>
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']>
+  age?: InputMaybe<Scalars['String']>
+  /** All values containing the given string. */
+  age_contains?: InputMaybe<Scalars['String']>
+  /** All values ending with the given string. */
+  age_ends_with?: InputMaybe<Scalars['String']>
+  /** All values that are contained in given list. */
+  age_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  /** All values that are not equal to given value. */
+  age_not?: InputMaybe<Scalars['String']>
+  /** All values not containing the given string. */
+  age_not_contains?: InputMaybe<Scalars['String']>
+  /** All values not ending with the given string */
+  age_not_ends_with?: InputMaybe<Scalars['String']>
+  /** All values that are not contained in given list. */
+  age_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  /** All values not starting with the given string. */
+  age_not_starts_with?: InputMaybe<Scalars['String']>
+  /** All values starting with the given string. */
+  age_starts_with?: InputMaybe<Scalars['String']>
+  familiarValue?: InputMaybe<Scalars['Float']>
+  /** All values greater than the given value. */
+  familiarValue_gt?: InputMaybe<Scalars['Float']>
+  /** All values greater than or equal the given value. */
+  familiarValue_gte?: InputMaybe<Scalars['Float']>
+  /** All values that are contained in given list. */
+  familiarValue_in?: InputMaybe<Array<InputMaybe<Scalars['Float']>>>
+  /** All values less than the given value. */
+  familiarValue_lt?: InputMaybe<Scalars['Float']>
+  /** All values less than or equal the given value. */
+  familiarValue_lte?: InputMaybe<Scalars['Float']>
+  /** All values that are not equal to given value. */
+  familiarValue_not?: InputMaybe<Scalars['Float']>
+  /** All values that are not contained in given list. */
+  familiarValue_not_in?: InputMaybe<Array<InputMaybe<Scalars['Float']>>>
+  id?: InputMaybe<Scalars['ID']>
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']>
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']>
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
+  /** All values that are not equal to given value. */
+  id_not?: InputMaybe<Scalars['ID']>
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']>
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']>
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']>
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']>
+  individualValue?: InputMaybe<Scalars['Float']>
+  /** All values greater than the given value. */
+  individualValue_gt?: InputMaybe<Scalars['Float']>
+  /** All values greater than or equal the given value. */
+  individualValue_gte?: InputMaybe<Scalars['Float']>
+  /** All values that are contained in given list. */
+  individualValue_in?: InputMaybe<Array<InputMaybe<Scalars['Float']>>>
+  /** All values less than the given value. */
+  individualValue_lt?: InputMaybe<Scalars['Float']>
+  /** All values less than or equal the given value. */
+  individualValue_lte?: InputMaybe<Scalars['Float']>
+  /** All values that are not equal to given value. */
+  individualValue_not?: InputMaybe<Scalars['Float']>
+  /** All values that are not contained in given list. */
+  individualValue_not_in?: InputMaybe<Array<InputMaybe<Scalars['Float']>>>
+}
+
+/** References FuneralPlan record uniquely */
+export type FuneralPlanWhereUniqueInput = {
+  id?: InputMaybe<Scalars['ID']>
+}
+
 export type HowWork = Node & {
   __typename?: 'HowWork'
   /** The time the document was created */
@@ -5965,6 +7179,8 @@ export type Mutation = {
   createBanner?: Maybe<Banner>
   /** Create one contact */
   createContact?: Maybe<Contact>
+  /** Create one funeralAssistencePage */
+  createFuneralAssistencePage?: Maybe<FuneralAssistencePage>
   /** Create one howWork */
   createHowWork?: Maybe<HowWork>
   /** Create one medicoOnlinePage */
@@ -5989,6 +7205,8 @@ export type Mutation = {
   deleteBanner?: Maybe<Banner>
   /** Delete one contact from _all_ existing stages. Returns deleted document. */
   deleteContact?: Maybe<Contact>
+  /** Delete one funeralAssistencePage from _all_ existing stages. Returns deleted document. */
+  deleteFuneralAssistencePage?: Maybe<FuneralAssistencePage>
   /** Delete one howWork from _all_ existing stages. Returns deleted document. */
   deleteHowWork?: Maybe<HowWork>
   /**
@@ -6019,6 +7237,13 @@ export type Mutation = {
   deleteManyContacts: BatchPayload
   /** Delete many Contact documents, return deleted documents */
   deleteManyContactsConnection: ContactConnection
+  /**
+   * Delete many FuneralAssistencePage documents
+   * @deprecated Please use the new paginated many mutation (deleteManyFuneralAssistencePagesConnection)
+   */
+  deleteManyFuneralAssistencePages: BatchPayload
+  /** Delete many FuneralAssistencePage documents, return deleted documents */
+  deleteManyFuneralAssistencePagesConnection: FuneralAssistencePageConnection
   /**
    * Delete many HowWork documents
    * @deprecated Please use the new paginated many mutation (deleteManyHowWorksConnection)
@@ -6092,6 +7317,8 @@ export type Mutation = {
   publishBanner?: Maybe<Banner>
   /** Publish one contact */
   publishContact?: Maybe<Contact>
+  /** Publish one funeralAssistencePage */
+  publishFuneralAssistencePage?: Maybe<FuneralAssistencePage>
   /** Publish one howWork */
   publishHowWork?: Maybe<HowWork>
   /**
@@ -6122,6 +7349,13 @@ export type Mutation = {
   publishManyContacts: BatchPayload
   /** Publish many Contact documents */
   publishManyContactsConnection: ContactConnection
+  /**
+   * Publish many FuneralAssistencePage documents
+   * @deprecated Please use the new paginated many mutation (publishManyFuneralAssistencePagesConnection)
+   */
+  publishManyFuneralAssistencePages: BatchPayload
+  /** Publish many FuneralAssistencePage documents */
+  publishManyFuneralAssistencePagesConnection: FuneralAssistencePageConnection
   /**
    * Publish many HowWork documents
    * @deprecated Please use the new paginated many mutation (publishManyHowWorksConnection)
@@ -6191,6 +7425,8 @@ export type Mutation = {
   schedulePublishBanner?: Maybe<Banner>
   /** Schedule to publish one contact */
   schedulePublishContact?: Maybe<Contact>
+  /** Schedule to publish one funeralAssistencePage */
+  schedulePublishFuneralAssistencePage?: Maybe<FuneralAssistencePage>
   /** Schedule to publish one howWork */
   schedulePublishHowWork?: Maybe<HowWork>
   /** Schedule to publish one medicoOnlinePage */
@@ -6213,6 +7449,8 @@ export type Mutation = {
   scheduleUnpublishBanner?: Maybe<Banner>
   /** Unpublish one contact from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   scheduleUnpublishContact?: Maybe<Contact>
+  /** Unpublish one funeralAssistencePage from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
+  scheduleUnpublishFuneralAssistencePage?: Maybe<FuneralAssistencePage>
   /** Unpublish one howWork from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   scheduleUnpublishHowWork?: Maybe<HowWork>
   /** Unpublish one medicoOnlinePage from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
@@ -6235,6 +7473,8 @@ export type Mutation = {
   unpublishBanner?: Maybe<Banner>
   /** Unpublish one contact from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   unpublishContact?: Maybe<Contact>
+  /** Unpublish one funeralAssistencePage from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
+  unpublishFuneralAssistencePage?: Maybe<FuneralAssistencePage>
   /** Unpublish one howWork from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   unpublishHowWork?: Maybe<HowWork>
   /**
@@ -6265,6 +7505,13 @@ export type Mutation = {
   unpublishManyContacts: BatchPayload
   /** Find many Contact documents that match criteria in specified stage and unpublish from target stages */
   unpublishManyContactsConnection: ContactConnection
+  /**
+   * Unpublish many FuneralAssistencePage documents
+   * @deprecated Please use the new paginated many mutation (unpublishManyFuneralAssistencePagesConnection)
+   */
+  unpublishManyFuneralAssistencePages: BatchPayload
+  /** Find many FuneralAssistencePage documents that match criteria in specified stage and unpublish from target stages */
+  unpublishManyFuneralAssistencePagesConnection: FuneralAssistencePageConnection
   /**
    * Unpublish many HowWork documents
    * @deprecated Please use the new paginated many mutation (unpublishManyHowWorksConnection)
@@ -6334,6 +7581,8 @@ export type Mutation = {
   updateBanner?: Maybe<Banner>
   /** Update one contact */
   updateContact?: Maybe<Contact>
+  /** Update one funeralAssistencePage */
+  updateFuneralAssistencePage?: Maybe<FuneralAssistencePage>
   /** Update one howWork */
   updateHowWork?: Maybe<HowWork>
   /**
@@ -6364,6 +7613,13 @@ export type Mutation = {
   updateManyContacts: BatchPayload
   /** Update many Contact documents */
   updateManyContactsConnection: ContactConnection
+  /**
+   * Update many funeralAssistencePages
+   * @deprecated Please use the new paginated many mutation (updateManyFuneralAssistencePagesConnection)
+   */
+  updateManyFuneralAssistencePages: BatchPayload
+  /** Update many FuneralAssistencePage documents */
+  updateManyFuneralAssistencePagesConnection: FuneralAssistencePageConnection
   /**
    * Update many howWorks
    * @deprecated Please use the new paginated many mutation (updateManyHowWorksConnection)
@@ -6435,6 +7691,8 @@ export type Mutation = {
   upsertBanner?: Maybe<Banner>
   /** Upsert one contact */
   upsertContact?: Maybe<Contact>
+  /** Upsert one funeralAssistencePage */
+  upsertFuneralAssistencePage?: Maybe<FuneralAssistencePage>
   /** Upsert one howWork */
   upsertHowWork?: Maybe<HowWork>
   /** Upsert one medicoOnlinePage */
@@ -6465,6 +7723,10 @@ export type MutationCreateBannerArgs = {
 
 export type MutationCreateContactArgs = {
   data: ContactCreateInput
+}
+
+export type MutationCreateFuneralAssistencePageArgs = {
+  data: FuneralAssistencePageCreateInput
 }
 
 export type MutationCreateHowWorkArgs = {
@@ -6513,6 +7775,10 @@ export type MutationDeleteBannerArgs = {
 
 export type MutationDeleteContactArgs = {
   where: ContactWhereUniqueInput
+}
+
+export type MutationDeleteFuneralAssistencePageArgs = {
+  where: FuneralAssistencePageWhereUniqueInput
 }
 
 export type MutationDeleteHowWorkArgs = {
@@ -6569,6 +7835,19 @@ export type MutationDeleteManyContactsConnectionArgs = {
   last?: InputMaybe<Scalars['Int']>
   skip?: InputMaybe<Scalars['Int']>
   where?: InputMaybe<ContactManyWhereInput>
+}
+
+export type MutationDeleteManyFuneralAssistencePagesArgs = {
+  where?: InputMaybe<FuneralAssistencePageManyWhereInput>
+}
+
+export type MutationDeleteManyFuneralAssistencePagesConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>
+  before?: InputMaybe<Scalars['ID']>
+  first?: InputMaybe<Scalars['Int']>
+  last?: InputMaybe<Scalars['Int']>
+  skip?: InputMaybe<Scalars['Int']>
+  where?: InputMaybe<FuneralAssistencePageManyWhereInput>
 }
 
 export type MutationDeleteManyHowWorksArgs = {
@@ -6717,6 +7996,11 @@ export type MutationPublishContactArgs = {
   where: ContactWhereUniqueInput
 }
 
+export type MutationPublishFuneralAssistencePageArgs = {
+  to?: Array<Stage>
+  where: FuneralAssistencePageWhereUniqueInput
+}
+
 export type MutationPublishHowWorkArgs = {
   to?: Array<Stage>
   where: HowWorkWhereUniqueInput
@@ -6790,6 +8074,22 @@ export type MutationPublishManyContactsConnectionArgs = {
   skip?: InputMaybe<Scalars['Int']>
   to?: Array<Stage>
   where?: InputMaybe<ContactManyWhereInput>
+}
+
+export type MutationPublishManyFuneralAssistencePagesArgs = {
+  to?: Array<Stage>
+  where?: InputMaybe<FuneralAssistencePageManyWhereInput>
+}
+
+export type MutationPublishManyFuneralAssistencePagesConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>
+  before?: InputMaybe<Scalars['ID']>
+  first?: InputMaybe<Scalars['Int']>
+  from?: InputMaybe<Stage>
+  last?: InputMaybe<Scalars['Int']>
+  skip?: InputMaybe<Scalars['Int']>
+  to?: Array<Stage>
+  where?: InputMaybe<FuneralAssistencePageManyWhereInput>
 }
 
 export type MutationPublishManyHowWorksArgs = {
@@ -6965,6 +8265,13 @@ export type MutationSchedulePublishContactArgs = {
   where: ContactWhereUniqueInput
 }
 
+export type MutationSchedulePublishFuneralAssistencePageArgs = {
+  releaseAt?: InputMaybe<Scalars['DateTime']>
+  releaseId?: InputMaybe<Scalars['String']>
+  to?: Array<Stage>
+  where: FuneralAssistencePageWhereUniqueInput
+}
+
 export type MutationSchedulePublishHowWorkArgs = {
   releaseAt?: InputMaybe<Scalars['DateTime']>
   releaseId?: InputMaybe<Scalars['String']>
@@ -7044,6 +8351,13 @@ export type MutationScheduleUnpublishContactArgs = {
   where: ContactWhereUniqueInput
 }
 
+export type MutationScheduleUnpublishFuneralAssistencePageArgs = {
+  from?: Array<Stage>
+  releaseAt?: InputMaybe<Scalars['DateTime']>
+  releaseId?: InputMaybe<Scalars['String']>
+  where: FuneralAssistencePageWhereUniqueInput
+}
+
 export type MutationScheduleUnpublishHowWorkArgs = {
   from?: Array<Stage>
   releaseAt?: InputMaybe<Scalars['DateTime']>
@@ -7113,6 +8427,11 @@ export type MutationUnpublishBannerArgs = {
 export type MutationUnpublishContactArgs = {
   from?: Array<Stage>
   where: ContactWhereUniqueInput
+}
+
+export type MutationUnpublishFuneralAssistencePageArgs = {
+  from?: Array<Stage>
+  where: FuneralAssistencePageWhereUniqueInput
 }
 
 export type MutationUnpublishHowWorkArgs = {
@@ -7186,6 +8505,22 @@ export type MutationUnpublishManyContactsConnectionArgs = {
   skip?: InputMaybe<Scalars['Int']>
   stage?: InputMaybe<Stage>
   where?: InputMaybe<ContactManyWhereInput>
+}
+
+export type MutationUnpublishManyFuneralAssistencePagesArgs = {
+  from?: Array<Stage>
+  where?: InputMaybe<FuneralAssistencePageManyWhereInput>
+}
+
+export type MutationUnpublishManyFuneralAssistencePagesConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>
+  before?: InputMaybe<Scalars['ID']>
+  first?: InputMaybe<Scalars['Int']>
+  from?: Array<Stage>
+  last?: InputMaybe<Scalars['Int']>
+  skip?: InputMaybe<Scalars['Int']>
+  stage?: InputMaybe<Stage>
+  where?: InputMaybe<FuneralAssistencePageManyWhereInput>
 }
 
 export type MutationUnpublishManyHowWorksArgs = {
@@ -7350,6 +8685,11 @@ export type MutationUpdateContactArgs = {
   where: ContactWhereUniqueInput
 }
 
+export type MutationUpdateFuneralAssistencePageArgs = {
+  data: FuneralAssistencePageUpdateInput
+  where: FuneralAssistencePageWhereUniqueInput
+}
+
 export type MutationUpdateHowWorkArgs = {
   data: HowWorkUpdateInput
   where: HowWorkWhereUniqueInput
@@ -7413,6 +8753,21 @@ export type MutationUpdateManyContactsConnectionArgs = {
   last?: InputMaybe<Scalars['Int']>
   skip?: InputMaybe<Scalars['Int']>
   where?: InputMaybe<ContactManyWhereInput>
+}
+
+export type MutationUpdateManyFuneralAssistencePagesArgs = {
+  data: FuneralAssistencePageUpdateManyInput
+  where?: InputMaybe<FuneralAssistencePageManyWhereInput>
+}
+
+export type MutationUpdateManyFuneralAssistencePagesConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>
+  before?: InputMaybe<Scalars['ID']>
+  data: FuneralAssistencePageUpdateManyInput
+  first?: InputMaybe<Scalars['Int']>
+  last?: InputMaybe<Scalars['Int']>
+  skip?: InputMaybe<Scalars['Int']>
+  where?: InputMaybe<FuneralAssistencePageManyWhereInput>
 }
 
 export type MutationUpdateManyHowWorksArgs = {
@@ -7573,6 +8928,11 @@ export type MutationUpsertBannerArgs = {
 export type MutationUpsertContactArgs = {
   upsert: ContactUpsertInput
   where: ContactWhereUniqueInput
+}
+
+export type MutationUpsertFuneralAssistencePageArgs = {
+  upsert: FuneralAssistencePageUpsertInput
+  where: FuneralAssistencePageWhereUniqueInput
 }
 
 export type MutationUpsertHowWorkArgs = {
@@ -8685,6 +10045,14 @@ export type Query = {
   contacts: Array<Contact>
   /** Retrieve multiple contacts using the Relay connection interface */
   contactsConnection: ContactConnection
+  /** Retrieve a single funeralAssistencePage */
+  funeralAssistencePage?: Maybe<FuneralAssistencePage>
+  /** Retrieve document version */
+  funeralAssistencePageVersion?: Maybe<DocumentVersion>
+  /** Retrieve multiple funeralAssistencePages */
+  funeralAssistencePages: Array<FuneralAssistencePage>
+  /** Retrieve multiple funeralAssistencePages using the Relay connection interface */
+  funeralAssistencePagesConnection: FuneralAssistencePageConnection
   /** Retrieve a single howWork */
   howWork?: Maybe<HowWork>
   /** Retrieve document version */
@@ -8897,6 +10265,40 @@ export type QueryContactsConnectionArgs = {
   skip?: InputMaybe<Scalars['Int']>
   stage?: Stage
   where?: InputMaybe<ContactWhereInput>
+}
+
+export type QueryFuneralAssistencePageArgs = {
+  locales?: Array<Locale>
+  stage?: Stage
+  where: FuneralAssistencePageWhereUniqueInput
+}
+
+export type QueryFuneralAssistencePageVersionArgs = {
+  where: VersionWhereInput
+}
+
+export type QueryFuneralAssistencePagesArgs = {
+  after?: InputMaybe<Scalars['String']>
+  before?: InputMaybe<Scalars['String']>
+  first?: InputMaybe<Scalars['Int']>
+  last?: InputMaybe<Scalars['Int']>
+  locales?: Array<Locale>
+  orderBy?: InputMaybe<FuneralAssistencePageOrderByInput>
+  skip?: InputMaybe<Scalars['Int']>
+  stage?: Stage
+  where?: InputMaybe<FuneralAssistencePageWhereInput>
+}
+
+export type QueryFuneralAssistencePagesConnectionArgs = {
+  after?: InputMaybe<Scalars['String']>
+  before?: InputMaybe<Scalars['String']>
+  first?: InputMaybe<Scalars['Int']>
+  last?: InputMaybe<Scalars['Int']>
+  locales?: Array<Locale>
+  orderBy?: InputMaybe<FuneralAssistencePageOrderByInput>
+  skip?: InputMaybe<Scalars['Int']>
+  stage?: Stage
+  where?: InputMaybe<FuneralAssistencePageWhereInput>
 }
 
 export type QueryHowWorkArgs = {
@@ -9339,6 +10741,7 @@ export type ScheduledOperationAffectedDocument =
   | Asset
   | Banner
   | Contact
+  | FuneralAssistencePage
   | HowWork
   | MedicoOnlinePage
   | Menu
@@ -11202,6 +12605,51 @@ export enum _SystemDateTimeFieldVariation {
   Localization = 'localization'
 }
 
+export type FuneralPageQueryVariables = Exact<{ [key: string]: never }>
+
+export type FuneralPageQuery = {
+  __typename?: 'Query'
+  menus: Array<{
+    __typename?: 'Menu'
+    links: Array<{ __typename?: 'Button'; name: string; url: string }>
+  }>
+  metaTag?: {
+    __typename?: 'MetaTag'
+    description?: string | null
+    image?: { __typename?: 'Asset'; url: string } | null
+  } | null
+  abouts: Array<{
+    __typename?: 'About'
+    about?: string | null
+    howWorks: string
+    objetivo?: string | null
+    visao?: string | null
+    valores?: string | null
+    name?: string | null
+    image: { __typename?: 'Asset'; url: string }
+  }>
+  socialMedias: Array<{
+    __typename?: 'SocialMedia'
+    url: string
+    icon: SocialMedias
+  }>
+  funeralAssistencePages: Array<{
+    __typename?: 'FuneralAssistencePage'
+    funeralContractClauses: Array<string>
+    plans: Array<{
+      __typename?: 'FuneralPlan'
+      age: string
+      individualValue: number
+      familiarValue: number
+    }>
+    aggregatesValues: Array<{
+      __typename?: 'AggregateItem'
+      age: string
+      value: number
+    }>
+  }>
+}
+
 export type HomepageQueryVariables = Exact<{ [key: string]: never }>
 
 export type HomepageQuery = {
@@ -11309,6 +12757,58 @@ export type MedicOnlinePageQuery = {
   }>
 }
 
+export const FuneralPageDocument = gql`
+  query FuneralPage {
+    menus {
+      links(orderBy: order_ASC) {
+        name
+        url
+      }
+    }
+    metaTag(where: { page: "funeral" }) {
+      description
+      image {
+        url
+      }
+    }
+    abouts {
+      about
+      howWorks
+      objetivo
+      visao
+      valores
+      name
+      image {
+        url
+      }
+    }
+    socialMedias {
+      url
+      icon
+    }
+    funeralAssistencePages {
+      funeralContractClauses
+      plans {
+        age
+        individualValue
+        familiarValue
+      }
+      aggregatesValues {
+        age
+        value
+      }
+    }
+  }
+`
+
+export function useFuneralPageQuery(
+  options?: Omit<Urql.UseQueryArgs<FuneralPageQueryVariables>, 'query'>
+) {
+  return Urql.useQuery<FuneralPageQuery, FuneralPageQueryVariables>({
+    query: FuneralPageDocument,
+    ...options
+  })
+}
 export const HomepageDocument = gql`
   query Homepage {
     menus {
