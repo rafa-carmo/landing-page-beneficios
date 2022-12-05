@@ -1,5 +1,6 @@
 import axios from 'axios'
 import Image from 'next/image'
+import { useRouter } from 'next/router'
 import Script from 'next/script'
 import { Check } from 'phosphor-react'
 import { useEffect, useState } from 'react'
@@ -63,6 +64,7 @@ export function MedicinaOnlineTemplate({
   subtitle,
   title
 }: MedicinaOnlineTemplateProps) {
+  const router = useRouter()
   const [loop, setLoop] = useState(0)
   const [expires, setExpires] = useState<ExpiresProps | null>(null)
   const [selectedPlan, setSelectedPlan] = useState<null | SelectedPlan>(null)
@@ -168,7 +170,14 @@ export function MedicinaOnlineTemplate({
       address
     }
 
-    await axios.post('/api/registerOnGalaxPay', data)
+    await axios
+      .post('/api/registerOnGalaxPay', data)
+      .then(() => {
+        router.push('/success')
+      })
+      .catch(() => {
+        setFieldErrors({ hash: 'error' })
+      })
     setSendingInfo(false)
   }
 
@@ -596,7 +605,7 @@ export function MedicinaOnlineTemplate({
         </div>
         {fieldErrors?.hash && (
           <p className="text-red-500 text-center">
-            algo deu errado - Favor verifique as informações do cartão
+            Algo deu errado - Favor verifique as informações do cartão
           </p>
         )}
         {selectedPlan && (
