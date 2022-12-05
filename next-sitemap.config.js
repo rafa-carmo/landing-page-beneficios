@@ -10,9 +10,13 @@ module.exports = {
       },
       {
         userAgent: '*',
+        disallow: '/success'
+      },
+      {
+        userAgent: '*',
         allow: '/'
       }
     ]
   },
-  exclude: ['/pdf']
+  exclude: ['/pdf', '/success']
 }
