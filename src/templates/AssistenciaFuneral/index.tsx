@@ -104,8 +104,9 @@ export function AssistenciaFuneralTemplate({
   function changeDependent(id: number, change: DependentProps) {
     const dependentId = dependents.findIndex((item) => item.id === id)
     const newArray = dependents
-    const valueUnit = aggregates.filter((value) => value.age === change.age)[0]
-      .value
+    const valueUnit = aggregates.filter(
+      (value) => value.age === change.age.replace('anos', '').trim()
+    )[0].value
 
     newArray[dependentId] = {
       age: change.age,
@@ -334,7 +335,7 @@ export function AssistenciaFuneralTemplate({
                   </div>
                 </div>
               )}
-              {dependents?.map((dependent, key) => (
+              {dependents?.map((dependent) => (
                 <Dependent
                   index={dependent.id}
                   quantity="1"
