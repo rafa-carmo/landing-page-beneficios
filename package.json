@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "test": "jest",
-    "codegen": "graphql-codegen --config codegen.yml"
+    "codegen": "graphql-codegen --config codegen.yml",
+    "postbuild": "next-sitemap"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.4",
@@ -24,6 +25,7 @@
     "joi": "^17.7.0",
     "jwt-simple": "^0.5.6",
     "next": "13.0.2",
+    "next-sitemap": "^3.1.32",
     "nodemailer": "^6.8.0",
     "phosphor-react": "^1.4.1",
     "react": "18.2.0",
