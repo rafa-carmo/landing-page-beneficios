@@ -3,12 +3,9 @@ import axios from 'axios'
 export async function getAPIClient(ctx?: any) {
   const api = axios.create({
     baseURL: process.env.GALAXY_PAY_BASE_URL,
-    headers:
-      process.env.NODE_ENV === 'development'
-        ? {
-            'Accept-Encoding': 'application/json'
-          }
-        : undefined
+    headers: {
+      'Accept-Encoding': 'application/json'
+    }
   })
 
   const base64 = Buffer.from(
