@@ -12757,6 +12757,36 @@ export type MedicOnlinePageQuery = {
   }>
 }
 
+export type SuccessPageQueryVariables = Exact<{ [key: string]: never }>
+
+export type SuccessPageQuery = {
+  __typename?: 'Query'
+  menus: Array<{
+    __typename?: 'Menu'
+    links: Array<{ __typename?: 'Button'; name: string; url: string }>
+  }>
+  socialMedias: Array<{
+    __typename?: 'SocialMedia'
+    url: string
+    icon: SocialMedias
+  }>
+  contacts: Array<{
+    __typename?: 'Contact'
+    value: string
+    icon?: Contacts | null
+  }>
+  abouts: Array<{
+    __typename?: 'About'
+    about?: string | null
+    howWorks: string
+    objetivo?: string | null
+    visao?: string | null
+    valores?: string | null
+    name?: string | null
+    image: { __typename?: 'Asset'; url: string }
+  }>
+}
+
 export const FuneralPageDocument = gql`
   query FuneralPage {
     menus {
@@ -12935,6 +12965,44 @@ export function useMedicOnlinePageQuery(
 ) {
   return Urql.useQuery<MedicOnlinePageQuery, MedicOnlinePageQueryVariables>({
     query: MedicOnlinePageDocument,
+    ...options
+  })
+}
+export const SuccessPageDocument = gql`
+  query SuccessPage {
+    menus {
+      links(orderBy: order_ASC) {
+        name
+        url
+      }
+    }
+    socialMedias {
+      url
+      icon
+    }
+    contacts {
+      value
+      icon
+    }
+    abouts {
+      about
+      howWorks
+      objetivo
+      visao
+      valores
+      name
+      image {
+        url
+      }
+    }
+  }
+`
+
+export function useSuccessPageQuery(
+  options?: Omit<Urql.UseQueryArgs<SuccessPageQueryVariables>, 'query'>
+) {
+  return Urql.useQuery<SuccessPageQuery, SuccessPageQueryVariables>({
+    query: SuccessPageDocument,
     ...options
   })
 }

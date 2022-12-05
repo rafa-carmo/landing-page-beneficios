@@ -1,0 +1,27 @@
+query SuccessPage {
+  menus {
+    links(orderBy: order_ASC) {
+      name
+      url
+    }
+  }
+  socialMedias {
+    url
+    icon
+  }
+  contacts {
+    value
+    icon
+  }
+    abouts {
+    about
+    howWorks
+    objetivo
+    visao
+    valores
+    name
+    image {
+      url
+    }
+  }
+}
