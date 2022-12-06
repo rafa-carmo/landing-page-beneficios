@@ -22,7 +22,7 @@ query Homepage {
       url
     }
   }
-  pricings {
+  pricings(orderBy: id_DESC) {
     name
     link
     priceMonthly
