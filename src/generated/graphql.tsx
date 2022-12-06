@@ -9437,6 +9437,7 @@ export type Pricing = Node & {
   /** The unique identifier */
   id: Scalars['ID']
   includedFeatures: Array<Scalars['String']>
+  key?: Maybe<Scalars['Int']>
   link: Scalars['String']
   name: Scalars['String']
   priceMonthly: Scalars['Float']
@@ -9509,6 +9510,7 @@ export type PricingCreateInput = {
   description?: InputMaybe<Scalars['String']>
   from?: InputMaybe<Scalars['Boolean']>
   includedFeatures?: InputMaybe<Array<Scalars['String']>>
+  key?: InputMaybe<Scalars['Int']>
   link: Scalars['String']
   name: Scalars['String']
   priceMonthly: Scalars['Float']
@@ -9618,6 +9620,21 @@ export type PricingManyWhereInput = {
   includedFeatures_contains_some?: InputMaybe<Array<Scalars['String']>>
   /** Matches if the field array does not contains *all* items provided to the filter or order does not match */
   includedFeatures_not?: InputMaybe<Array<Scalars['String']>>
+  key?: InputMaybe<Scalars['Int']>
+  /** All values greater than the given value. */
+  key_gt?: InputMaybe<Scalars['Int']>
+  /** All values greater than or equal the given value. */
+  key_gte?: InputMaybe<Scalars['Int']>
+  /** All values that are contained in given list. */
+  key_in?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>
+  /** All values less than the given value. */
+  key_lt?: InputMaybe<Scalars['Int']>
+  /** All values less than or equal the given value. */
+  key_lte?: InputMaybe<Scalars['Int']>
+  /** All values that are not equal to given value. */
+  key_not?: InputMaybe<Scalars['Int']>
+  /** All values that are not contained in given list. */
+  key_not_in?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>
   link?: InputMaybe<Scalars['String']>
   /** All values containing the given string. */
   link_contains?: InputMaybe<Scalars['String']>
@@ -9719,6 +9736,8 @@ export enum PricingOrderByInput {
   IdDesc = 'id_DESC',
   IncludedFeaturesAsc = 'includedFeatures_ASC',
   IncludedFeaturesDesc = 'includedFeatures_DESC',
+  KeyAsc = 'key_ASC',
+  KeyDesc = 'key_DESC',
   LinkAsc = 'link_ASC',
   LinkDesc = 'link_DESC',
   NameAsc = 'name_ASC',
@@ -9735,6 +9754,7 @@ export type PricingUpdateInput = {
   description?: InputMaybe<Scalars['String']>
   from?: InputMaybe<Scalars['Boolean']>
   includedFeatures?: InputMaybe<Array<Scalars['String']>>
+  key?: InputMaybe<Scalars['Int']>
   link?: InputMaybe<Scalars['String']>
   name?: InputMaybe<Scalars['String']>
   priceMonthly?: InputMaybe<Scalars['Float']>
@@ -9895,6 +9915,21 @@ export type PricingWhereInput = {
   includedFeatures_contains_some?: InputMaybe<Array<Scalars['String']>>
   /** Matches if the field array does not contains *all* items provided to the filter or order does not match */
   includedFeatures_not?: InputMaybe<Array<Scalars['String']>>
+  key?: InputMaybe<Scalars['Int']>
+  /** All values greater than the given value. */
+  key_gt?: InputMaybe<Scalars['Int']>
+  /** All values greater than or equal the given value. */
+  key_gte?: InputMaybe<Scalars['Int']>
+  /** All values that are contained in given list. */
+  key_in?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>
+  /** All values less than the given value. */
+  key_lt?: InputMaybe<Scalars['Int']>
+  /** All values less than or equal the given value. */
+  key_lte?: InputMaybe<Scalars['Int']>
+  /** All values that are not equal to given value. */
+  key_not?: InputMaybe<Scalars['Int']>
+  /** All values that are not contained in given list. */
+  key_not_in?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>
   link?: InputMaybe<Scalars['String']>
   /** All values containing the given string. */
   link_contains?: InputMaybe<Scalars['String']>
@@ -10002,6 +10037,7 @@ export type PricingWhereStageInput = {
 /** References Pricing record uniquely */
 export type PricingWhereUniqueInput = {
   id?: InputMaybe<Scalars['ID']>
+  key?: InputMaybe<Scalars['Int']>
 }
 
 export type PublishLocaleInput = {
@@ -12864,7 +12900,7 @@ export const HomepageDocument = gql`
         url
       }
     }
-    pricings {
+    pricings(orderBy: key_ASC) {
       name
       link
       priceMonthly
