@@ -1,6 +1,7 @@
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import Image from 'next/image'
+import Link from 'next/link'
 import Slider, { Settings } from 'react-slick'
 
 import { Button } from '../Button'
@@ -47,9 +48,11 @@ export function SliderComponent({ sliders }: SliderComponentProps) {
                   {item.subtitle}
                 </h4>
               </div>
-              <button className="bg-primary-500 text-zinc-100 font-light text-lg py-2 px-5 md:py-4 md:px-10 rounded-lg md:rounded-sm hover:bg-primary-700 transition-colors">
-                {item.button.title}
-              </button>
+              <Link href={`/${item.button.url}`}>
+                <button className="bg-primary-500 text-zinc-100 font-light text-lg py-2 px-5 md:py-4 md:px-10 rounded-lg md:rounded-sm hover:bg-primary-700 transition-colors">
+                  {item.button.title}
+                </button>
+              </Link>
             </div>
 
             <div className="absolute top-0 right-0 left-0 bottom-0 opacity-50">
