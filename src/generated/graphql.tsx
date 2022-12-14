@@ -63,6 +63,7 @@ export type About = Node & {
 }
 
 export type AboutCreatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
   locales?: InputMaybe<Array<Locale>>
 }
 
@@ -79,10 +80,12 @@ export type AboutHistoryArgs = {
 }
 
 export type AboutImageArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
   locales?: InputMaybe<Array<Locale>>
 }
 
 export type AboutPublishedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
   locales?: InputMaybe<Array<Locale>>
 }
 
@@ -90,6 +93,7 @@ export type AboutScheduledInArgs = {
   after?: InputMaybe<Scalars['String']>
   before?: InputMaybe<Scalars['String']>
   first?: InputMaybe<Scalars['Int']>
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
   last?: InputMaybe<Scalars['Int']>
   locales?: InputMaybe<Array<Locale>>
   skip?: InputMaybe<Scalars['Int']>
@@ -97,6 +101,7 @@ export type AboutScheduledInArgs = {
 }
 
 export type AboutUpdatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
   locales?: InputMaybe<Array<Locale>>
 }
 
@@ -1151,6 +1156,7 @@ export type AssetCreatedAtArgs = {
 
 /** Asset system model */
 export type AssetCreatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
   locales?: InputMaybe<Array<Locale>>
 }
 
@@ -1173,6 +1179,7 @@ export type AssetImageAboutArgs = {
   after?: InputMaybe<Scalars['String']>
   before?: InputMaybe<Scalars['String']>
   first?: InputMaybe<Scalars['Int']>
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
   last?: InputMaybe<Scalars['Int']>
   locales?: InputMaybe<Array<Locale>>
   orderBy?: InputMaybe<AboutOrderByInput>
@@ -1185,6 +1192,7 @@ export type AssetImageBannerArgs = {
   after?: InputMaybe<Scalars['String']>
   before?: InputMaybe<Scalars['String']>
   first?: InputMaybe<Scalars['Int']>
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
   last?: InputMaybe<Scalars['Int']>
   locales?: InputMaybe<Array<Locale>>
   orderBy?: InputMaybe<BannerOrderByInput>
@@ -1197,6 +1205,7 @@ export type AssetImageHowWorkArgs = {
   after?: InputMaybe<Scalars['String']>
   before?: InputMaybe<Scalars['String']>
   first?: InputMaybe<Scalars['Int']>
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
   last?: InputMaybe<Scalars['Int']>
   locales?: InputMaybe<Array<Locale>>
   orderBy?: InputMaybe<HowWorkOrderByInput>
@@ -1209,6 +1218,7 @@ export type AssetImageMetaTagArgs = {
   after?: InputMaybe<Scalars['String']>
   before?: InputMaybe<Scalars['String']>
   first?: InputMaybe<Scalars['Int']>
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
   last?: InputMaybe<Scalars['Int']>
   locales?: InputMaybe<Array<Locale>>
   orderBy?: InputMaybe<MetaTagOrderByInput>
@@ -1221,6 +1231,7 @@ export type AssetImagePartnershipArgs = {
   after?: InputMaybe<Scalars['String']>
   before?: InputMaybe<Scalars['String']>
   first?: InputMaybe<Scalars['Int']>
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
   last?: InputMaybe<Scalars['Int']>
   locales?: InputMaybe<Array<Locale>>
   orderBy?: InputMaybe<PartnershipOrderByInput>
@@ -1241,6 +1252,7 @@ export type AssetPublishedAtArgs = {
 
 /** Asset system model */
 export type AssetPublishedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
   locales?: InputMaybe<Array<Locale>>
 }
 
@@ -1249,6 +1261,7 @@ export type AssetScheduledInArgs = {
   after?: InputMaybe<Scalars['String']>
   before?: InputMaybe<Scalars['String']>
   first?: InputMaybe<Scalars['Int']>
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
   last?: InputMaybe<Scalars['Int']>
   locales?: InputMaybe<Array<Locale>>
   skip?: InputMaybe<Scalars['Int']>
@@ -1262,6 +1275,7 @@ export type AssetUpdatedAtArgs = {
 
 /** Asset system model */
 export type AssetUpdatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
   locales?: InputMaybe<Array<Locale>>
 }
 
@@ -1874,10 +1888,12 @@ export type Banner = Node & {
 }
 
 export type BannerButtonArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
   locales?: InputMaybe<Array<Locale>>
 }
 
 export type BannerCreatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
   locales?: InputMaybe<Array<Locale>>
 }
 
@@ -1894,10 +1910,12 @@ export type BannerHistoryArgs = {
 }
 
 export type BannerImageArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
   locales?: InputMaybe<Array<Locale>>
 }
 
 export type BannerPublishedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
   locales?: InputMaybe<Array<Locale>>
 }
 
@@ -1905,6 +1923,7 @@ export type BannerScheduledInArgs = {
   after?: InputMaybe<Scalars['String']>
   before?: InputMaybe<Scalars['String']>
   first?: InputMaybe<Scalars['Int']>
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
   last?: InputMaybe<Scalars['Int']>
   locales?: InputMaybe<Array<Locale>>
   skip?: InputMaybe<Scalars['Int']>
@@ -1912,6 +1931,7 @@ export type BannerScheduledInArgs = {
 }
 
 export type BannerUpdatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
   locales?: InputMaybe<Array<Locale>>
 }
 
@@ -2811,6 +2831,7 @@ export type CardMedic = {
 }
 
 export type CardMedicImageArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
   locales?: InputMaybe<Array<Locale>>
 }
 
@@ -3319,6 +3340,7 @@ export type Contact = Node & {
 }
 
 export type ContactCreatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
   locales?: InputMaybe<Array<Locale>>
 }
 
@@ -3335,6 +3357,7 @@ export type ContactHistoryArgs = {
 }
 
 export type ContactPublishedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
   locales?: InputMaybe<Array<Locale>>
 }
 
@@ -3342,6 +3365,7 @@ export type ContactScheduledInArgs = {
   after?: InputMaybe<Scalars['String']>
   before?: InputMaybe<Scalars['String']>
   first?: InputMaybe<Scalars['Int']>
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
   last?: InputMaybe<Scalars['Int']>
   locales?: InputMaybe<Array<Locale>>
   skip?: InputMaybe<Scalars['Int']>
@@ -3349,6 +3373,7 @@ export type ContactScheduledInArgs = {
 }
 
 export type ContactUpdatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
   locales?: InputMaybe<Array<Locale>>
 }
 
@@ -3834,6 +3859,7 @@ export type FuneralAssistencePageAggregatesValuesArgs = {
   after?: InputMaybe<Scalars['String']>
   before?: InputMaybe<Scalars['String']>
   first?: InputMaybe<Scalars['Int']>
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
   last?: InputMaybe<Scalars['Int']>
   locales?: InputMaybe<Array<Locale>>
   orderBy?: InputMaybe<AggregateItemOrderByInput>
@@ -3842,6 +3868,7 @@ export type FuneralAssistencePageAggregatesValuesArgs = {
 }
 
 export type FuneralAssistencePageCreatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
   locales?: InputMaybe<Array<Locale>>
 }
 
@@ -3861,6 +3888,7 @@ export type FuneralAssistencePagePlansArgs = {
   after?: InputMaybe<Scalars['String']>
   before?: InputMaybe<Scalars['String']>
   first?: InputMaybe<Scalars['Int']>
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
   last?: InputMaybe<Scalars['Int']>
   locales?: InputMaybe<Array<Locale>>
   orderBy?: InputMaybe<FuneralPlanOrderByInput>
@@ -3869,6 +3897,7 @@ export type FuneralAssistencePagePlansArgs = {
 }
 
 export type FuneralAssistencePagePublishedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
   locales?: InputMaybe<Array<Locale>>
 }
 
@@ -3876,6 +3905,7 @@ export type FuneralAssistencePageScheduledInArgs = {
   after?: InputMaybe<Scalars['String']>
   before?: InputMaybe<Scalars['String']>
   first?: InputMaybe<Scalars['Int']>
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
   last?: InputMaybe<Scalars['Int']>
   locales?: InputMaybe<Array<Locale>>
   skip?: InputMaybe<Scalars['Int']>
@@ -3883,6 +3913,7 @@ export type FuneralAssistencePageScheduledInArgs = {
 }
 
 export type FuneralAssistencePageUpdatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
   locales?: InputMaybe<Array<Locale>>
 }
 
@@ -4677,6 +4708,7 @@ export type HowWork = Node & {
 }
 
 export type HowWorkCreatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
   locales?: InputMaybe<Array<Locale>>
 }
 
@@ -4693,10 +4725,12 @@ export type HowWorkHistoryArgs = {
 }
 
 export type HowWorkImageArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
   locales?: InputMaybe<Array<Locale>>
 }
 
 export type HowWorkPublishedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
   locales?: InputMaybe<Array<Locale>>
 }
 
@@ -4704,6 +4738,7 @@ export type HowWorkScheduledInArgs = {
   after?: InputMaybe<Scalars['String']>
   before?: InputMaybe<Scalars['String']>
   first?: InputMaybe<Scalars['Int']>
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
   last?: InputMaybe<Scalars['Int']>
   locales?: InputMaybe<Array<Locale>>
   skip?: InputMaybe<Scalars['Int']>
@@ -4711,6 +4746,7 @@ export type HowWorkScheduledInArgs = {
 }
 
 export type HowWorkUpdatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
   locales?: InputMaybe<Array<Locale>>
 }
 
@@ -5632,6 +5668,7 @@ export type MedicoOnlinePageCardsArgs = {
   after?: InputMaybe<Scalars['String']>
   before?: InputMaybe<Scalars['String']>
   first?: InputMaybe<Scalars['Int']>
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
   last?: InputMaybe<Scalars['Int']>
   locales?: InputMaybe<Array<Locale>>
   orderBy?: InputMaybe<CardMedicOrderByInput>
@@ -5640,6 +5677,7 @@ export type MedicoOnlinePageCardsArgs = {
 }
 
 export type MedicoOnlinePageCreatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
   locales?: InputMaybe<Array<Locale>>
 }
 
@@ -5659,6 +5697,7 @@ export type MedicoOnlinePageMedicPlansArgs = {
   after?: InputMaybe<Scalars['String']>
   before?: InputMaybe<Scalars['String']>
   first?: InputMaybe<Scalars['Int']>
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
   last?: InputMaybe<Scalars['Int']>
   locales?: InputMaybe<Array<Locale>>
   orderBy?: InputMaybe<MedicPlanOrderByInput>
@@ -5667,6 +5706,7 @@ export type MedicoOnlinePageMedicPlansArgs = {
 }
 
 export type MedicoOnlinePagePublishedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
   locales?: InputMaybe<Array<Locale>>
 }
 
@@ -5674,6 +5714,7 @@ export type MedicoOnlinePageScheduledInArgs = {
   after?: InputMaybe<Scalars['String']>
   before?: InputMaybe<Scalars['String']>
   first?: InputMaybe<Scalars['Int']>
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
   last?: InputMaybe<Scalars['Int']>
   locales?: InputMaybe<Array<Locale>>
   skip?: InputMaybe<Scalars['Int']>
@@ -5681,6 +5722,7 @@ export type MedicoOnlinePageScheduledInArgs = {
 }
 
 export type MedicoOnlinePageUpdatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
   locales?: InputMaybe<Array<Locale>>
 }
 
@@ -6155,6 +6197,7 @@ export type Menu = Node & {
 }
 
 export type MenuCreatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
   locales?: InputMaybe<Array<Locale>>
 }
 
@@ -6174,6 +6217,7 @@ export type MenuLinksArgs = {
   after?: InputMaybe<Scalars['String']>
   before?: InputMaybe<Scalars['String']>
   first?: InputMaybe<Scalars['Int']>
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
   last?: InputMaybe<Scalars['Int']>
   locales?: InputMaybe<Array<Locale>>
   orderBy?: InputMaybe<ButtonOrderByInput>
@@ -6182,6 +6226,7 @@ export type MenuLinksArgs = {
 }
 
 export type MenuPublishedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
   locales?: InputMaybe<Array<Locale>>
 }
 
@@ -6189,6 +6234,7 @@ export type MenuScheduledInArgs = {
   after?: InputMaybe<Scalars['String']>
   before?: InputMaybe<Scalars['String']>
   first?: InputMaybe<Scalars['Int']>
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
   last?: InputMaybe<Scalars['Int']>
   locales?: InputMaybe<Array<Locale>>
   skip?: InputMaybe<Scalars['Int']>
@@ -6196,6 +6242,7 @@ export type MenuScheduledInArgs = {
 }
 
 export type MenuUpdatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
   locales?: InputMaybe<Array<Locale>>
 }
 
@@ -6722,6 +6769,7 @@ export type MetaTag = Node & {
 }
 
 export type MetaTagCreatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
   locales?: InputMaybe<Array<Locale>>
 }
 
@@ -6738,10 +6786,12 @@ export type MetaTagHistoryArgs = {
 }
 
 export type MetaTagImageArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
   locales?: InputMaybe<Array<Locale>>
 }
 
 export type MetaTagPublishedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
   locales?: InputMaybe<Array<Locale>>
 }
 
@@ -6749,6 +6799,7 @@ export type MetaTagScheduledInArgs = {
   after?: InputMaybe<Scalars['String']>
   before?: InputMaybe<Scalars['String']>
   first?: InputMaybe<Scalars['Int']>
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
   last?: InputMaybe<Scalars['Int']>
   locales?: InputMaybe<Array<Locale>>
   skip?: InputMaybe<Scalars['Int']>
@@ -6756,6 +6807,7 @@ export type MetaTagScheduledInArgs = {
 }
 
 export type MetaTagUpdatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
   locales?: InputMaybe<Array<Locale>>
 }
 
@@ -7193,6 +7245,8 @@ export type Mutation = {
   createPartnership?: Maybe<Partnership>
   /** Create one pricing */
   createPricing?: Maybe<Pricing>
+  /** Create one receiveEmail */
+  createReceiveEmail?: Maybe<ReceiveEmail>
   /** Create one scheduledRelease */
   createScheduledRelease?: Maybe<ScheduledRelease>
   /** Create one socialMedia */
@@ -7287,6 +7341,13 @@ export type Mutation = {
   /** Delete many Pricing documents, return deleted documents */
   deleteManyPricingsConnection: PricingConnection
   /**
+   * Delete many ReceiveEmail documents
+   * @deprecated Please use the new paginated many mutation (deleteManyReceiveEmailsConnection)
+   */
+  deleteManyReceiveEmails: BatchPayload
+  /** Delete many ReceiveEmail documents, return deleted documents */
+  deleteManyReceiveEmailsConnection: ReceiveEmailConnection
+  /**
    * Delete many SocialMedia documents
    * @deprecated Please use the new paginated many mutation (deleteManySocialMediasConnection)
    */
@@ -7303,6 +7364,8 @@ export type Mutation = {
   deletePartnership?: Maybe<Partnership>
   /** Delete one pricing from _all_ existing stages. Returns deleted document. */
   deletePricing?: Maybe<Pricing>
+  /** Delete one receiveEmail from _all_ existing stages. Returns deleted document. */
+  deleteReceiveEmail?: Maybe<ReceiveEmail>
   /** Delete and return scheduled operation */
   deleteScheduledOperation?: Maybe<ScheduledOperation>
   /** Delete one scheduledRelease from _all_ existing stages. Returns deleted document. */
@@ -7399,6 +7462,13 @@ export type Mutation = {
   /** Publish many Pricing documents */
   publishManyPricingsConnection: PricingConnection
   /**
+   * Publish many ReceiveEmail documents
+   * @deprecated Please use the new paginated many mutation (publishManyReceiveEmailsConnection)
+   */
+  publishManyReceiveEmails: BatchPayload
+  /** Publish many ReceiveEmail documents */
+  publishManyReceiveEmailsConnection: ReceiveEmailConnection
+  /**
    * Publish many SocialMedia documents
    * @deprecated Please use the new paginated many mutation (publishManySocialMediasConnection)
    */
@@ -7415,6 +7485,8 @@ export type Mutation = {
   publishPartnership?: Maybe<Partnership>
   /** Publish one pricing */
   publishPricing?: Maybe<Pricing>
+  /** Publish one receiveEmail */
+  publishReceiveEmail?: Maybe<ReceiveEmail>
   /** Publish one socialMedia */
   publishSocialMedia?: Maybe<SocialMedia>
   /** Schedule to publish one about */
@@ -7439,6 +7511,8 @@ export type Mutation = {
   schedulePublishPartnership?: Maybe<Partnership>
   /** Schedule to publish one pricing */
   schedulePublishPricing?: Maybe<Pricing>
+  /** Schedule to publish one receiveEmail */
+  schedulePublishReceiveEmail?: Maybe<ReceiveEmail>
   /** Schedule to publish one socialMedia */
   schedulePublishSocialMedia?: Maybe<SocialMedia>
   /** Unpublish one about from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
@@ -7463,6 +7537,8 @@ export type Mutation = {
   scheduleUnpublishPartnership?: Maybe<Partnership>
   /** Unpublish one pricing from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   scheduleUnpublishPricing?: Maybe<Pricing>
+  /** Unpublish one receiveEmail from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
+  scheduleUnpublishReceiveEmail?: Maybe<ReceiveEmail>
   /** Unpublish one socialMedia from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   scheduleUnpublishSocialMedia?: Maybe<SocialMedia>
   /** Unpublish one about from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
@@ -7555,6 +7631,13 @@ export type Mutation = {
   /** Find many Pricing documents that match criteria in specified stage and unpublish from target stages */
   unpublishManyPricingsConnection: PricingConnection
   /**
+   * Unpublish many ReceiveEmail documents
+   * @deprecated Please use the new paginated many mutation (unpublishManyReceiveEmailsConnection)
+   */
+  unpublishManyReceiveEmails: BatchPayload
+  /** Find many ReceiveEmail documents that match criteria in specified stage and unpublish from target stages */
+  unpublishManyReceiveEmailsConnection: ReceiveEmailConnection
+  /**
    * Unpublish many SocialMedia documents
    * @deprecated Please use the new paginated many mutation (unpublishManySocialMediasConnection)
    */
@@ -7571,6 +7654,8 @@ export type Mutation = {
   unpublishPartnership?: Maybe<Partnership>
   /** Unpublish one pricing from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   unpublishPricing?: Maybe<Pricing>
+  /** Unpublish one receiveEmail from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
+  unpublishReceiveEmail?: Maybe<ReceiveEmail>
   /** Unpublish one socialMedia from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   unpublishSocialMedia?: Maybe<SocialMedia>
   /** Update one about */
@@ -7663,6 +7748,13 @@ export type Mutation = {
   /** Update many Pricing documents */
   updateManyPricingsConnection: PricingConnection
   /**
+   * Update many receiveEmails
+   * @deprecated Please use the new paginated many mutation (updateManyReceiveEmailsConnection)
+   */
+  updateManyReceiveEmails: BatchPayload
+  /** Update many ReceiveEmail documents */
+  updateManyReceiveEmailsConnection: ReceiveEmailConnection
+  /**
    * Update many socialMedias
    * @deprecated Please use the new paginated many mutation (updateManySocialMediasConnection)
    */
@@ -7679,6 +7771,8 @@ export type Mutation = {
   updatePartnership?: Maybe<Partnership>
   /** Update one pricing */
   updatePricing?: Maybe<Pricing>
+  /** Update one receiveEmail */
+  updateReceiveEmail?: Maybe<ReceiveEmail>
   /** Update one scheduledRelease */
   updateScheduledRelease?: Maybe<ScheduledRelease>
   /** Update one socialMedia */
@@ -7705,6 +7799,8 @@ export type Mutation = {
   upsertPartnership?: Maybe<Partnership>
   /** Upsert one pricing */
   upsertPricing?: Maybe<Pricing>
+  /** Upsert one receiveEmail */
+  upsertReceiveEmail?: Maybe<ReceiveEmail>
   /** Upsert one socialMedia */
   upsertSocialMedia?: Maybe<SocialMedia>
 }
@@ -7751,6 +7847,10 @@ export type MutationCreatePartnershipArgs = {
 
 export type MutationCreatePricingArgs = {
   data: PricingCreateInput
+}
+
+export type MutationCreateReceiveEmailArgs = {
+  data: ReceiveEmailCreateInput
 }
 
 export type MutationCreateScheduledReleaseArgs = {
@@ -7928,6 +8028,19 @@ export type MutationDeleteManyPricingsConnectionArgs = {
   where?: InputMaybe<PricingManyWhereInput>
 }
 
+export type MutationDeleteManyReceiveEmailsArgs = {
+  where?: InputMaybe<ReceiveEmailManyWhereInput>
+}
+
+export type MutationDeleteManyReceiveEmailsConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>
+  before?: InputMaybe<Scalars['ID']>
+  first?: InputMaybe<Scalars['Int']>
+  last?: InputMaybe<Scalars['Int']>
+  skip?: InputMaybe<Scalars['Int']>
+  where?: InputMaybe<ReceiveEmailManyWhereInput>
+}
+
 export type MutationDeleteManySocialMediasArgs = {
   where?: InputMaybe<SocialMediaManyWhereInput>
 }
@@ -7959,6 +8072,10 @@ export type MutationDeletePartnershipArgs = {
 
 export type MutationDeletePricingArgs = {
   where: PricingWhereUniqueInput
+}
+
+export type MutationDeleteReceiveEmailArgs = {
+  where: ReceiveEmailWhereUniqueInput
 }
 
 export type MutationDeleteScheduledOperationArgs = {
@@ -8188,6 +8305,22 @@ export type MutationPublishManyPricingsConnectionArgs = {
   where?: InputMaybe<PricingManyWhereInput>
 }
 
+export type MutationPublishManyReceiveEmailsArgs = {
+  to?: Array<Stage>
+  where?: InputMaybe<ReceiveEmailManyWhereInput>
+}
+
+export type MutationPublishManyReceiveEmailsConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>
+  before?: InputMaybe<Scalars['ID']>
+  first?: InputMaybe<Scalars['Int']>
+  from?: InputMaybe<Stage>
+  last?: InputMaybe<Scalars['Int']>
+  skip?: InputMaybe<Scalars['Int']>
+  to?: Array<Stage>
+  where?: InputMaybe<ReceiveEmailManyWhereInput>
+}
+
 export type MutationPublishManySocialMediasArgs = {
   to?: Array<Stage>
   where?: InputMaybe<SocialMediaManyWhereInput>
@@ -8227,6 +8360,11 @@ export type MutationPublishPartnershipArgs = {
 export type MutationPublishPricingArgs = {
   to?: Array<Stage>
   where: PricingWhereUniqueInput
+}
+
+export type MutationPublishReceiveEmailArgs = {
+  to?: Array<Stage>
+  where: ReceiveEmailWhereUniqueInput
 }
 
 export type MutationPublishSocialMediaArgs = {
@@ -8314,6 +8452,13 @@ export type MutationSchedulePublishPricingArgs = {
   where: PricingWhereUniqueInput
 }
 
+export type MutationSchedulePublishReceiveEmailArgs = {
+  releaseAt?: InputMaybe<Scalars['DateTime']>
+  releaseId?: InputMaybe<Scalars['String']>
+  to?: Array<Stage>
+  where: ReceiveEmailWhereUniqueInput
+}
+
 export type MutationSchedulePublishSocialMediaArgs = {
   releaseAt?: InputMaybe<Scalars['DateTime']>
   releaseId?: InputMaybe<Scalars['String']>
@@ -8398,6 +8543,13 @@ export type MutationScheduleUnpublishPricingArgs = {
   releaseAt?: InputMaybe<Scalars['DateTime']>
   releaseId?: InputMaybe<Scalars['String']>
   where: PricingWhereUniqueInput
+}
+
+export type MutationScheduleUnpublishReceiveEmailArgs = {
+  from?: Array<Stage>
+  releaseAt?: InputMaybe<Scalars['DateTime']>
+  releaseId?: InputMaybe<Scalars['String']>
+  where: ReceiveEmailWhereUniqueInput
 }
 
 export type MutationScheduleUnpublishSocialMediaArgs = {
@@ -8619,6 +8771,22 @@ export type MutationUnpublishManyPricingsConnectionArgs = {
   where?: InputMaybe<PricingManyWhereInput>
 }
 
+export type MutationUnpublishManyReceiveEmailsArgs = {
+  from?: Array<Stage>
+  where?: InputMaybe<ReceiveEmailManyWhereInput>
+}
+
+export type MutationUnpublishManyReceiveEmailsConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>
+  before?: InputMaybe<Scalars['ID']>
+  first?: InputMaybe<Scalars['Int']>
+  from?: Array<Stage>
+  last?: InputMaybe<Scalars['Int']>
+  skip?: InputMaybe<Scalars['Int']>
+  stage?: InputMaybe<Stage>
+  where?: InputMaybe<ReceiveEmailManyWhereInput>
+}
+
 export type MutationUnpublishManySocialMediasArgs = {
   from?: Array<Stage>
   where?: InputMaybe<SocialMediaManyWhereInput>
@@ -8658,6 +8826,11 @@ export type MutationUnpublishPartnershipArgs = {
 export type MutationUnpublishPricingArgs = {
   from?: Array<Stage>
   where: PricingWhereUniqueInput
+}
+
+export type MutationUnpublishReceiveEmailArgs = {
+  from?: Array<Stage>
+  where: ReceiveEmailWhereUniqueInput
 }
 
 export type MutationUnpublishSocialMediaArgs = {
@@ -8860,6 +9033,21 @@ export type MutationUpdateManyPricingsConnectionArgs = {
   where?: InputMaybe<PricingManyWhereInput>
 }
 
+export type MutationUpdateManyReceiveEmailsArgs = {
+  data: ReceiveEmailUpdateManyInput
+  where?: InputMaybe<ReceiveEmailManyWhereInput>
+}
+
+export type MutationUpdateManyReceiveEmailsConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>
+  before?: InputMaybe<Scalars['ID']>
+  data: ReceiveEmailUpdateManyInput
+  first?: InputMaybe<Scalars['Int']>
+  last?: InputMaybe<Scalars['Int']>
+  skip?: InputMaybe<Scalars['Int']>
+  where?: InputMaybe<ReceiveEmailManyWhereInput>
+}
+
 export type MutationUpdateManySocialMediasArgs = {
   data: SocialMediaUpdateManyInput
   where?: InputMaybe<SocialMediaManyWhereInput>
@@ -8898,6 +9086,11 @@ export type MutationUpdatePartnershipArgs = {
 export type MutationUpdatePricingArgs = {
   data: PricingUpdateInput
   where: PricingWhereUniqueInput
+}
+
+export type MutationUpdateReceiveEmailArgs = {
+  data: ReceiveEmailUpdateInput
+  where: ReceiveEmailWhereUniqueInput
 }
 
 export type MutationUpdateScheduledReleaseArgs = {
@@ -8965,6 +9158,11 @@ export type MutationUpsertPricingArgs = {
   where: PricingWhereUniqueInput
 }
 
+export type MutationUpsertReceiveEmailArgs = {
+  upsert: ReceiveEmailUpsertInput
+  where: ReceiveEmailWhereUniqueInput
+}
+
 export type MutationUpsertSocialMediaArgs = {
   upsert: SocialMediaUpsertInput
   where: SocialMediaWhereUniqueInput
@@ -9021,6 +9219,7 @@ export type Partnership = Node & {
 }
 
 export type PartnershipCreatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
   locales?: InputMaybe<Array<Locale>>
 }
 
@@ -9037,10 +9236,12 @@ export type PartnershipHistoryArgs = {
 }
 
 export type PartnershipImageArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
   locales?: InputMaybe<Array<Locale>>
 }
 
 export type PartnershipPublishedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
   locales?: InputMaybe<Array<Locale>>
 }
 
@@ -9048,6 +9249,7 @@ export type PartnershipScheduledInArgs = {
   after?: InputMaybe<Scalars['String']>
   before?: InputMaybe<Scalars['String']>
   first?: InputMaybe<Scalars['Int']>
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
   last?: InputMaybe<Scalars['Int']>
   locales?: InputMaybe<Array<Locale>>
   skip?: InputMaybe<Scalars['Int']>
@@ -9055,6 +9257,7 @@ export type PartnershipScheduledInArgs = {
 }
 
 export type PartnershipUpdatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
   locales?: InputMaybe<Array<Locale>>
 }
 
@@ -9455,6 +9658,7 @@ export type Pricing = Node & {
 }
 
 export type PricingCreatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
   locales?: InputMaybe<Array<Locale>>
 }
 
@@ -9471,6 +9675,7 @@ export type PricingHistoryArgs = {
 }
 
 export type PricingPublishedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
   locales?: InputMaybe<Array<Locale>>
 }
 
@@ -9478,6 +9683,7 @@ export type PricingScheduledInArgs = {
   after?: InputMaybe<Scalars['String']>
   before?: InputMaybe<Scalars['String']>
   first?: InputMaybe<Scalars['Int']>
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
   last?: InputMaybe<Scalars['Int']>
   locales?: InputMaybe<Array<Locale>>
   skip?: InputMaybe<Scalars['Int']>
@@ -9485,6 +9691,7 @@ export type PricingScheduledInArgs = {
 }
 
 export type PricingUpdatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
   locales?: InputMaybe<Array<Locale>>
 }
 
@@ -10139,6 +10346,14 @@ export type Query = {
   pricings: Array<Pricing>
   /** Retrieve multiple pricings using the Relay connection interface */
   pricingsConnection: PricingConnection
+  /** Retrieve a single receiveEmail */
+  receiveEmail?: Maybe<ReceiveEmail>
+  /** Retrieve document version */
+  receiveEmailVersion?: Maybe<DocumentVersion>
+  /** Retrieve multiple receiveEmails */
+  receiveEmails: Array<ReceiveEmail>
+  /** Retrieve multiple receiveEmails using the Relay connection interface */
+  receiveEmailsConnection: ReceiveEmailConnection
   /** Retrieve a single scheduledOperation */
   scheduledOperation?: Maybe<ScheduledOperation>
   /** Retrieve multiple scheduledOperations */
@@ -10547,6 +10762,40 @@ export type QueryPricingsConnectionArgs = {
   where?: InputMaybe<PricingWhereInput>
 }
 
+export type QueryReceiveEmailArgs = {
+  locales?: Array<Locale>
+  stage?: Stage
+  where: ReceiveEmailWhereUniqueInput
+}
+
+export type QueryReceiveEmailVersionArgs = {
+  where: VersionWhereInput
+}
+
+export type QueryReceiveEmailsArgs = {
+  after?: InputMaybe<Scalars['String']>
+  before?: InputMaybe<Scalars['String']>
+  first?: InputMaybe<Scalars['Int']>
+  last?: InputMaybe<Scalars['Int']>
+  locales?: Array<Locale>
+  orderBy?: InputMaybe<ReceiveEmailOrderByInput>
+  skip?: InputMaybe<Scalars['Int']>
+  stage?: Stage
+  where?: InputMaybe<ReceiveEmailWhereInput>
+}
+
+export type QueryReceiveEmailsConnectionArgs = {
+  after?: InputMaybe<Scalars['String']>
+  before?: InputMaybe<Scalars['String']>
+  first?: InputMaybe<Scalars['Int']>
+  last?: InputMaybe<Scalars['Int']>
+  locales?: Array<Locale>
+  orderBy?: InputMaybe<ReceiveEmailOrderByInput>
+  skip?: InputMaybe<Scalars['Int']>
+  stage?: Stage
+  where?: InputMaybe<ReceiveEmailWhereInput>
+}
+
 export type QueryScheduledOperationArgs = {
   locales?: Array<Locale>
   stage?: Stage
@@ -10688,6 +10937,474 @@ export type RgbaInput = {
   r: Scalars['RGBAHue']
 }
 
+export type ReceiveEmail = Node & {
+  __typename?: 'ReceiveEmail'
+  /** The time the document was created */
+  createdAt: Scalars['DateTime']
+  /** User that created this document */
+  createdBy?: Maybe<User>
+  /** Get the document in other stages */
+  documentInStages: Array<ReceiveEmail>
+  email: Scalars['String']
+  /** List of ReceiveEmail versions */
+  history: Array<Version>
+  /** The unique identifier */
+  id: Scalars['ID']
+  name: Scalars['String']
+  /** The time the document was published. Null on documents in draft stage. */
+  publishedAt?: Maybe<Scalars['DateTime']>
+  /** User that last published this document */
+  publishedBy?: Maybe<User>
+  scheduledIn: Array<ScheduledOperation>
+  /** System stage field */
+  stage: Stage
+  /** The time the document was updated */
+  updatedAt: Scalars['DateTime']
+  /** User that last updated this document */
+  updatedBy?: Maybe<User>
+}
+
+export type ReceiveEmailCreatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
+  locales?: InputMaybe<Array<Locale>>
+}
+
+export type ReceiveEmailDocumentInStagesArgs = {
+  includeCurrent?: Scalars['Boolean']
+  inheritLocale?: Scalars['Boolean']
+  stages?: Array<Stage>
+}
+
+export type ReceiveEmailHistoryArgs = {
+  limit?: Scalars['Int']
+  skip?: Scalars['Int']
+  stageOverride?: InputMaybe<Stage>
+}
+
+export type ReceiveEmailPublishedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
+  locales?: InputMaybe<Array<Locale>>
+}
+
+export type ReceiveEmailScheduledInArgs = {
+  after?: InputMaybe<Scalars['String']>
+  before?: InputMaybe<Scalars['String']>
+  first?: InputMaybe<Scalars['Int']>
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
+  last?: InputMaybe<Scalars['Int']>
+  locales?: InputMaybe<Array<Locale>>
+  skip?: InputMaybe<Scalars['Int']>
+  where?: InputMaybe<ScheduledOperationWhereInput>
+}
+
+export type ReceiveEmailUpdatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
+  locales?: InputMaybe<Array<Locale>>
+}
+
+export type ReceiveEmailConnectInput = {
+  /** Allow to specify document position in list of connected documents, will default to appending at end of list */
+  position?: InputMaybe<ConnectPositionInput>
+  /** Document to connect */
+  where: ReceiveEmailWhereUniqueInput
+}
+
+/** A connection to a list of items. */
+export type ReceiveEmailConnection = {
+  __typename?: 'ReceiveEmailConnection'
+  aggregate: Aggregate
+  /** A list of edges. */
+  edges: Array<ReceiveEmailEdge>
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo
+}
+
+export type ReceiveEmailCreateInput = {
+  createdAt?: InputMaybe<Scalars['DateTime']>
+  email: Scalars['String']
+  name: Scalars['String']
+  updatedAt?: InputMaybe<Scalars['DateTime']>
+}
+
+export type ReceiveEmailCreateManyInlineInput = {
+  /** Connect multiple existing ReceiveEmail documents */
+  connect?: InputMaybe<Array<ReceiveEmailWhereUniqueInput>>
+  /** Create and connect multiple existing ReceiveEmail documents */
+  create?: InputMaybe<Array<ReceiveEmailCreateInput>>
+}
+
+export type ReceiveEmailCreateOneInlineInput = {
+  /** Connect one existing ReceiveEmail document */
+  connect?: InputMaybe<ReceiveEmailWhereUniqueInput>
+  /** Create and connect one ReceiveEmail document */
+  create?: InputMaybe<ReceiveEmailCreateInput>
+}
+
+/** An edge in a connection. */
+export type ReceiveEmailEdge = {
+  __typename?: 'ReceiveEmailEdge'
+  /** A cursor for use in pagination. */
+  cursor: Scalars['String']
+  /** The item at the end of the edge. */
+  node: ReceiveEmail
+}
+
+/** Identifies documents */
+export type ReceiveEmailManyWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<ReceiveEmailWhereInput>>
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<ReceiveEmailWhereInput>>
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<ReceiveEmailWhereInput>>
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']>
+  createdAt?: InputMaybe<Scalars['DateTime']>
+  /** All values greater than the given value. */
+  createdAt_gt?: InputMaybe<Scalars['DateTime']>
+  /** All values greater than or equal the given value. */
+  createdAt_gte?: InputMaybe<Scalars['DateTime']>
+  /** All values that are contained in given list. */
+  createdAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>
+  /** All values less than the given value. */
+  createdAt_lt?: InputMaybe<Scalars['DateTime']>
+  /** All values less than or equal the given value. */
+  createdAt_lte?: InputMaybe<Scalars['DateTime']>
+  /** All values that are not equal to given value. */
+  createdAt_not?: InputMaybe<Scalars['DateTime']>
+  /** All values that are not contained in given list. */
+  createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>
+  createdBy?: InputMaybe<UserWhereInput>
+  documentInStages_every?: InputMaybe<ReceiveEmailWhereStageInput>
+  documentInStages_none?: InputMaybe<ReceiveEmailWhereStageInput>
+  documentInStages_some?: InputMaybe<ReceiveEmailWhereStageInput>
+  email?: InputMaybe<Scalars['String']>
+  /** All values containing the given string. */
+  email_contains?: InputMaybe<Scalars['String']>
+  /** All values ending with the given string. */
+  email_ends_with?: InputMaybe<Scalars['String']>
+  /** All values that are contained in given list. */
+  email_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  /** All values that are not equal to given value. */
+  email_not?: InputMaybe<Scalars['String']>
+  /** All values not containing the given string. */
+  email_not_contains?: InputMaybe<Scalars['String']>
+  /** All values not ending with the given string */
+  email_not_ends_with?: InputMaybe<Scalars['String']>
+  /** All values that are not contained in given list. */
+  email_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  /** All values not starting with the given string. */
+  email_not_starts_with?: InputMaybe<Scalars['String']>
+  /** All values starting with the given string. */
+  email_starts_with?: InputMaybe<Scalars['String']>
+  id?: InputMaybe<Scalars['ID']>
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']>
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']>
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
+  /** All values that are not equal to given value. */
+  id_not?: InputMaybe<Scalars['ID']>
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']>
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']>
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']>
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']>
+  name?: InputMaybe<Scalars['String']>
+  /** All values containing the given string. */
+  name_contains?: InputMaybe<Scalars['String']>
+  /** All values ending with the given string. */
+  name_ends_with?: InputMaybe<Scalars['String']>
+  /** All values that are contained in given list. */
+  name_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  /** All values that are not equal to given value. */
+  name_not?: InputMaybe<Scalars['String']>
+  /** All values not containing the given string. */
+  name_not_contains?: InputMaybe<Scalars['String']>
+  /** All values not ending with the given string */
+  name_not_ends_with?: InputMaybe<Scalars['String']>
+  /** All values that are not contained in given list. */
+  name_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  /** All values not starting with the given string. */
+  name_not_starts_with?: InputMaybe<Scalars['String']>
+  /** All values starting with the given string. */
+  name_starts_with?: InputMaybe<Scalars['String']>
+  publishedAt?: InputMaybe<Scalars['DateTime']>
+  /** All values greater than the given value. */
+  publishedAt_gt?: InputMaybe<Scalars['DateTime']>
+  /** All values greater than or equal the given value. */
+  publishedAt_gte?: InputMaybe<Scalars['DateTime']>
+  /** All values that are contained in given list. */
+  publishedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>
+  /** All values less than the given value. */
+  publishedAt_lt?: InputMaybe<Scalars['DateTime']>
+  /** All values less than or equal the given value. */
+  publishedAt_lte?: InputMaybe<Scalars['DateTime']>
+  /** All values that are not equal to given value. */
+  publishedAt_not?: InputMaybe<Scalars['DateTime']>
+  /** All values that are not contained in given list. */
+  publishedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>
+  publishedBy?: InputMaybe<UserWhereInput>
+  scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>
+  scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>
+  scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>
+  updatedAt?: InputMaybe<Scalars['DateTime']>
+  /** All values greater than the given value. */
+  updatedAt_gt?: InputMaybe<Scalars['DateTime']>
+  /** All values greater than or equal the given value. */
+  updatedAt_gte?: InputMaybe<Scalars['DateTime']>
+  /** All values that are contained in given list. */
+  updatedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>
+  /** All values less than the given value. */
+  updatedAt_lt?: InputMaybe<Scalars['DateTime']>
+  /** All values less than or equal the given value. */
+  updatedAt_lte?: InputMaybe<Scalars['DateTime']>
+  /** All values that are not equal to given value. */
+  updatedAt_not?: InputMaybe<Scalars['DateTime']>
+  /** All values that are not contained in given list. */
+  updatedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>
+  updatedBy?: InputMaybe<UserWhereInput>
+}
+
+export enum ReceiveEmailOrderByInput {
+  CreatedAtAsc = 'createdAt_ASC',
+  CreatedAtDesc = 'createdAt_DESC',
+  EmailAsc = 'email_ASC',
+  EmailDesc = 'email_DESC',
+  IdAsc = 'id_ASC',
+  IdDesc = 'id_DESC',
+  NameAsc = 'name_ASC',
+  NameDesc = 'name_DESC',
+  PublishedAtAsc = 'publishedAt_ASC',
+  PublishedAtDesc = 'publishedAt_DESC',
+  UpdatedAtAsc = 'updatedAt_ASC',
+  UpdatedAtDesc = 'updatedAt_DESC'
+}
+
+export type ReceiveEmailUpdateInput = {
+  email?: InputMaybe<Scalars['String']>
+  name?: InputMaybe<Scalars['String']>
+}
+
+export type ReceiveEmailUpdateManyInlineInput = {
+  /** Connect multiple existing ReceiveEmail documents */
+  connect?: InputMaybe<Array<ReceiveEmailConnectInput>>
+  /** Create and connect multiple ReceiveEmail documents */
+  create?: InputMaybe<Array<ReceiveEmailCreateInput>>
+  /** Delete multiple ReceiveEmail documents */
+  delete?: InputMaybe<Array<ReceiveEmailWhereUniqueInput>>
+  /** Disconnect multiple ReceiveEmail documents */
+  disconnect?: InputMaybe<Array<ReceiveEmailWhereUniqueInput>>
+  /** Override currently-connected documents with multiple existing ReceiveEmail documents */
+  set?: InputMaybe<Array<ReceiveEmailWhereUniqueInput>>
+  /** Update multiple ReceiveEmail documents */
+  update?: InputMaybe<Array<ReceiveEmailUpdateWithNestedWhereUniqueInput>>
+  /** Upsert multiple ReceiveEmail documents */
+  upsert?: InputMaybe<Array<ReceiveEmailUpsertWithNestedWhereUniqueInput>>
+}
+
+export type ReceiveEmailUpdateManyInput = {
+  email?: InputMaybe<Scalars['String']>
+  name?: InputMaybe<Scalars['String']>
+}
+
+export type ReceiveEmailUpdateManyWithNestedWhereInput = {
+  /** Update many input */
+  data: ReceiveEmailUpdateManyInput
+  /** Document search */
+  where: ReceiveEmailWhereInput
+}
+
+export type ReceiveEmailUpdateOneInlineInput = {
+  /** Connect existing ReceiveEmail document */
+  connect?: InputMaybe<ReceiveEmailWhereUniqueInput>
+  /** Create and connect one ReceiveEmail document */
+  create?: InputMaybe<ReceiveEmailCreateInput>
+  /** Delete currently connected ReceiveEmail document */
+  delete?: InputMaybe<Scalars['Boolean']>
+  /** Disconnect currently connected ReceiveEmail document */
+  disconnect?: InputMaybe<Scalars['Boolean']>
+  /** Update single ReceiveEmail document */
+  update?: InputMaybe<ReceiveEmailUpdateWithNestedWhereUniqueInput>
+  /** Upsert single ReceiveEmail document */
+  upsert?: InputMaybe<ReceiveEmailUpsertWithNestedWhereUniqueInput>
+}
+
+export type ReceiveEmailUpdateWithNestedWhereUniqueInput = {
+  /** Document to update */
+  data: ReceiveEmailUpdateInput
+  /** Unique document search */
+  where: ReceiveEmailWhereUniqueInput
+}
+
+export type ReceiveEmailUpsertInput = {
+  /** Create document if it didn't exist */
+  create: ReceiveEmailCreateInput
+  /** Update document if it exists */
+  update: ReceiveEmailUpdateInput
+}
+
+export type ReceiveEmailUpsertWithNestedWhereUniqueInput = {
+  /** Upsert data */
+  data: ReceiveEmailUpsertInput
+  /** Unique document search */
+  where: ReceiveEmailWhereUniqueInput
+}
+
+/** This contains a set of filters that can be used to compare values internally */
+export type ReceiveEmailWhereComparatorInput = {
+  /** This field can be used to request to check if the entry is outdated by internal comparison */
+  outdated_to?: InputMaybe<Scalars['Boolean']>
+}
+
+/** Identifies documents */
+export type ReceiveEmailWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<ReceiveEmailWhereInput>>
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<ReceiveEmailWhereInput>>
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<ReceiveEmailWhereInput>>
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']>
+  createdAt?: InputMaybe<Scalars['DateTime']>
+  /** All values greater than the given value. */
+  createdAt_gt?: InputMaybe<Scalars['DateTime']>
+  /** All values greater than or equal the given value. */
+  createdAt_gte?: InputMaybe<Scalars['DateTime']>
+  /** All values that are contained in given list. */
+  createdAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>
+  /** All values less than the given value. */
+  createdAt_lt?: InputMaybe<Scalars['DateTime']>
+  /** All values less than or equal the given value. */
+  createdAt_lte?: InputMaybe<Scalars['DateTime']>
+  /** All values that are not equal to given value. */
+  createdAt_not?: InputMaybe<Scalars['DateTime']>
+  /** All values that are not contained in given list. */
+  createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>
+  createdBy?: InputMaybe<UserWhereInput>
+  documentInStages_every?: InputMaybe<ReceiveEmailWhereStageInput>
+  documentInStages_none?: InputMaybe<ReceiveEmailWhereStageInput>
+  documentInStages_some?: InputMaybe<ReceiveEmailWhereStageInput>
+  email?: InputMaybe<Scalars['String']>
+  /** All values containing the given string. */
+  email_contains?: InputMaybe<Scalars['String']>
+  /** All values ending with the given string. */
+  email_ends_with?: InputMaybe<Scalars['String']>
+  /** All values that are contained in given list. */
+  email_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  /** All values that are not equal to given value. */
+  email_not?: InputMaybe<Scalars['String']>
+  /** All values not containing the given string. */
+  email_not_contains?: InputMaybe<Scalars['String']>
+  /** All values not ending with the given string */
+  email_not_ends_with?: InputMaybe<Scalars['String']>
+  /** All values that are not contained in given list. */
+  email_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  /** All values not starting with the given string. */
+  email_not_starts_with?: InputMaybe<Scalars['String']>
+  /** All values starting with the given string. */
+  email_starts_with?: InputMaybe<Scalars['String']>
+  id?: InputMaybe<Scalars['ID']>
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']>
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']>
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
+  /** All values that are not equal to given value. */
+  id_not?: InputMaybe<Scalars['ID']>
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']>
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']>
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']>
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']>
+  name?: InputMaybe<Scalars['String']>
+  /** All values containing the given string. */
+  name_contains?: InputMaybe<Scalars['String']>
+  /** All values ending with the given string. */
+  name_ends_with?: InputMaybe<Scalars['String']>
+  /** All values that are contained in given list. */
+  name_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  /** All values that are not equal to given value. */
+  name_not?: InputMaybe<Scalars['String']>
+  /** All values not containing the given string. */
+  name_not_contains?: InputMaybe<Scalars['String']>
+  /** All values not ending with the given string */
+  name_not_ends_with?: InputMaybe<Scalars['String']>
+  /** All values that are not contained in given list. */
+  name_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  /** All values not starting with the given string. */
+  name_not_starts_with?: InputMaybe<Scalars['String']>
+  /** All values starting with the given string. */
+  name_starts_with?: InputMaybe<Scalars['String']>
+  publishedAt?: InputMaybe<Scalars['DateTime']>
+  /** All values greater than the given value. */
+  publishedAt_gt?: InputMaybe<Scalars['DateTime']>
+  /** All values greater than or equal the given value. */
+  publishedAt_gte?: InputMaybe<Scalars['DateTime']>
+  /** All values that are contained in given list. */
+  publishedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>
+  /** All values less than the given value. */
+  publishedAt_lt?: InputMaybe<Scalars['DateTime']>
+  /** All values less than or equal the given value. */
+  publishedAt_lte?: InputMaybe<Scalars['DateTime']>
+  /** All values that are not equal to given value. */
+  publishedAt_not?: InputMaybe<Scalars['DateTime']>
+  /** All values that are not contained in given list. */
+  publishedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>
+  publishedBy?: InputMaybe<UserWhereInput>
+  scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>
+  scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>
+  scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>
+  updatedAt?: InputMaybe<Scalars['DateTime']>
+  /** All values greater than the given value. */
+  updatedAt_gt?: InputMaybe<Scalars['DateTime']>
+  /** All values greater than or equal the given value. */
+  updatedAt_gte?: InputMaybe<Scalars['DateTime']>
+  /** All values that are contained in given list. */
+  updatedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>
+  /** All values less than the given value. */
+  updatedAt_lt?: InputMaybe<Scalars['DateTime']>
+  /** All values less than or equal the given value. */
+  updatedAt_lte?: InputMaybe<Scalars['DateTime']>
+  /** All values that are not equal to given value. */
+  updatedAt_not?: InputMaybe<Scalars['DateTime']>
+  /** All values that are not contained in given list. */
+  updatedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>
+  updatedBy?: InputMaybe<UserWhereInput>
+}
+
+/** The document in stages filter allows specifying a stage entry to cross compare the same document between different stages */
+export type ReceiveEmailWhereStageInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<ReceiveEmailWhereStageInput>>
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<ReceiveEmailWhereStageInput>>
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<ReceiveEmailWhereStageInput>>
+  /** This field contains fields which can be set as true or false to specify an internal comparison */
+  compareWithParent?: InputMaybe<ReceiveEmailWhereComparatorInput>
+  /** Specify the stage to compare with */
+  stage?: InputMaybe<Stage>
+}
+
+/** References ReceiveEmail record uniquely */
+export type ReceiveEmailWhereUniqueInput = {
+  id?: InputMaybe<Scalars['ID']>
+}
+
 /** Custom type representing a rich text value comprising of raw rich text ast, html, markdown and text values */
 export type RichText = {
   __typename?: 'RichText'
@@ -10740,6 +11457,7 @@ export type ScheduledOperationAffectedDocumentsArgs = {
   after?: InputMaybe<Scalars['String']>
   before?: InputMaybe<Scalars['String']>
   first?: InputMaybe<Scalars['Int']>
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
   last?: InputMaybe<Scalars['Int']>
   locales?: InputMaybe<Array<Locale>>
   skip?: InputMaybe<Scalars['Int']>
@@ -10747,6 +11465,7 @@ export type ScheduledOperationAffectedDocumentsArgs = {
 
 /** Scheduled Operation system model */
 export type ScheduledOperationCreatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
   locales?: InputMaybe<Array<Locale>>
 }
 
@@ -10759,16 +11478,19 @@ export type ScheduledOperationDocumentInStagesArgs = {
 
 /** Scheduled Operation system model */
 export type ScheduledOperationPublishedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
   locales?: InputMaybe<Array<Locale>>
 }
 
 /** Scheduled Operation system model */
 export type ScheduledOperationReleaseArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
   locales?: InputMaybe<Array<Locale>>
 }
 
 /** Scheduled Operation system model */
 export type ScheduledOperationUpdatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
   locales?: InputMaybe<Array<Locale>>
 }
 
@@ -10784,6 +11506,7 @@ export type ScheduledOperationAffectedDocument =
   | MetaTag
   | Partnership
   | Pricing
+  | ReceiveEmail
   | SocialMedia
 
 export type ScheduledOperationConnectInput = {
@@ -11160,6 +11883,7 @@ export type ScheduledRelease = Node & {
 
 /** Scheduled Release system model */
 export type ScheduledReleaseCreatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
   locales?: InputMaybe<Array<Locale>>
 }
 
@@ -11175,6 +11899,7 @@ export type ScheduledReleaseOperationsArgs = {
   after?: InputMaybe<Scalars['String']>
   before?: InputMaybe<Scalars['String']>
   first?: InputMaybe<Scalars['Int']>
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
   last?: InputMaybe<Scalars['Int']>
   locales?: InputMaybe<Array<Locale>>
   orderBy?: InputMaybe<ScheduledOperationOrderByInput>
@@ -11184,11 +11909,13 @@ export type ScheduledReleaseOperationsArgs = {
 
 /** Scheduled Release system model */
 export type ScheduledReleasePublishedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
   locales?: InputMaybe<Array<Locale>>
 }
 
 /** Scheduled Release system model */
 export type ScheduledReleaseUpdatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
   locales?: InputMaybe<Array<Locale>>
 }
 
@@ -11718,6 +12445,7 @@ export type SocialMedia = Node & {
 }
 
 export type SocialMediaCreatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
   locales?: InputMaybe<Array<Locale>>
 }
 
@@ -11734,6 +12462,7 @@ export type SocialMediaHistoryArgs = {
 }
 
 export type SocialMediaPublishedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
   locales?: InputMaybe<Array<Locale>>
 }
 
@@ -11741,6 +12470,7 @@ export type SocialMediaScheduledInArgs = {
   after?: InputMaybe<Scalars['String']>
   before?: InputMaybe<Scalars['String']>
   first?: InputMaybe<Scalars['Int']>
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
   last?: InputMaybe<Scalars['Int']>
   locales?: InputMaybe<Array<Locale>>
   skip?: InputMaybe<Scalars['Int']>
@@ -11748,6 +12478,7 @@ export type SocialMediaScheduledInArgs = {
 }
 
 export type SocialMediaUpdatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>
   locales?: InputMaybe<Array<Locale>>
 }
 
@@ -12641,6 +13372,17 @@ export enum _SystemDateTimeFieldVariation {
   Localization = 'localization'
 }
 
+export type EmailsQueryVariables = Exact<{ [key: string]: never }>
+
+export type EmailsQuery = {
+  __typename?: 'Query'
+  receiveEmails: Array<{
+    __typename?: 'ReceiveEmail'
+    name: string
+    email: string
+  }>
+}
+
 export type FuneralPageQueryVariables = Exact<{ [key: string]: never }>
 
 export type FuneralPageQuery = {
@@ -12823,6 +13565,23 @@ export type SuccessPageQuery = {
   }>
 }
 
+export const EmailsDocument = gql`
+  query Emails {
+    receiveEmails {
+      name
+      email
+    }
+  }
+`
+
+export function useEmailsQuery(
+  options?: Omit<Urql.UseQueryArgs<EmailsQueryVariables>, 'query'>
+) {
+  return Urql.useQuery<EmailsQuery, EmailsQueryVariables>({
+    query: EmailsDocument,
+    ...options
+  })
+}
 export const FuneralPageDocument = gql`
   query FuneralPage {
     menus {

@@ -52,7 +52,7 @@ export default async function handler(
     card,
     address
   }: DataProps = req.body
-  const host = req.headers.host || 'localhost'
+  const host = process.env.HOST || 'https://www.vivermaisbeneficios.com.br'
 
   const register = {
     planGalaxPayId: selectedPlan.id,

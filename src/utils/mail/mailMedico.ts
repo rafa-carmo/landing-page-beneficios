@@ -2,6 +2,8 @@ import { readFileSync } from 'fs'
 import handlebars from 'handlebars'
 
 import { mailTemplateDirectory, transporter } from '.'
+import { EmailsDocument, EmailsQuery } from '../../generated/graphql'
+import { client } from '../../lib/urql'
 
 interface MailHomeProps {
   name: string
@@ -41,9 +43,18 @@ export async function sendMailMedicoOnline({
     host
   }
   const htmlToSend = template(replacements)
+  const emailSend =
+    process.env.MAIL_USER || 'atendimento@vivermaisbeneficios.com.br'
+
+  const request = await client.query(EmailsDocument, {}).toPromise()
+  const emails: EmailsQuery = request.data
+  const emailReceive = `${
+    process.env.MAIL_EMAIL || 'atendimento@vivermaisbeneficios.com.br'
+  },${emails.receiveEmails.map((email) => email.email).join(',')}`
 
   let info = await transporter.sendMail({
-    to: 'email@email.com',
+    from: emailSend,
+    to: emailReceive,
     subject: `Requisição de Assistencia funeral - ${name}`,
     html: htmlToSend
   })

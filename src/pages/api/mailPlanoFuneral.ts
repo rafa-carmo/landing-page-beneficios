@@ -54,7 +54,7 @@ export default async function handler(
   if (!contract) {
     return res.status(400).json({ error: 'Contract is required' })
   }
-  const host = req.headers.host || 'localhost'
+  const host = process.env.HOST || 'https://www.vivermaisbeneficios.com.br'
   // console.log(name, cpf, dateBirth, email, telephone, plan, dependents)
 
   const date = new Date(`${dateBirth} 00:00`)

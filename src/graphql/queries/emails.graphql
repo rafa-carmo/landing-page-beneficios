@@ -1,0 +1,6 @@
+query Emails{
+  receiveEmails{
+    name
+    email
+  }
+}
