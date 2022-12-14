@@ -40,7 +40,7 @@ export function Base({
 
       {menu.socialMedias.map((media) => {
         const type = media.icon === 'facebook' ? 'og' : media.icon
-        if (media.icon === 'whataspp') return ''
+        if (media.icon === 'whatsapp') return ''
         return (
           <Head key={`meta-${media.url}`}>
             <meta
@@ -58,7 +58,12 @@ export function Base({
         )
       })}
       <Menu {...menu} />
-      <WhatasappButton />
+      <WhatasappButton
+        whatsappLink={
+          menu.socialMedias.filter((media) => media.icon === 'whatsapp')[0]
+            ?.url || ''
+        }
+      />
       {children}
       <Footer {...footer} />
     </main>
