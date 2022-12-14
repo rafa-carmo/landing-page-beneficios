@@ -54,9 +54,13 @@ export function Footer({ values, about, socialMedias }: FooterProps) {
           <span>© 2022 -- Viver Mais.</span>
           <span className="absolute right-0 font-thin">
             Desenvolvido por{' '}
-            <a href="https://rafacarmo.dev" target="_blank" rel="noreferrer">
+            <Link
+              href="https://rafaelcarmo.dev"
+              target="_blank"
+              rel="noreferrer"
+            >
               Rafael
-            </a>
+            </Link>
           </span>
         </div>
       </div>
